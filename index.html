@@ -201,6 +201,12 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 .sec-title{font-size:18px;font-weight:800;padding:24px 36px 0;margin-bottom:0}
 .sec-sub{font-size:13px;color:var(--text-sec);padding:4px 36px 0}
 
+/* PERSONA SWITCHER */
+.persona-box{padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.persona-lbl{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--sb-muted);margin-bottom:5px}
+.persona-sel{width:100%;padding:6px 9px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);color:#fff;border-radius:7px;font-size:12px;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,.5)'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center}
+.persona-sel option{background:#064E3B;color:#fff}
+
 /* FOOTER */
 .page-foot{text-align:center;padding:20px 36px;font-size:11px;color:var(--text-muted);border-top:1px solid var(--border);margin-top:10px}
 </style>
@@ -213,6 +219,19 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     <div class="tag">Formation IA</div>
     <h1>Journée 1 — Prise en main</h1>
     <div class="sub">Découverte des outils IA</div>
+  </div>
+  <div class="persona-box">
+    <div class="persona-lbl">👤 Mon profil</div>
+    <select class="persona-sel" id="persona-sel" onchange="switchPersona(this.value)">
+      <option value="enseignant">📚 Enseignant(e)</option>
+      <option value="direction">🏛️ Direction / Adjoint(e)</option>
+      <option value="comptable">💼 Comptable</option>
+      <option value="secretariat">📋 Secrétariat</option>
+      <option value="rh">👥 Ressources Humaines</option>
+      <option value="communication">📢 Communication</option>
+      <option value="vie_scolaire">🎓 Vie scolaire</option>
+      <option value="aesh">🤝 AESH / AVS</option>
+    </select>
   </div>
   <div class="sb-nav">
     <div class="nav-label">Navigation</div>
@@ -325,16 +344,16 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
   <p class="sec-title" style="margin-top:20px">🧭 Quel atelier pour quel besoin ?</p>
   <p class="sec-sub">Cliquez sur la carte pour accéder directement à l'atelier</p>
   <div class="accueil-grid">
-    <div class="need-card" onclick="showAtel(1,null)"><div class="need-num">1</div><div><h4>Recherches fiables et sourcées</h4><p>Utiliser Perplexity pour obtenir des résultats vérifiables</p></div></div>
-    <div class="need-card" onclick="showAtel(2,null)"><div class="need-num">2</div><div><h4>Comparer les modèles d'IA (LLM)</h4><p>Tester plusieurs IA en parallèle avec DuckAI</p></div></div>
-    <div class="need-card" onclick="showAtel(3,null)"><div class="need-num">3</div><div><h4>Mieux formuler mes demandes</h4><p>Transformer une idée floue en prompt optimisé</p></div></div>
-    <div class="need-card" onclick="showAtel(4,null)"><div class="need-num">4</div><div><h4>Créer mon assistant pédagogique</h4><p>Construire un assistant sur Copilot ou Gemini</p></div></div>
-    <div class="need-card" onclick="showAtel(5,null)"><div class="need-num">5</div><div><h4>Découvrir ChatGPT en profondeur</h4><p>Personnalisation, GPTs, mode éphémère</p></div></div>
-    <div class="need-card" onclick="showAtel(6,null)"><div class="need-num">6</div><div><h4>Recherche web avec des IA</h4><p>ChatGPT Web Search et Gemini Deep Research</p></div></div>
-    <div class="need-card" onclick="showAtel(7,null)"><div class="need-num">7</div><div><h4>Ressources interactives pour les élèves</h4><p>QCM, simulateurs, jeux avec Gemini Canvas / Claude</p></div></div>
-    <div class="need-card" onclick="showAtel(8,null)"><div class="need-num">8</div><div><h4>Podcast, carte mentale, diaporama</h4><p>Transformer vos documents avec NotebookLM</p></div></div>
-    <div class="need-card" onclick="showAtel(9,null)"><div class="need-num">9</div><div><h4>Diaporama en 2 minutes</h4><p>Générer une présentation pro avec Gamma</p></div></div>
-    <div class="need-card" onclick="showAtel(10,null)" style="border-left:3px solid #F87171"><div class="need-num" style="background:#FEF2F2;color:#DC2626">10</div><div><h4>Navigateur IA — Comet</h4><p>IA qui voit votre écran et vous assiste en temps réel</p></div></div>
+    <div class="need-card" onclick="showAtel(1,null)"><div class="need-num">1</div><div><h4 id="nc-h1">Recherches fiables et sourcées</h4><p id="nc-p1">Utiliser Perplexity pour obtenir des résultats vérifiables</p></div></div>
+    <div class="need-card" onclick="showAtel(2,null)"><div class="need-num">2</div><div><h4 id="nc-h2">Comparer les modèles d'IA (LLM)</h4><p id="nc-p2">Tester plusieurs IA en parallèle avec DuckAI</p></div></div>
+    <div class="need-card" onclick="showAtel(3,null)"><div class="need-num">3</div><div><h4 id="nc-h3">Mieux formuler mes demandes</h4><p id="nc-p3">Transformer une idée floue en prompt optimisé</p></div></div>
+    <div class="need-card" onclick="showAtel(4,null)"><div class="need-num">4</div><div><h4 id="nc-h4">Créer mon assistant pédagogique</h4><p id="nc-p4">Construire un assistant sur Copilot ou Gemini</p></div></div>
+    <div class="need-card" onclick="showAtel(5,null)"><div class="need-num">5</div><div><h4 id="nc-h5">Découvrir ChatGPT en profondeur</h4><p id="nc-p5">Personnalisation, GPTs, mode éphémère</p></div></div>
+    <div class="need-card" onclick="showAtel(6,null)"><div class="need-num">6</div><div><h4 id="nc-h6">Recherche web avec des IA</h4><p id="nc-p6">ChatGPT Web Search et Gemini Deep Research</p></div></div>
+    <div class="need-card" onclick="showAtel(7,null)"><div class="need-num">7</div><div><h4 id="nc-h7">Ressources interactives pour les élèves</h4><p id="nc-p7">QCM, simulateurs, jeux avec Gemini Canvas / Claude</p></div></div>
+    <div class="need-card" onclick="showAtel(8,null)"><div class="need-num">8</div><div><h4 id="nc-h8">Podcast, carte mentale, diaporama</h4><p id="nc-p8">Transformer vos documents avec NotebookLM</p></div></div>
+    <div class="need-card" onclick="showAtel(9,null)"><div class="need-num">9</div><div><h4 id="nc-h9">Diaporama en 2 minutes</h4><p id="nc-p9">Générer une présentation pro avec Gamma</p></div></div>
+    <div class="need-card" onclick="showAtel(10,null)" style="border-left:3px solid #F87171"><div class="need-num" style="background:#FEF2F2;color:#DC2626">10</div><div><h4 id="nc-h10">Navigateur IA — Comet</h4><p id="nc-p10">IA qui voit votre écran et vous assiste en temps réel</p></div></div>
   </div>
   <div class="page-foot">Formation IA — Journée 1 | Sophiae</div>
 </div>
@@ -497,7 +516,7 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
   </div>
   <div class="content-wrap">
     <div>
-      <div class="obj-box"><strong>🎯 Objectif</strong>Obtenir des résultats sourcés et vérifiables en quelques secondes grâce à l'IA.</div>
+      <div class="obj-box"><strong>🎯 Objectif</strong><span id="obj-1">Obtenir des résultats sourcés et vérifiables en quelques secondes grâce à l'IA.</span></div>
       <div class="steps-box">
         <h3>👣 Déroulement pas à pas</h3>
         <div class="step-item"><div class="step-cb" onclick="toggleStep(this,1,1)"></div><div class="step-text">Aller sur <strong>perplexity.ai</strong> — aucun compte nécessaire pour commencer</div></div>
@@ -541,7 +560,7 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
   </div>
   <div class="content-wrap">
     <div>
-      <div class="obj-box" style="background:#E0F2FE;border-color:#7DD3FC"><strong style="color:#0891B2">🎯 Objectif</strong><span style="color:#0C4A6E">Comprendre pourquoi ChatGPT et Claude répondent différemment à la même question.</span></div>
+      <div class="obj-box" style="background:#E0F2FE;border-color:#7DD3FC"><strong style="color:#0891B2">🎯 Objectif</strong><span id="obj-2" style="color:#0C4A6E">Comprendre pourquoi ChatGPT et Claude répondent différemment à la même question.</span></div>
       <div class="steps-box">
         <h3>👣 Déroulement pas à pas</h3>
         <div class="step-item"><div class="step-cb" onclick="toggleStep(this,2,1)"></div><div class="step-text">Aller sur <strong>duck.ai</strong> — aucun compte nécessaire, données protégées</div></div>
@@ -588,7 +607,7 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
   </div>
   <div class="content-wrap">
     <div>
-      <div class="obj-box" style="background:#F5F3FF;border-color:#C4B5FD"><strong style="color:#7C3AED">🎯 Objectif</strong><span style="color:#4C1D95">Transformer n'importe quelle idée en requête IA de qualité professionnelle.</span></div>
+      <div class="obj-box" style="background:#F5F3FF;border-color:#C4B5FD"><strong style="color:#7C3AED">🎯 Objectif</strong><span id="obj-3" style="color:#4C1D95">Transformer n'importe quelle idée en requête IA de qualité professionnelle.</span></div>
       <div class="steps-box">
         <h3>👣 Déroulement pas à pas</h3>
         <div class="step-item"><div class="step-cb" onclick="toggleStep(this,3,1)"></div><div class="step-text">Copier-coller le Prompt A (métaprompt) dans l'IA de votre choix</div></div>
@@ -643,7 +662,7 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
   </div>
   <div class="content-wrap">
     <div>
-      <div class="obj-box" style="background:#FDF2F8;border-color:#F9A8D4"><strong style="color:#9D174D">🎯 Objectif</strong><span style="color:#500724">Un assistant qui connaît votre matière, vos élèves et vos contraintes — créé en 30 min.</span></div>
+      <div class="obj-box" style="background:#FDF2F8;border-color:#F9A8D4"><strong style="color:#9D174D">🎯 Objectif</strong><span id="obj-4" style="color:#500724">Un assistant qui connaît votre matière, vos élèves et vos contraintes — créé en 30 min.</span></div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-bottom:16px">
         <h4 style="font-size:12.5px;font-weight:700;margin-bottom:10px">🛠 Où créer votre assistant ?</h4>
         <table class="level-table">
@@ -705,7 +724,7 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
   </div>
   <div class="content-wrap">
     <div>
-      <div class="obj-box"><strong>🎯 Objectif</strong>Maîtriser l'outil le plus utilisé par les élèves — et l'exploiter à votre avantage.</div>
+      <div class="obj-box"><strong>🎯 Objectif</strong><span id="obj-5">Maîtriser l'outil le plus utilisé par les élèves — et l'exploiter à votre avantage.</span></div>
       <div class="steps-box">
         <h3>👣 Déroulement pas à pas</h3>
         <div class="step-item"><div class="step-cb" onclick="toggleStep(this,5,1)"></div><div class="step-text">Se connecter sur <strong>chatgpt.com</strong> — de préférence via "Se connecter avec Google"</div></div>
@@ -750,7 +769,7 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
   </div>
   <div class="content-wrap">
     <div>
-      <div class="obj-box" style="background:#FFF7ED;border-color:#FDBA74"><strong style="color:#EA580C">🎯 Objectif</strong><span style="color:#7C2D12">Comparer les approches de recherche web : Perplexity vs ChatGPT vs Gemini.</span></div>
+      <div class="obj-box" style="background:#FFF7ED;border-color:#FDBA74"><strong style="color:#EA580C">🎯 Objectif</strong><span id="obj-6" style="color:#7C2D12">Comparer les approches de recherche web : Perplexity vs ChatGPT vs Gemini.</span></div>
       <div class="steps-box">
         <h3>👣 Déroulement pas à pas</h3>
         <div class="step-item"><div class="step-cb" onclick="toggleStep(this,6,1)"></div><div class="step-text">Dans ChatGPT : cliquer sur le bouton "+" → "Rechercher sur le Web"</div></div>
@@ -795,7 +814,7 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
   </div>
   <div class="content-wrap">
     <div>
-      <div class="obj-box" style="background:#E0F2FE;border-color:#7DD3FC"><strong style="color:#0369A1">🎯 Objectif</strong><span style="color:#0C4A6E">Créer en quelques prompts des ressources interactives directement utilisables avec vos élèves.</span></div>
+      <div class="obj-box" style="background:#E0F2FE;border-color:#7DD3FC"><strong style="color:#0369A1">🎯 Objectif</strong><span id="obj-7" style="color:#0C4A6E">Créer en quelques prompts des ressources interactives directement utilisables avec vos élèves.</span></div>
       <div class="steps-box">
         <h3>👣 Déroulement pas à pas</h3>
         <div class="step-item"><div class="step-cb" onclick="toggleStep(this,7,1)"></div><div class="step-text">Dans Gemini : cliquer sur "Outils" → "Canvas"</div></div>
@@ -843,7 +862,7 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
   </div>
   <div class="content-wrap">
     <div>
-      <div class="obj-box" style="background:#FFFBEB;border-color:#FCD34D"><strong style="color:#D97706">🎯 Objectif</strong><span style="color:#78350F">Transformer vos cours et documents en podcast audio, carte mentale ou diaporama en quelques clics.</span></div>
+      <div class="obj-box" style="background:#FFFBEB;border-color:#FCD34D"><strong style="color:#D97706">🎯 Objectif</strong><span id="obj-8" style="color:#78350F">Transformer vos cours et documents en podcast audio, carte mentale ou diaporama en quelques clics.</span></div>
       <div class="steps-box">
         <h3>👣 Déroulement pas à pas</h3>
         <div class="step-item"><div class="step-cb" onclick="toggleStep(this,8,1)"></div><div class="step-text">Aller sur <strong>notebooklm.google.com</strong> — compte Google nécessaire</div></div>
@@ -901,7 +920,7 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
   </div>
   <div class="content-wrap">
     <div>
-      <div class="obj-box" style="background:#F5F3FF;border-color:#C4B5FD"><strong style="color:#7C3AED">🎯 Objectif</strong><span style="color:#4C1D95">Générer une présentation professionnelle en 2 minutes — exportable en PowerPoint.</span></div>
+      <div class="obj-box" style="background:#F5F3FF;border-color:#C4B5FD"><strong style="color:#7C3AED">🎯 Objectif</strong><span id="obj-9" style="color:#4C1D95">Générer une présentation professionnelle en 2 minutes — exportable en PowerPoint.</span></div>
       <div class="steps-box">
         <h3>👣 Déroulement pas à pas</h3>
         <div class="step-item"><div class="step-cb" onclick="toggleStep(this,9,1)"></div><div class="step-text">Aller sur <strong>gamma.app</strong> — se connecter avec un compte Google ou email</div></div>
@@ -974,7 +993,7 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
 
   <div class="content-wrap">
     <div>
-      <div class="obj-box" style="background:#FEF2F2;border-color:#FCA5A5"><strong style="color:#DC2626">🎯 Objectif</strong><span style="color:#7F1D1D">Naviguer sur le web avec une IA qui voit votre écran et vous assiste sans interruption.</span></div>
+      <div class="obj-box" style="background:#FEF2F2;border-color:#FCA5A5"><strong style="color:#DC2626">🎯 Objectif</strong><span id="obj-10" style="color:#7F1D1D">Naviguer sur le web avec une IA qui voit votre écran et vous assiste sans interruption.</span></div>
       <div class="steps-box">
         <h3>👣 Déroulement pas à pas</h3>
         <div class="step-item"><div class="step-cb" onclick="toggleStep(this,10,1)"></div><div class="step-text">Télécharger et installer <strong>Comet</strong> depuis <a href="https://comet.perplexity.ai" target="_blank" style="color:var(--c1)">comet.perplexity.ai</a></div></div>
@@ -1015,7 +1034,7 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
     <div class="prompts-box">
       <h3>📋 Prompts enseignants — Cas d'usage</h3>
 
-      <div style="font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:4px">✍️ Appréciations de bulletins</div>
+      <div id="a10-label-1" style="font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:4px">✍️ Appréciations de bulletins</div>
 
       <div class="prompt-card">
         <div class="prompt-head"><span class="prompt-label">Prompt A — Générer des appréciations</span><button class="copy-btn" onclick="copyPrompt(this,'p10a')">📋 Copier</button></div>
@@ -1049,7 +1068,7 @@ Propose 2 versions : une encourageante, une plus directe.</div>
 [Coller vos appréciations ici — une par ligne]</div>
       </div>
 
-      <div style="font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:14px">🌐 Avec Comet (IA voit la page)</div>
+      <div id="a10-label-2" style="font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:14px">🌐 Avec Comet (IA voit la page)</div>
 
       <div class="prompt-card">
         <div class="prompt-head"><span class="prompt-label">Prompt D — Analyser une page web ouverte</span><button class="copy-btn" onclick="copyPrompt(this,'p10d')">📋 Copier</button></div>
@@ -1390,6 +1409,562 @@ function loadProgress() {
       }
     });
     updateAtelier(i);
+  }
+}
+
+// ── PERSONAS ─────────────────────────────────────────────────
+const PERSONAS = {
+enseignant:{
+  label:'📚 Enseignant(e)',
+  accueil:[
+    {h:'Recherches fiables et sourcées',p:'Utiliser Perplexity pour obtenir des résultats vérifiables'},
+    {h:'Comparer les modèles d\'IA (LLM)',p:'Tester plusieurs IA en parallèle avec DuckAI'},
+    {h:'Mieux formuler mes demandes',p:'Transformer une idée floue en prompt optimisé'},
+    {h:'Créer mon assistant pédagogique',p:'Construire un assistant sur Copilot ou Gemini'},
+    {h:'Découvrir ChatGPT en profondeur',p:'Personnalisation, GPTs, mode éphémère'},
+    {h:'Recherche web avec des IA',p:'ChatGPT Web Search et Gemini Deep Research'},
+    {h:'Ressources interactives pour les élèves',p:'QCM, simulateurs, jeux avec Gemini Canvas / Claude'},
+    {h:'Podcast, carte mentale, diaporama',p:'Transformer vos documents avec NotebookLM'},
+    {h:'Diaporama en 2 minutes',p:'Générer une présentation pro avec Gamma'},
+    {h:'Navigateur IA — Comet',p:'IA qui voit votre écran et vous assiste en temps réel'}
+  ],
+  obj:['Obtenir des résultats sourcés et vérifiables en quelques secondes grâce à l\'IA.','Comprendre pourquoi ChatGPT et Claude répondent différemment à la même question.','Transformer n\'importe quelle idée en requête IA de qualité professionnelle.','Un assistant qui connaît votre matière, vos élèves et vos contraintes — créé en 30 min.','Maîtriser l\'outil le plus utilisé par les élèves — et l\'exploiter à votre avantage.','Comparer les approches de recherche web : Perplexity vs ChatGPT vs Gemini.','Créer en quelques prompts des ressources interactives directement utilisables avec vos élèves.','Transformer vos cours et documents en podcast audio, carte mentale ou diaporama en quelques clics.','Générer une présentation professionnelle en 2 minutes — exportable en PowerPoint.','Naviguer sur le web avec une IA qui voit votre écran et vous assiste sans interruption.'],
+  tips:[
+    ['Perplexity cite toujours ses sources — cliquez sur chaque affirmation pour vérifier','Testez vos propres sujets de recherche professionnels — c\'est là que l\'outil est le plus utile','Sans mode "recherche web", les autres IA peuvent inventer des informations récentes','Un compte gratuit vous permet d\'affiner les réponses et d\'accéder à l\'historique'],
+    ['DuckAI est utilisable en classe dès la 4e selon la charte IA Éducation (données protégées)','Les modèles diffèrent dans leurs réponses : ce n\'est pas une vérité absolue, c\'est une probabilité','Posez-vous la question : "Quel modèle me semble le plus adapté à mon usage ?"','Cette activité est directement transposable avec vos élèves'],
+    ['L\'IA pose des questions AVANT de répondre : c\'est le principe du métaprompt !','Cette méthode sera réutilisée à l\'Atelier 4 pour rédiger les instructions de votre assistant','Gardez le prompt finalisé — il est réutilisable et partageable avec vos collègues','Comparez le résultat avec/sans le métaprompt pour mesurer l\'impact sur la qualité'],
+    ['Copilot gratuit : injection de pages web seulement (pas de documents locaux)','Gemini gratuit : injection de documents possible (PDF, Word, cours, référentiels...)','Idées : FALC, grilles de correction, précorrecteur de copies, planification de cours...','Testez votre assistant en jouant le rôle d\'un élève — c\'est le meilleur moyen de l\'améliorer'],
+    ['La connexion Microsoft peut être bloquée selon les règles de votre établissement — utiliser Google','Les GPTs sont des assistants pré-configurés — même principe que l\'Atelier 4, créés par d\'autres','Mode Chat éphémère recommandé pour les usages professionnels sensibles','La personnalisation améliore la qualité de TOUTES vos conversations — configurez-la en priorité'],
+    ['Sans activer "Recherche web", les LLM peuvent inventer des faits récents — vérifiez toujours','ChatGPT Web Search est moins performant que Perplexity pour la recherche sourcée','Gemini Deep Research prend 1 à 3 minutes mais produit un rapport très complet','Comparez : Perplexity (rapide + sourcé) vs Deep Research (approfondi + structuré)'],
+    ['Ces créations peuvent être publiées en ligne via Claude — partagez le lien avec vos élèves','Ne recommencez pas à zéro si le résultat est imparfait : affinez dans la même conversation','Projetez-vous dans VOTRE matière — le résultat sera directement utilisable','Claude Artefacts nécessite un compte Claude — un compte gratuit suffit'],
+    ['ATTENTION : pour partager un Notebook, les destinataires doivent avoir un compte Google','Testez les outils de personnalisation AVANT de lancer la production','Le podcast audio génère souvent le plus d\'enthousiasme — commencez par là !','Importez plusieurs types de ressources (vidéo + PDF + texte) pour enrichir le Notebook'],
+    ['Le résultat est utilisable immédiatement — personnalisez le contenu selon vos besoins','On peut aussi importer un document existant (PDF, Word) pour générer un diaporama automatique','Modifiez une slide en gardant le style visuel cohérent : cliquez sur la slide → "Modifier"','L\'export PowerPoint fonctionne parfaitement — continuez dans votre outil habituel'],
+    ['Comet est basé sur Chromium — vos extensions Chrome habituelles fonctionnent','L\'IA voit la page affichée en temps réel : elle s\'adapte à chaque navigation','Idéal pour analyser des bulletins en ligne, des ressources Eduscol ou des référentiels','Utilisez le raccourci clavier pour ouvrir/fermer le panneau IA rapidement','Les conversations sont sauvegardées et consultables depuis Perplexity.ai']
+  ],
+  prompts:{
+    p1a:'Quelles sont les dernières recommandations officielles sur [sujet] ? Cite tes sources et indique la date de chaque information.',
+    p1b:'Fais une synthèse des principales études sur [sujet] publiées ces 2 dernières années. Pour chaque étude : auteur, date, résultat principal, lien si disponible.',
+    p2a:'[Votre sujet professionnel ou pédagogique] — testez ce même prompt avec au moins 3 modèles différents sur DuckAI et comparez les résultats.',
+    p2b:'Propose une activité pédagogique de 45 min sur [sujet] pour des élèves de [niveau]. Inclus : objectif, déroulé, matériel, consigne élève.',
+    p4a:'Crée les instructions d\'un assistant IA qui reformule n\'importe quel texte en FALC (Facile À Lire et à Comprendre) : phrases courtes, mots simples, une idée par phrase, mise en page aérée. L\'assistant demande le texte, produit la version FALC et explique les choix.',
+    p4b:'Crée les instructions d\'un assistant IA qui m\'aide à rédiger des évaluations de [matière] pour des élèves de [niveau]. Il demande : le thème, le type d\'exercice, la difficulté, la durée. Il produit l\'évaluation complète avec les corrections.',
+    p4c:'Tu vas m\'aider à précorriger des copies d\'élèves (anonymisées). Pour chaque production que je te soumets, tu analyses selon ces critères : [liste tes critères]. Tu produis une grille remplie et un commentaire constructif de 2-3 lignes.',
+    p4d:'Voici mes instructions actuelles : [coller les instructions]. Améliore-les pour qu\'elles soient plus précises, plus naturelles et qu\'elles produisent de meilleurs résultats. Explique tes modifications.',
+    p5a:'Paramètres → "Personnaliser ChatGPT" : renseignez qui vous êtes, ce que vous faites, ce que vous attendez de l\'IA. ChatGPT adapte toutes ses réponses à votre profil.',
+    p5b:'Tu es [votre rôle]. Je dois [tâche précise] pour [contexte]. Mon objectif est [objectif]. Contraintes : [contraintes]. Ton : [professionnel / pédagogique / accessible]. Format : [tableau / liste / texte court].',
+    p6a:'[Même recherche qu\'Atelier 1] — comparez les résultats de Perplexity, ChatGPT Web Search et Gemini Deep Research sur le même sujet.',
+    p6b:'Fais une recherche approfondie sur [sujet professionnel ou pédagogique]. Je veux un rapport structuré avec : contexte, enjeux, données chiffrées récentes, perspectives, sources.',
+    p7a:'Génère automatiquement des QCM sur [sujet] pour des élèves de [niveau] avec plusieurs niveaux de différenciation. Les QCM doivent être autocorrectifs et assortis de feedbacks selon les réponses des élèves.',
+    p7b:'Je voudrais créer un simulateur de [domaine professionnel] qui permette de [fonction principale]. Inclus un bouton pour exporter le résultat en PDF.',
+    p7c:'Crée un jeu de révision interactif sur [sujet] pour des élèves de [niveau] : questions progressives, score en temps réel, feedback immédiat sur chaque réponse.',
+    p9a:'Crée une présentation de [X slides] sur [sujet] pour des élèves de [niveau]. Chaque slide doit avoir : un titre, 3 points clés, un exemple concret. Style : clair, pédagogique, pas trop dense.',
+    p9b:'Crée une présentation de [X slides] pour [contexte professionnel] sur le thème : [sujet]. Inclus : introduction, 3 à 4 parties, conclusion avec synthèse et prochaines étapes.',
+    p10a:'Tu es professeur en [matière]. Rédige 5 appréciations de bulletin variées pour des élèves aux profils différents :\n1. Élève très motivé mais résultats insuffisants\n2. Élève discret avec de bons résultats\n3. Élève perturbateur mais capable\n4. Élève en difficulté faisant des efforts\n5. Élève excellent et investi\n\nChaque appréciation : 2 à 3 lignes, ton bienveillant et constructif, une piste d\'amélioration concrète. Évite les formules toutes faites.',
+    p10b:'Je vais te décrire un élève en quelques mots. Rédige une appréciation de bulletin scolaire (2-3 lignes, ton professionnel et bienveillant).\n\nÉlève : [prénom ou initiale]\nProfil : [points forts, points faibles, comportement, investissement]\nMatière : [matière]\nMoyenne : [note/20]\nPoint à souligner : [un fait précis ou une progression notable]\n\nPropose 2 versions : une encourageante, une plus directe.',
+    p10c:'Voici mes appréciations brutes pour plusieurs élèves. Reformule-les de façon plus professionnelle, bienveillante et constructive, sans en changer le sens. Garde une longueur similaire (2-3 lignes max).\n\n[Coller vos appréciations ici — une par ligne]',
+    p10d:'Tu vois la page web affichée devant toi. Fais-m\'en une synthèse en 5 points clés, adaptée à un usage pédagogique pour des élèves de [niveau] en [matière].',
+    p10e:'En te basant sur le référentiel affiché sur cette page, extrais les compétences liées à [thème ou module]. Présente-les sous forme de tableau avec : intitulé de la compétence, capacités attendues, niveau visé.',
+    p10f:'En t\'appuyant sur le contenu de la page que tu vois, rédige une introduction de cours percutante (accroche + problématique + annonce du plan) pour des élèves de [niveau]. Ton : dynamique et accessible.'
+  },
+  a10labels:['✍️ Appréciations de bulletins','🌐 Avec Comet (IA voit la page)'],
+  actifEx:{
+    ex1:'📖 Créer un cours', ex2:'📝 Rédiger une évaluation', ex3:'♿ Adapter en FALC',
+    ex4:'✅ Générer un QCM', ex5:'🗓️ Préparer une séance', ex6:'✉️ Rédiger un courrier',
+    k1:'cours', k2:'eval', k3:'falc', k4:'qcm', k5:'seance', k6:'lettre'
+  }
+},
+direction:{
+  label:'🏛️ Direction / Adjoint(e)',
+  accueil:[
+    {h:'Recherches réglementaires sourcées',p:'Circulaires, textes MENJ, jurisprudence avec Perplexity'},
+    {h:'Comparer les modèles d\'IA',p:'Trouver le meilleur LLM pour vos usages de direction'},
+    {h:'Optimiser vos demandes à l\'IA',p:'Transformer vos idées en prompts de direction efficaces'},
+    {h:'Créer votre assistant de direction',p:'Assistant pour CA, notes de service, rapports'},
+    {h:'Maîtriser ChatGPT en direction',p:'Personnalisation pour pilotage et communication'},
+    {h:'Recherche web approfondie',p:'Veille réglementaire et benchmarking d\'établissements'},
+    {h:'Outils interactifs de pilotage',p:'Tableaux de bord, simulateurs budgétaires avec IA'},
+    {h:'Valoriser vos documents institutionnels',p:'Transformer rapports et bilans en supports clés'},
+    {h:'Diaporama pour le CA en 2 minutes',p:'Présentation de bilan ou projet avec Gamma'},
+    {h:'Comet — IA sur GeVASCO et BOEN',p:'Analyser circulaires et formulaires officiels en ligne'}
+  ],
+  obj:['Obtenir des textes officiels sourcés et datés pour étayer vos décisions de direction.','Identifier le modèle IA le plus adapté à vos besoins de pilotage et de communication.','Formuler des demandes précises à l\'IA pour produire des documents de direction de qualité.','Un assistant qui rédige notes de service, comptes-rendus et courriers selon vos standards.','Exploiter ChatGPT pour préparer CA, dialogues de gestion et communications institutionnelles.','Mener une veille réglementaire efficace et comparer les pratiques d\'autres établissements.','Créer des outils de suivi interactifs : tableaux de bord, simulateurs de projets.','Transformer vos rapports d\'activité et bilans en supports multimédias exploitables.','Générer en 2 minutes une présentation pour votre prochain CA ou réunion de direction.','Analyser en direct des pages GeVASCO, Pronote ou BOEN avec l\'aide de l\'IA.'],
+  tips:[
+    ['Perplexity identifie les circulaires et textes officiels avec date et source — idéal pour les BOEN','Utilisez la recherche en français pour trouver les textes OGEC et DDFPT','Comparez les recommandations officielles avant de rédiger votre note de service','Créez un compte pour accéder à l\'historique de vos recherches réglementaires'],
+    ['Testez la même question de pilotage sur 3 modèles pour voir les différences de formulation','Claude est souvent plus précis pour les textes longs et structurés','GPT-4o excelle pour les tableaux de synthèse et les plans d\'action','Gardez le modèle qui correspond le mieux à votre style de communication'],
+    ['Utilisez le métaprompt pour rédiger vos instructions d\'assistant de direction','Plus vous détaillez le contexte OGEC, meilleures sont les réponses','Demandez à l\'IA de "jouer le rôle d\'un chef d\'établissement expérimenté"','Le prompt finalisé peut être partagé avec votre adjoint(e) pour harmoniser les pratiques'],
+    ['Gemini Gems permet d\'injecter le règlement intérieur ou le projet d\'établissement','Créez un assistant "Rédacteur CA" avec les procédures de votre établissement','Testez l\'assistant en lui soumettant un vrai point à inscrire à l\'ordre du jour','Un assistant bien paramétré peut réduire de 50% le temps de rédaction administrative'],
+    ['Personnalisez ChatGPT avec votre rôle, votre type d\'établissement et votre niveau','Mode éphémère indispensable pour les échanges sur la vie du personnel','Les GPTs "rédaction administrative" et "analyse juridique" sont utiles en direction','Partagez votre prompt de personnalisation avec votre équipe de direction'],
+    ['Deep Research Gemini est idéal pour préparer un dialogue de gestion ou une inspection','Comparez les pratiques d\'autres établissements OGEC sur des thèmes précis','Utilisez Perplexity pour vérifier la conformité réglementaire d\'une décision','Sauvegardez les rapports Deep Research — ils constituent une base documentaire solide'],
+    ['Créez un tableau de bord interactif de suivi des projets d\'établissement','Un simulateur budgétaire simple peut être généré en quelques prompts','Claude Artefacts permet de partager le tableau de bord avec votre équipe via lien','Commencez par un outil simple : suivi des effectifs ou des absences'],
+    ['NotebookLM peut générer un podcast de synthèse de votre bilan annuel','Importez le projet d\'établissement pour créer une FAQ interactive pour vos équipes','Le "Briefing Doc" de NotebookLM est parfait pour préparer une visite d\'inspection','Croisez plusieurs sources : rapport IGÉSR + vos données internes'],
+    ['Gamma génère un diaporama de bilan d\'activités en 2 minutes','Importez votre rapport annuel en PDF pour une mise en forme automatique','L\'export PowerPoint permet une retouche facile avant le CA','Partagez via lien Gamma pour un rendu plus professionnel qu\'un PPT classique'],
+    ['Comet est idéal pour analyser en direct une page GeVASCO ou un BOEN','Demandez à l\'IA de résumer une circulaire officielle pendant que vous la lisez','Utilisez Comet pour rédiger une note de service directement depuis un texte réglementaire','Les conversations Comet sont sauvegardées — retrouvez vos analyses dans Perplexity.ai']
+  ],
+  prompts:{
+    p1a:'Quelles sont les dernières circulaires et textes officiels sur [sujet réglementaire] ? Cite les références (numéro, date, BO) et résume les obligations pour les établissements privés sous contrat.',
+    p1b:'Fais une synthèse des textes OGEC et de l\'Éducation nationale sur [sujet] publiés ces 2 dernières années. Indique pour chaque texte : référence, date, portée, obligations concrètes.',
+    p2a:'[Votre problématique de direction] — testez ce même prompt avec au moins 3 modèles différents sur DuckAI et comparez la qualité des réponses pour un usage de direction.',
+    p2b:'Rédige une note de service sur [sujet] pour mes équipes. Inclus : objet, contexte réglementaire, modalités pratiques, date d\'application, contact pour questions.',
+    p4a:'Crée les instructions d\'un assistant IA spécialisé dans la rédaction de documents de direction : notes de service, comptes-rendus de CA, courriers aux familles. L\'assistant demande le type de document, le contexte et les points à aborder, puis produit un document structuré et professionnel.',
+    p4b:'Crée les instructions d\'un assistant IA qui m\'aide à préparer les Conseils d\'Administration. Il connaît les procédures OGEC. Je lui fournis les points à l\'ordre du jour et il génère : convocation, dossier préparatoire, projet de délibérations, projet de compte-rendu.',
+    p4c:'Tu es mon assistant de veille réglementaire. Chaque semaine, quand je te soumets un texte officiel (circulaire, note de service, BOEN), tu l\'analyses et produis : résumé en 5 points, obligations pour mon établissement, délai d\'application, actions à mener.',
+    p4d:'Voici mes instructions actuelles pour mon assistant de direction : [coller]. Améliore-les pour qu\'il prenne mieux en compte les spécificités de l\'enseignement privé sous contrat OGEC.',
+    p5a:'Paramètres → "Personnaliser ChatGPT" : Je suis chef(fe) d\'établissement dans un lycée privé sous contrat OGEC. Je gère [X] élèves, [X] enseignants, [X] personnels OGEC. J\'ai besoin d\'aide pour la rédaction administrative, la veille réglementaire et la communication institutionnelle.',
+    p5b:'Tu es directeur(trice) d\'établissement scolaire privé sous contrat. Je dois [tâche de direction] dans le cadre [contexte réglementaire ou organisationnel]. Ton : institutionnel et professionnel. Format : [document structuré / note / tableau].',
+    p6a:'[Même recherche réglementaire] — comparez les résultats de Perplexity, ChatGPT Web Search et Gemini Deep Research pour la veille sur [sujet de direction].',
+    p6b:'Fais une recherche approfondie sur [sujet : organisation scolaire, réforme, texte officiel]. Rapport structuré : contexte législatif, obligations pour les établissements privés, exemples de mise en œuvre, sources officielles.',
+    p7a:'Crée un tableau de bord interactif de suivi du projet d\'établissement avec : indicateurs clés, état d\'avancement (%), responsables, échéances, alertes. Interface simple utilisable en réunion de direction.',
+    p7b:'Génère un simulateur de répartition des dotations horaires (DHG) : je saisis les contraintes (effectifs par classe, disciplines) et l\'outil calcule les possibilités de répartition avec visualisation.',
+    p7c:'Crée un outil de suivi interactif des entretiens professionnels : liste des personnels, statut (planifié / réalisé), date, commentaires, export PDF par agent.',
+    p9a:'Crée une présentation de [X slides] pour mon prochain Conseil d\'Administration sur [sujet : bilan, projet, budget]. Inclus : contexte, données chiffrées, enjeux, propositions de délibérations. Style : sobre et institutionnel.',
+    p9b:'Crée une présentation de [X slides] de bilan annuel de l\'établissement pour [destinataire : familles / tutelle / équipe]. Inclus : faits marquants, données clés, axes de progrès, perspectives. Style : accessible et valorisant.',
+    p10a:'Tu vois la page GeVASCO / formulaire officiel affichée. Explique-moi étape par étape comment remplir ce document. Indique les champs obligatoires, les pièges à éviter et les délais à respecter.',
+    p10b:'En te basant sur la circulaire / le texte officiel affiché sur cette page, rédige une note de service synthétique pour mes équipes. Inclus : objet, ce qui change, ce qu\'ils doivent faire, avant quelle date.',
+    p10c:'Tu vois le rapport / document officiel sur cette page. Génère une liste de questions pertinentes que je pourrais poser lors de la prochaine réunion institutionnelle sur ce sujet.',
+    p10d:'Tu vois la page affichée. Fais-m\'en une synthèse en 5 points clés pour ma prise de décision en tant que chef d\'établissement.',
+    p10e:'En te basant sur le document affiché, extrais les obligations spécifiques aux établissements privés sous contrat OGEC. Présente sous forme de tableau : obligation, échéance, service concerné.',
+    p10f:'En t\'appuyant sur la page affichée, rédige un projet de délibération pour mon prochain CA sur ce sujet. Format : intitulé, exposé des motifs, proposition de délibération, vote demandé.'
+  },
+  a10labels:['📋 Sur GeVASCO et formulaires officiels','🌐 Avec Comet (IA voit la page)'],
+  actifEx:{
+    ex1:'📋 Rédiger une note de service', ex2:'📊 Préparer un CA', ex3:'⚖️ Veille réglementaire',
+    ex4:'✉️ Courrier aux familles', ex5:'🗓️ Plan d\'action annuel', ex6:'📄 Rapport d\'activités',
+    k1:'note_dir', k2:'ca', k3:'veille', k4:'courrier_dir', k5:'plan', k6:'rapport'
+  }
+},
+comptable:{
+  label:'💼 Comptable',
+  accueil:[
+    {h:'Recherches fiscales et comptables sourcées',p:'Taux, barèmes, actualité comptable avec Perplexity'},
+    {h:'Comparer les IA pour la comptabilité',p:'Trouver le meilleur LLM pour vos analyses financières'},
+    {h:'Formuler des demandes comptables à l\'IA',p:'Transformer vos questions en prompts comptables précis'},
+    {h:'Créer votre assistant comptable',p:'Assistant pour écritures, bilans, tableaux de bord'},
+    {h:'ChatGPT pour la comptabilité',p:'Analyses financières, explications, aide à la saisie'},
+    {h:'Recherche web sur l\'actualité fiscale',p:'TVA, charges sociales, nouvelles normes comptables'},
+    {h:'Outils de calcul et simulateurs',p:'Simulateurs fiscaux, tableaux d\'amortissement interactifs'},
+    {h:'Analyser vos documents financiers',p:'Transformer bilans et rapports avec NotebookLM'},
+    {h:'Présentation budgétaire en 2 minutes',p:'Générer un diaporama de budget avec Gamma'},
+    {h:'Comet — IA sur Excel en ligne et URSSAF',p:'Analyser et remplir formulaires fiscaux en ligne'}
+  ],
+  obj:['Obtenir des informations fiscales et comptables sourcées et datées pour sécuriser vos écritures.','Identifier le modèle IA le plus pertinent pour vos analyses comptables et financières.','Formuler des requêtes précises pour obtenir des réponses comptables fiables et exploitables.','Un assistant qui maîtrise le plan comptable et les spécificités OGEC pour vous assister au quotidien.','Utiliser ChatGPT pour expliquer, analyser et synthétiser vos données financières.','Rester à jour sur l\'actualité fiscale, les taux et les normes comptables applicables.','Créer des outils de calcul interactifs : amortissements, TVA, simulation budgétaire.','Transformer vos bilans et rapports financiers en supports de présentation exploitables.','Générer en 2 minutes un diaporama de budget ou de bilan financier.','Analyser en direct des tableaux Excel en ligne, formulaires URSSAF et Chorus.'],
+  tips:[
+    ['Perplexity est très efficace pour trouver les taux en vigueur (TVA, cotisations, barèmes fiscaux)','Vérifiez toujours la date des informations fiscales — elles changent chaque année','Utilisez la recherche en français pour cibler les textes DGFIP et URSSAF','Un compte gratuit vous permet de sauvegarder vos recherches fiscales récurrentes'],
+    ['Claude excelle pour expliquer des mécanismes comptables complexes','GPT-4o est très performant pour analyser des données chiffrées et des tableaux','Testez la même question sur 3 modèles pour avoir différentes perspectives d\'analyse','Notez quel modèle répond le mieux à vos questions de comptabilité OGEC'],
+    ['Plus vous donnez de contexte (plan comptable, type d\'établissement), meilleures sont les réponses','Demandez toujours à l\'IA de justifier ses recommandations comptables','Le métaprompt est particulièrement utile pour structurer des demandes d\'analyse financière','Gardez vos prompts comptables finalisés pour les réutiliser'],
+    ['Gemini Gems accepte l\'injection de votre plan comptable OGEC personnalisé','Créez un assistant "Aide à la saisie" avec les codes comptables de votre établissement','Testez l\'assistant avec de vraies écritures (anonymisées) pour vérifier sa pertinence','Un assistant bien paramétré peut réduire les erreurs de saisie et les questions récurrentes'],
+    ['Personnalisez ChatGPT en précisant : comptable OGEC, logiciel utilisé, spécificités de l\'établissement','Mode éphémère obligatoire pour les données financières confidentielles','Demandez des explications vulgarisées pour les points comptables complexes','ChatGPT peut générer des modèles de tableaux Excel à copier-coller directement'],
+    ['Vérifiez toujours les données chiffrées avec les sources officielles DGFIP et URSSAF','Deep Research Gemini est utile pour faire le point sur une réforme fiscale récente','Utilisez Perplexity pour comparer les obligations OGEC et Éducation nationale','Sauvegardez les rapports de veille — ils constituent une base documentaire annuelle'],
+    ['Un simulateur d\'amortissement linéaire/dégressif peut être créé en 2 prompts','Créez un outil de calcul de charges sociales avec les taux de l\'année en cours','Claude Artefacts permet de partager vos outils de calcul avec la direction via lien','Commencez par un outil simple : calculateur de TVA ou tableau de trésorerie'],
+    ['NotebookLM peut générer une synthèse de votre bilan sous forme de podcast de direction','Importez votre compte de résultat pour créer une FAQ pour la direction et le CA','Le "Briefing Doc" est parfait pour préparer la présentation du budget au CA','Croisez bilan N et N-1 pour que l\'IA identifie les variations significatives'],
+    ['Gamma génère un diaporama de bilan financier en 2 minutes avec vos données','Décrivez votre budget en quelques chiffres clés et l\'IA structure la présentation','L\'export PowerPoint permet de retoucher avant la présentation au CA','Un diaporama sobre et chiffré est souvent plus percutant qu\'un long rapport écrit'],
+    ['Comet est idéal pour analyser un tableau Excel en ligne sans copier-coller','Demandez à l\'IA d\'expliquer une ligne incompréhensible d\'un relevé URSSAF ou DGFiP','Utilisez Comet sur le site impots.gouv.fr pour être guidé étape par étape','Sur Chorus Pro, Comet peut vous aider à remplir les formulaires complexes']
+  ],
+  prompts:{
+    p1a:'Quel est le taux actuel de [cotisation / TVA / barème] en vigueur en France pour [contexte : établissement privé sous contrat / OGEC] ? Cite la source officielle et la date d\'application.',
+    p1b:'Fais une synthèse des évolutions fiscales et comptables impactant les OGEC publiées ces 12 derniers mois. Pour chaque évolution : nature du changement, date d\'effet, impact comptable pratique.',
+    p2a:'[Votre question comptable] — testez ce même prompt avec au moins 3 modèles différents sur DuckAI et comparez la précision et la fiabilité des réponses pour un usage comptable.',
+    p2b:'Explique-moi la différence comptable entre [concept A] et [concept B] avec un exemple chiffré applicable à un OGEC. Indique le traitement dans le plan comptable associatif.',
+    p4a:'Crée les instructions d\'un assistant IA comptable pour OGEC. Il connaît le plan comptable des associations (PCGA) et les spécificités de l\'enseignement privé sous contrat. Il m\'aide à : trouver les bons comptes, rédiger des libellés d\'écritures, expliquer des mécanismes comptables. Il demande toujours le contexte avant de répondre.',
+    p4b:'Crée les instructions d\'un assistant IA qui m\'aide à préparer la présentation budgétaire au CA. Je lui fournis les chiffres clés et il génère : analyse des variations, points d\'attention, formulations pour un public non-comptable, graphiques recommandés.',
+    p4c:'Tu es mon assistant de veille fiscale. Chaque fois que je te soumets un texte officiel fiscal (BOFiP, circulaire URSSAF), tu produis : résumé en 5 points, impact pour un OGEC, écritures comptables à modifier si nécessaire, délai de mise en conformité.',
+    p4d:'Voici mes instructions pour mon assistant comptable : [coller]. Améliore-les pour qu\'il gère mieux les spécificités OGEC : subventions de l\'État, mise à disposition de personnels, fonds de réserve.',
+    p5a:'Paramètres → "Personnaliser ChatGPT" : Je suis comptable dans un OGEC gérant [X] établissements scolaires privés sous contrat. J\'utilise [logiciel]. Je gère : paie, comptabilité générale, budget, relations avec l\'expert-comptable. Aide-moi avec un niveau expert en comptabilité associative.',
+    p5b:'Tu es expert-comptable spécialisé dans les associations et OGEC. Je dois [tâche comptable] pour [contexte]. Contraintes : [plan comptable / règles OGEC / délai]. Format : [écriture comptable / tableau / explication étape par étape].',
+    p6a:'[Même recherche fiscale] — comparez les résultats de Perplexity, ChatGPT Web Search et Gemini Deep Research sur l\'actualité [TVA / cotisations / normes comptables] pour les associations.',
+    p6b:'Fais une recherche approfondie sur [réforme fiscale / évolution comptable récente]. Rapport : contexte législatif, impact pour les OGEC, écritures à modifier, délais de mise en conformité, sources DGFIP/URSSAF.',
+    p7a:'Crée un simulateur d\'amortissement avec : saisie du bien (valeur, durée, mode linéaire/dégressif), génération du tableau d\'amortissement complet, calcul des dotations annuelles et valeur nette comptable.',
+    p7b:'Crée un outil de simulation budgétaire : je saisis les charges prévisionnelles par poste et les produits attendus, l\'outil calcule les soldes intermédiaires de gestion, le résultat prévisionnel et affiche un graphique de répartition.',
+    p7c:'Crée un calculateur de charges sociales patronales et salariales : je saisis le salaire brut, l\'outil calcule automatiquement toutes les cotisations (URSSAF, retraite, prévoyance) selon les taux en vigueur.',
+    p9a:'Crée une présentation de [X slides] pour présenter le budget [année] au Conseil d\'Administration. Inclus : synthèse des produits et charges, variations vs N-1, points d\'attention, équilibre budgétaire. Style : sobre, chiffré, accessible à des non-comptables.',
+    p9b:'Crée une présentation de [X slides] de clôture des comptes [année] pour [direction / CA / commissaire aux comptes]. Inclus : résultat net, analyse des écarts, faits marquants, recommandations. Style : professionnel et rigoureux.',
+    p10a:'Tu vois ce tableau Excel / fichier en ligne. Explique-moi la structure de ce document et aide-moi à identifier les données à vérifier ou à corriger. Signale les anomalies éventuelles.',
+    p10b:'Tu vois ce formulaire URSSAF / DGFiP / Chorus affiché. Guide-moi champ par champ pour le remplir correctement. Explique la signification de chaque rubrique et les erreurs fréquentes à éviter.',
+    p10c:'Tu vois ce relevé / bordereau officiel affiché. Explique-moi les lignes que je ne comprends pas et indique comment les traiter comptablement dans mon logiciel.',
+    p10d:'Tu vois cette page web financière / fiscale. Résume les informations clés en 5 points et indique les impacts pratiques pour ma comptabilité d\'OGEC.',
+    p10e:'En te basant sur le document fiscal affiché, liste les obligations déclaratives avec leurs échéances pour un OGEC. Format tableau : obligation, date limite, mode de dépôt, montant ou base de calcul.',
+    p10f:'En t\'appuyant sur le contenu affiché, rédige une note de synthèse comptable à destination de la direction et du CA. Ton : accessible à des non-comptables. Format : 1 page, points clés en gras.'
+  },
+  a10labels:['📊 Sur Excel en ligne et URSSAF','🌐 Avec Comet (IA voit la page)'],
+  actifEx:{
+    ex1:'📊 Analyser un bilan', ex2:'💶 Calculer des charges', ex3:'📋 Rédiger un libellé',
+    ex4:'🔍 Veille fiscale', ex5:'📈 Préparer le budget', ex6:'✉️ Note pour le CA',
+    k1:'bilan', k2:'charges', k3:'libelle', k4:'veille_fisc', k5:'budget', k6:'note_ca'
+  }
+},
+secretariat:{
+  label:'📋 Secrétariat',
+  accueil:[
+    {h:'Recherches de procédures sourcées',p:'Formulaires, procédures officielles avec Perplexity'},
+    {h:'Comparer les IA pour le secrétariat',p:'Trouver le meilleur LLM pour vos tâches administratives'},
+    {h:'Mieux formuler vos demandes à l\'IA',p:'Transformer vos idées en prompts administratifs efficaces'},
+    {h:'Créer votre assistant secrétariat',p:'Assistant pour courriers, accueil, suivi des dossiers'},
+    {h:'ChatGPT pour le secrétariat',p:'Rédaction, tri de courriers, modèles de documents'},
+    {h:'Recherche web sur les procédures',p:'GeVASCO, Cyclades, démarches en ligne'},
+    {h:'Formulaires et outils interactifs',p:'Créer des formulaires et outils de suivi avec IA'},
+    {h:'Valoriser vos documents administratifs',p:'Transformer procédures et guides avec NotebookLM'},
+    {h:'Présentation administrative en 2 minutes',p:'Générer des supports de communication avec Gamma'},
+    {h:'Comet — IA sur GeVASCO et Cyclades',p:'Aide au remplissage de formulaires en ligne'}
+  ],
+  obj:['Trouver rapidement les bonnes procédures et formulaires officiels pour chaque situation.','Identifier le meilleur outil IA pour vos tâches de rédaction et de gestion administrative.','Formuler des requêtes claires pour que l\'IA produise des documents administratifs conformes.','Un assistant qui rédige, classe et gère vos courriers selon les normes de l\'établissement.','Utiliser ChatGPT pour produire des modèles de documents réutilisables et professionnels.','Maîtriser la recherche web pour trouver les procédures administratives à jour.','Créer des outils de suivi et des formulaires internes interactifs avec l\'IA.','Centraliser vos procédures dans NotebookLM pour un accès rapide et une FAQ interne.','Générer en 2 minutes des affiches, guides ou supports de communication interne.','Analyser en direct les formulaires en ligne (GeVASCO, Cyclades) avec l\'aide de l\'IA.'],
+  tips:[
+    ['Perplexity est parfait pour retrouver une procédure officielle avec sa source exacte','Notez la date de chaque procédure — les formulaires officiels changent régulièrement','Utilisez Perplexity pour trouver les délais légaux de conservation des documents','Un compte gratuit permet de retrouver vos recherches de procédures passées'],
+    ['Claude est excellent pour la rédaction administrative claire et structurée','Testez la même demande de rédaction sur 3 modèles et choisissez le meilleur rendu','GPT-4o est très performant pour reformuler et adapter le ton d\'un courrier','Comparez les modèles sur un courrier sensible avant d\'envoyer'],
+    ['Le métaprompt est idéal pour créer des modèles de courriers réutilisables','Plus vous précisez le destinataire et l\'objet, meilleur est le résultat','Gardez vos prompts de rédaction finalisés dans un fichier de référence','Partagez vos meilleurs prompts avec vos collègues du secrétariat'],
+    ['Créez un assistant "Rédacteur de courriers" avec les formules de politesse habituelles','Gemini Gems accepte l\'injection de vos modèles de documents existants','Testez l\'assistant avec un vrai courrier à rédiger pour mesurer le gain de temps','Un assistant bien configuré peut gérer 80% de vos courriers types'],
+    ['Personnalisez ChatGPT avec votre établissement, votre rôle et le ton habituel des communications','Mode éphémère pour les échanges contenant des données personnelles d\'élèves ou de familles','ChatGPT peut rédiger des SMS ou emails courts pour les notifications aux familles','Utilisez ChatGPT pour traduire rapidement un courrier pour une famille non-francophone'],
+    ['Recherchez sur Perplexity les délais et procédures Cyclades / Parcoursup mis à jour','Deep Research est utile pour faire le point sur une nouvelle obligation administrative','Vérifiez les procédures GeVASCO directement avec Perplexity avant de les appliquer','Sauvegardez les procédures trouvées pour constituer votre base documentaire'],
+    ['Créez un formulaire interne de suivi des inscriptions avec statuts et alertes','Un outil de tri et de classement automatique des courriers peut être généré avec IA','Claude Artefacts permet de partager un formulaire de demande via lien web','Commencez par un outil simple : planning d\'accueil ou suivi des rendez-vous'],
+    ['NotebookLM peut centraliser toutes vos procédures internes pour une FAQ instantanée','Importez votre guide de procédures pour que l\'IA réponde à vos questions en quelques secondes','Le podcast NotebookLM peut servir à former un nouveau collègue sur les procédures','Croisez le règlement intérieur et les procédures administratives dans un même Notebook'],
+    ['Gamma génère une affiche de communication interne ou externe en 2 minutes','Décrivez le message à passer et l\'IA structure visuellement la présentation','Utile pour les affiches d\'information aux familles, les guides de rentrée...','L\'export PowerPoint permet une retouche facile pour l\'adapter à la charte graphique'],
+    ['Comet est idéal pour être guidé sur GeVASCO ou Cyclades en temps réel','Demandez à l\'IA d\'expliquer chaque champ du formulaire que vous remplissez','Sur un portail famille, Comet peut vous aider à retrouver une information rapidement','Utilisez Comet pour rédiger une réponse à un email tout en visualisant le message original']
+  ],
+  prompts:{
+    p1a:'Quelle est la procédure officielle actuelle pour [démarche administrative : inscription, dossier, déclaration] dans un établissement scolaire privé sous contrat ? Cite la source et indique les délais.',
+    p1b:'Quels sont les délais légaux de conservation des documents administratifs scolaires (dossiers élèves, contrats, registres) ? Cite les textes réglementaires applicables aux établissements privés.',
+    p2a:'[Votre tâche administrative] — testez ce même prompt avec au moins 3 modèles différents sur DuckAI et comparez la qualité des courriers ou documents générés.',
+    p2b:'Rédige un courrier [type : convocation, information, relance] à destination de [destinataire] concernant [objet]. Ton : professionnel et bienveillant. Format : courrier officiel avec formules de politesse adaptées.',
+    p4a:'Crée les instructions d\'un assistant IA secrétariat. Il m\'aide à rédiger des courriers professionnels, des convocations, des accusés de réception et des réponses aux familles. Il demande : destinataire, objet, points à aborder, ton souhaité. Il produit le document complet prêt à envoyer.',
+    p4b:'Crée les instructions d\'un assistant IA de gestion documentaire. Il m\'aide à classer, nommer et archiver les documents selon les règles de conservation en vigueur. Il répond à mes questions sur les délais légaux et les procédures d\'archivage.',
+    p4c:'Tu es mon assistant de rédaction administrative. Pour chaque brouillon que je te soumets, tu : corriges le style et l\'orthographe, adaptes le ton au destinataire, proposes une formule de politesse adaptée, vérifies la structure du courrier (objet, corps, conclusion).',
+    p4d:'Voici mes instructions pour mon assistant secrétariat : [coller]. Améliore-les pour qu\'il gère mieux les communications avec les familles non-francophones et les situations délicates (retard de paiement, exclusion, absence injustifiée).',
+    p5a:'Paramètres → "Personnaliser ChatGPT" : Je suis secrétaire dans un établissement scolaire privé sous contrat. Je gère : accueil, courriers, dossiers élèves, inscriptions, communication avec les familles. Aide-moi à rédiger des documents professionnels clairs et bien structurés.',
+    p5b:'Tu es assistant administratif expert en communication institutionnelle scolaire. Je dois rédiger [type de document] pour [destinataire] concernant [objet]. Ton : [professionnel / bienveillant / formel]. Format : [courrier / email / affiche / note interne].',
+    p6a:'[Même procédure recherchée] — comparez les résultats de Perplexity, ChatGPT Web Search et Gemini Deep Research pour trouver la procédure [Cyclades / Parcoursup / GeVASCO] à jour.',
+    p6b:'Fais une recherche approfondie sur [procédure administrative : inscriptions, bourses, dossiers MDPH]. Je veux un guide structuré : étapes, documents requis, délais, contacts utiles, sources officielles.',
+    p7a:'Crée un formulaire de suivi des inscriptions interactif : nom, classe, statut (en attente / validé / refusé), documents manquants, date de relance. Interface simple avec tri et filtres.',
+    p7b:'Crée un outil de gestion des demandes de rendez-vous : formulaire de saisie, affichage du planning par semaine, statuts (confirmé / annulé), rappel automatique à afficher.',
+    p7c:'Crée un outil de suivi des courriers entrants et sortants : date, expéditeur/destinataire, objet, statut (traité / en attente / archivé), champ de notes.',
+    p9a:'Crée une présentation de [X slides] pour [guide de rentrée / information aux familles / procédure interne] sur [sujet]. Style : clair, accessible, visuellement simple. Inclus : titre, points clés, contacts utiles.',
+    p9b:'Crée une affiche / support de communication sur [sujet] pour l\'affichage dans l\'établissement. Inclus : titre accrocheur, informations essentielles, contact, date. Style : lisible, professionnel.',
+    p10a:'Tu vois ce formulaire en ligne (GeVASCO / Cyclades / Parcoursup). Guide-moi étape par étape pour le remplir. Explique chaque champ et signale ce qui est obligatoire.',
+    p10b:'Tu vois cet email / courrier affiché. Aide-moi à rédiger une réponse professionnelle et complète. Reprends les points évoqués et propose une formulation adaptée.',
+    p10c:'Tu vois cette page de procédure officielle. Résume-la en 5 étapes claires et pratiques que je peux afficher comme aide-mémoire pour mon collègue ou moi-même.',
+    p10d:'Tu vois cette page affichée. Identifie les informations clés que je dois noter ou transmettre à la direction. Présente sous forme de liste à cocher.',
+    p10e:'Tu vois ce document / formulaire. Identifie les champs que je dois compléter, ceux qui posent souvent problème et les erreurs fréquentes à éviter.',
+    p10f:'En t\'appuyant sur le contenu de cette page, rédige un message d\'information aux familles sur ce sujet. Ton : bienveillant et clair. Format : email court avec objet, corps et signature.'
+  },
+  a10labels:['📝 Sur GeVASCO et formulaires en ligne','🌐 Avec Comet (IA voit la page)'],
+  actifEx:{
+    ex1:'✉️ Rédiger un courrier', ex2:'📋 Procédure officielle', ex3:'📅 Convocation réunion',
+    ex4:'👪 Message aux familles', ex5:'📂 Suivi des dossiers', ex6:'📌 Note interne',
+    k1:'courrier_sec', k2:'procedure', k3:'convocation', k4:'famille', k5:'dossier', k6:'note_int'
+  }
+},
+rh:{
+  label:'👥 Ressources Humaines',
+  accueil:[
+    {h:'Droit du travail sourcé et à jour',p:'Convention collective, jurisprudence sociale avec Perplexity'},
+    {h:'Comparer les IA pour les RH',p:'Trouver le meilleur LLM pour vos pratiques RH'},
+    {h:'Formuler des demandes RH à l\'IA',p:'Transformer vos besoins RH en prompts précis et efficaces'},
+    {h:'Créer votre assistant RH',p:'Assistant pour contrats, fiches de poste, entretiens'},
+    {h:'ChatGPT pour les ressources humaines',p:'Rédaction, analyse de CV, préparation d\'entretiens'},
+    {h:'Veille sociale et juridique',p:'Actualité du droit social, nouvelles conventions'},
+    {h:'Outils RH interactifs',p:'Simulateurs d\'entretien, grilles d\'évaluation avec IA'},
+    {h:'Valoriser vos documents RH',p:'Transformer procédures RH et bilans avec NotebookLM'},
+    {h:'Présentation RH en 2 minutes',p:'Bilan social ou plan de formation avec Gamma'},
+    {h:'Comet — IA sur les portails RH en ligne',p:'Analyser offres, conventions et formulaires OPCO'}
+  ],
+  obj:['Accéder rapidement aux textes de droit social applicables à l\'enseignement privé sous contrat.','Identifier le meilleur outil IA pour vos processus de recrutement, formation et gestion du personnel.','Formuler des requêtes précises pour obtenir des documents RH conformes au droit en vigueur.','Un assistant qui rédige contrats, fiches de poste et courriers RH selon la convention collective.','Exploiter ChatGPT pour automatiser la présélection, préparer les entretiens et analyser les CV.','Suivre l\'actualité du droit social et des conventions collectives applicables à votre établissement.','Créer des outils d\'évaluation et de suivi RH interactifs utilisables en autonomie.','Centraliser vos procédures RH dans NotebookLM pour une consultation rapide et fiable.','Générer en 2 minutes un bilan social ou un plan de formation pour le CA ou la direction.','Analyser des offres d\'emploi, conventions ou formulaires OPCO avec l\'aide de Comet.'],
+  tips:[
+    ['Perplexity est très efficace pour vérifier un article de convention collective avec sa source','Toujours vérifier la date des informations en droit social — le droit évolue fréquemment','Recherchez spécifiquement la convention collective de l\'enseignement privé (CCIP)','Un compte Perplexity vous permet de retrouver vos recherches juridiques passées'],
+    ['Claude est souvent le meilleur pour rédiger des documents RH professionnels et nuancés','Testez la même question juridique sur 3 modèles — les réponses peuvent varier significativement','Ne prenez jamais une décision juridique sur la seule base d\'une réponse IA — vérifiez toujours','Notez quel modèle répond avec le plus de précision sur les questions de convention collective'],
+    ['Le métaprompt est très utile pour créer des modèles de fiches de poste réutilisables','Précisez toujours la convention collective concernée dans vos prompts RH','Gardez vos prompts finalisés pour les réutiliser lors des prochains recrutements','Partagez les meilleurs prompts avec la direction et le chef d\'établissement'],
+    ['Gemini Gems peut être alimenté avec votre règlement intérieur et la convention collective','Créez un assistant "Guide de l\'entretien professionnel" pour harmoniser les pratiques','Testez l\'assistant avec un vrai dossier de recrutement (anonymisé) pour valider sa pertinence','Un assistant RH bien configuré peut réduire de 40% le temps de rédaction administrative'],
+    ['Personnalisez ChatGPT avec votre rôle RH, votre type d\'établissement et les conventions applicables','Mode éphémère indispensable pour les échanges sur des situations personnelles de salariés','ChatGPT peut analyser un CV et générer une grille d\'évaluation en quelques secondes','Utilisez ChatGPT pour préparer une liste de questions d\'entretien adaptées au poste'],
+    ['Deep Research Gemini est idéal pour faire le point sur une réforme du droit social','Perplexity cite les arrêts de jurisprudence avec leurs références — précieux en cas de contentieux','Vérifiez les obligations de formation (heures CPF, entretiens obligatoires) avec Perplexity','Sauvegardez vos rapports de veille — constituez une base documentaire annuelle'],
+    ['Créez un simulateur d\'entretien professionnel avec les questions obligatoires et les critères d\'évaluation','Un outil de suivi du plan de formation avec statuts et budgets peut être généré en quelques prompts','Claude Artefacts permet de partager vos grilles d\'entretien avec les managers via lien','Commencez par une grille simple : évaluation annuelle avec critères et niveaux de maîtrise'],
+    ['NotebookLM peut centraliser vos procédures RH pour une FAQ instantanée','Importez la convention collective pour que l\'IA réponde à vos questions en quelques secondes','Le "Briefing Doc" est parfait pour préparer un audit social ou une inspection du travail','Croisez bilan social et plan de formation pour identifier les priorités RH de l\'année'],
+    ['Gamma génère un bilan social ou un plan de formation en 2 minutes','Décrivez vos indicateurs RH clés et l\'IA structure une présentation claire','L\'export PowerPoint permet de retoucher avant la présentation au CA','Un diaporama RH sobre et factuel est plus convaincant qu\'un long document Word'],
+    ['Comet est idéal pour analyser une offre d\'emploi et rédiger immédiatement votre annonce','Sur le portail Mon Compte Formation, Comet peut vous aider à naviguer et trouver des formations','Utilisez Comet sur OPCO EP pour remplir les dossiers de financement pas à pas','Analysez en direct un arrêt de jurisprudence ou un accord de branche avec Comet']
+  ],
+  prompts:{
+    p1a:'Quelle est la règle en vigueur dans la convention collective de l\'enseignement privé (CCIP) concernant [sujet : préavis, congés, ancienneté, temps partiel] ? Cite l\'article exact et la date de dernière mise à jour.',
+    p1b:'Fais une synthèse des évolutions du droit social applicables aux établissements d\'enseignement privé sous contrat publiées ces 12 derniers mois. Pour chaque évolution : nature, date d\'effet, impact RH pratique.',
+    p2a:'[Votre question RH] — testez ce même prompt avec au moins 3 modèles différents sur DuckAI et comparez la précision des réponses sur ce point de droit social ou de gestion RH.',
+    p2b:'Rédige une fiche de poste pour un(e) [intitulé du poste] dans un établissement scolaire privé sous contrat. Inclus : missions principales, compétences requises, conditions (contrat, horaires, rémunération selon grille), rattachement hiérarchique.',
+    p4a:'Crée les instructions d\'un assistant IA RH pour l\'enseignement privé. Il connaît la convention collective CCIP et les spécificités OGEC. Il m\'aide à rédiger : contrats, avenants, fiches de poste, courriers de rupture, convocations à entretien. Il demande toujours le contexte et cite les textes applicables.',
+    p4b:'Crée les instructions d\'un assistant IA de préparation aux entretiens professionnels. Il connaît les obligations légales. Je lui fournis le profil du salarié et il génère : trame d\'entretien, questions à poser, grille d\'évaluation, compte-rendu type.',
+    p4c:'Tu es mon assistant d\'analyse de CV. Pour chaque CV que je te soumets, tu : extrais les informations clés (formation, expérience, compétences), évalues l\'adéquation avec le poste de [intitulé], proposes 5 questions d\'entretien personnalisées, indiques les points à approfondir.',
+    p4d:'Voici mes instructions pour mon assistant RH : [coller]. Améliore-les pour qu\'il gère mieux les situations délicates : procédures disciplinaires, licenciement, inaptitude au travail.',
+    p5a:'Paramètres → "Personnaliser ChatGPT" : Je suis responsable RH dans un OGEC gérant [X] établissements. J\'applique la convention collective de l\'enseignement privé. Je gère : recrutement, paie, formation, entretiens, procédures disciplinaires. Aide-moi avec précision et rigueur juridique.',
+    p5b:'Tu es juriste spécialisé en droit social de l\'enseignement privé. Je dois [tâche RH] concernant [contexte : type de contrat, situation salarié]. Contraintes : [convention collective / délais légaux]. Format : [courrier / procédure étape par étape / fiche pratique].',
+    p6a:'[Même recherche en droit social] — comparez les résultats de Perplexity, ChatGPT Web Search et Gemini Deep Research sur [réforme / jurisprudence / obligation RH récente].',
+    p6b:'Fais une recherche approfondie sur [réforme RH / nouvelle obligation : entretiens, CPF, index égalité]. Rapport : contexte législatif, obligations pour les établissements privés, délais, modalités pratiques, sources.',
+    p7a:'Crée un outil de suivi des entretiens professionnels : liste des salariés avec leur date de dernier entretien, alertes pour les entretiens à venir, statut (planifié / réalisé / en retard), export PDF du compte-rendu.',
+    p7b:'Crée un simulateur de calcul d\'indemnités de licenciement selon la convention collective de l\'enseignement privé : saisie de l\'ancienneté, du salaire de référence et du motif, calcul automatique de l\'indemnité légale et conventionnelle.',
+    p7c:'Crée un outil interactif de suivi du plan de formation : liste des actions de formation par salarié, budget prévisionnel vs réalisé, statuts, organismes de formation, prise en charge OPCO EP.',
+    p9a:'Crée une présentation de [X slides] du bilan social [année] pour le CA. Inclus : effectifs, mouvements, absentéisme, formation, accidents du travail, masse salariale. Style : factuel, chiffré, accessible.',
+    p9b:'Crée une présentation de [X slides] du plan de formation [année] pour la direction et le CA. Inclus : priorités de formation, budget, salariés concernés, financements OPCO EP prévus. Style : professionnel et synthétique.',
+    p10a:'Tu vois cette offre d\'emploi / fiche de poste en ligne. Aide-moi à rédiger une annonce de recrutement attractive basée sur ce contenu. Ton : professionnel et positif. Inclus : accroche, missions clés, profil recherché, avantages.',
+    p10b:'Tu vois ce formulaire OPCO EP / Mon Compte Formation affiché. Guide-moi étape par étape pour le remplir. Explique chaque rubrique et les justificatifs à fournir.',
+    p10c:'Tu vois cet accord de branche / texte conventionnel affiché. Résume les points clés qui me concernent en tant que RH d\'un établissement privé sous contrat. Indique les obligations pratiques et les délais.',
+    p10d:'Tu vois cette page web RH / juridique. Résume les informations clés en 5 points et indique les actions concrètes que je dois mettre en place dans mon établissement.',
+    p10e:'En te basant sur ce document RH affiché, génère une check-list des actions à mener avec les responsables, les délais et les documents à produire. Format tableau.',
+    p10f:'En t\'appuyant sur ce contenu, rédige une note RH à destination de la direction sur ce sujet. Ton : professionnel et factuel. Inclus : contexte, enjeux, recommandations, actions proposées.'
+  },
+  a10labels:['📂 Sur portails RH et OPCO en ligne','🌐 Avec Comet (IA voit la page)'],
+  actifEx:{
+    ex1:'📄 Rédiger un contrat', ex2:'🔍 Analyser un CV', ex3:'⚖️ Veille juridique RH',
+    ex4:'🗣️ Préparer un entretien', ex5:'📊 Bilan social', ex6:'📋 Fiche de poste',
+    k1:'contrat', k2:'cv', k3:'veille_rh', k4:'entretien', k5:'bilan_rh', k6:'fiche_poste'
+  }
+},
+communication:{
+  label:'📢 Communication',
+  accueil:[
+    {h:'Veille et recherches sourçées',p:'Actualité de l\'établissement, secteur éducatif avec Perplexity'},
+    {h:'Comparer les IA pour la communication',p:'Trouver le meilleur LLM pour créer vos contenus'},
+    {h:'Formuler des demandes à l\'IA',p:'Transformer vos briefs en prompts de communication efficaces'},
+    {h:'Créer votre assistant éditorial',p:'Assistant pour newsletters, réseaux sociaux, communiqués'},
+    {h:'ChatGPT pour la création de contenu',p:'Posts, articles, emailings, slogans et campagnes'},
+    {h:'Recherche web et veille sectorielle',p:'Tendances éducatives, benchmark d\'autres établissements'},
+    {h:'Outils visuels et interactifs',p:'Créer des quiz, sondages et contenus web avec IA'},
+    {h:'Valoriser vos documents et archives',p:'Transformer vos contenus existants avec NotebookLM'},
+    {h:'Présentation et diaporama en 2 minutes',p:'Supports de présentation de l\'établissement avec Gamma'},
+    {h:'Comet — IA pour analyser les réseaux',p:'Analyser en direct les pages web et réseaux sociaux'}
+  ],
+  obj:['Identifier rapidement les sujets tendance et les actualités pertinentes pour votre communication.','Trouver le modèle IA le plus créatif et adapté à vos besoins de production de contenu.','Formuler des briefs créatifs précis pour que l\'IA produise des contenus à votre image.','Un assistant éditorial qui connaît votre charte, vos cibles et votre ton pour tous vos supports.','Exploiter ChatGPT pour multiplier la production de contenus variés sans effort supplémentaire.','Mener une veille efficace sur les tendances éducatives et les pratiques des établissements concurrents.','Créer des contenus interactifs engageants : quiz, sondages, formulaires de feedback.','Recycler et valoriser vos archives et documents existants en nouveaux formats multimédias.','Générer en 2 minutes une présentation de l\'établissement, un rapport ou un dossier de presse.','Analyser en temps réel les sites web, réseaux sociaux et actualités avec l\'aide de Comet.'],
+  tips:[
+    ['Perplexity est idéal pour la veille : il cite ses sources avec dates, parfait pour valider une info','Utilisez Perplexity pour trouver des statistiques récentes sur l\'éducation à citer dans vos publications','Recherchez des exemples de communication d\'autres établissements pour vous inspirer','Un compte vous permet de retrouver votre veille et de créer des espaces thématiques'],
+    ['Claude excelle dans la créativité : titres accrocheurs, slogans, angles originaux','Testez le même brief sur 3 modèles pour obtenir des propositions créatives variées','GPT-4o est très performant pour adapter un message à différentes cibles (parents, élèves, partenaires)','Gardez le meilleur modèle pour chaque type de contenu : un pour les réseaux, un pour les communiqués'],
+    ['Le métaprompt est très utile pour créer des modèles de posts réseaux sociaux réutilisables','Précisez toujours : cible, ton, longueur, plateforme (Instagram, LinkedIn, Facebook)','Gardez vos prompts éditoriaux dans un dossier de référence','Créez un prompt pour chaque format récurrent : post événement, annonce résultat, story'],
+    ['Gemini Gems peut être alimenté avec votre charte éditoriale et vos valeurs d\'établissement','Créez un assistant "Brand Voice" qui respecte toujours votre ton et votre style','Testez l\'assistant sur des posts passés pour vérifier la cohérence éditoriale','Un assistant bien paramétré peut générer 80% de vos publications en ébauche première'],
+    ['Personnalisez ChatGPT avec votre charte, vos cibles et les hashtags habituels de l\'établissement','Mode éphémère pour les échanges sur des projets de communication confidentiels','ChatGPT peut générer des variantes d\'un même message pour A/B testing','Demandez des versions longue et courte, formelle et informelle pour chaque message'],
+    ['Deep Research Gemini est parfait pour préparer un dossier de presse ou une étude de marché','Comparez la communication digitale de plusieurs établissements concurrents avec Perplexity','Trouvez des statistiques récentes sur l\'usage des réseaux par les familles','Sauvegardez vos rapports de veille pour préparer votre stratégie de communication annuelle'],
+    ['Créez un quiz de découverte de l\'établissement pour le site web ou les portes ouvertes','Un formulaire de feedback en ligne pour les familles peut être généré en quelques prompts','Claude Artefacts permet de partager vos outils interactifs via lien public','Commencez par un quiz simple sur l\'histoire ou les valeurs de l\'établissement'],
+    ['NotebookLM peut transformer vos archives de newsletters en base de contenu réutilisable','Importez vos anciens communiqués de presse pour créer un style éditorial de référence','Le podcast NotebookLM peut valoriser un événement passé en format audio à partager','Croisez plusieurs années d\'annuaires pour créer une frise historique narrative'],
+    ['Gamma génère une présentation de l\'établissement ou un dossier de portes ouvertes en 2 minutes','Décrivez votre établissement en quelques points clés et l\'IA structure une présentation attractive','L\'export PowerPoint permet de personnaliser la charte graphique ensuite','Partagez via lien Gamma pour un rendu interactif lors des événements portes ouvertes'],
+    ['Comet est idéal pour analyser en direct la page Facebook ou Instagram d\'un événement','Demandez à l\'IA de rédiger un post directement depuis l\'article ou la photo que vous regardez','Analysez le site d\'un établissement concurrent et demandez à Comet de comparer avec le vôtre','Utilisez Comet sur votre propre site pour détecter des formulations à améliorer']
+  ],
+  prompts:{
+    p1a:'Quelles sont les actualités récentes sur [sujet éducatif / événement scolaire] ? Cite tes sources avec dates. Je cherche des angles originaux pour ma communication sur les réseaux sociaux.',
+    p1b:'Fais une synthèse des tendances de communication des établissements scolaires [type] sur les réseaux sociaux en [année]. Cite des exemples concrets, les formats qui fonctionnent et les sujets plébiscités.',
+    p2a:'[Votre brief créatif] — testez ce même brief avec au moins 3 modèles différents sur DuckAI et comparez la créativité, le ton et la pertinence des contenus proposés.',
+    p2b:'Rédige [X] posts pour [réseau social : LinkedIn / Instagram / Facebook] sur [sujet]. Cible : [parents / élèves / partenaires]. Ton : [dynamique / institutionnel / chaleureux]. Inclus : accroche, corps du message, call-to-action, hashtags.',
+    p4a:'Crée les instructions d\'un assistant IA éditorial pour notre établissement. Il connaît notre charte éditoriale : [décrire le ton, les valeurs, les messages clés]. Il produit des contenus pour nos réseaux sociaux, notre site web et nos newsletters en respectant notre identité. Il propose toujours 2-3 variantes.',
+    p4b:'Crée les instructions d\'un assistant IA de gestion de crise de communication. En cas de situation sensible (accident, polémique, mauvaise presse), il m\'aide à rédiger des communiqués calibrés, des réponses aux commentaires et des messages internes pour rassurer les équipes.',
+    p4c:'Tu es mon assistant de veille médiatique. Chaque fois que je te soumets un article ou un post qui parle de notre établissement ou de notre secteur, tu : résumes le contenu, évalues la tonalité (positive / neutre / négative), proposes une réponse si nécessaire, suggères un angle de communication à exploiter.',
+    p4d:'Voici mes instructions pour mon assistant communication : [coller]. Améliore-les pour qu\'il adapte mieux les contenus à chaque plateforme (ton Instagram ≠ ton LinkedIn ≠ ton email parent).',
+    p5a:'Paramètres → "Personnaliser ChatGPT" : Je suis chargé(e) de communication dans un établissement scolaire privé. Je gère : réseaux sociaux, site web, newsletters, événements, relations presse. Notre ton : [définir]. Notre cible principale : [familles / lycéens / partenaires]. Aide-moi à créer du contenu engageant et cohérent.',
+    p5b:'Tu es directeur(trice) artistique et copywriter spécialisé dans la communication éducative. Je dois créer [type de contenu] pour [plateforme / support] sur [sujet]. Cible : [audience]. Ton : [registre]. Propose 3 versions de longueurs différentes.',
+    p6a:'[Même sujet de veille] — comparez les résultats de Perplexity, ChatGPT Web Search et Gemini Deep Research pour la veille sur [tendance / concurrence / actualité éducative].',
+    p6b:'Fais une recherche approfondie sur les pratiques de communication digitale des établissements scolaires [type] en [année]. Rapport : formats qui fonctionnent, réseaux utilisés, tonalités, exemples inspirants, tendances à venir.',
+    p7a:'Crée un quiz interactif de découverte de notre établissement pour les Journées Portes Ouvertes : 10 questions sur l\'histoire, les filières, les valeurs. Score en temps réel, résultat personnalisé selon le profil de l\'élève.',
+    p7b:'Crée un formulaire de satisfaction en ligne pour les familles après [événement] : 5 questions à choix multiples + 1 question ouverte, résultats agrégés en graphiques, export des réponses en tableau.',
+    p7c:'Crée un générateur de posts automatique : je saisis l\'événement ou l\'info à communiquer, je choisis la plateforme, l\'outil génère un post adapté avec hashtags et call-to-action.',
+    p9a:'Crée une présentation de [X slides] de notre établissement pour [Portes Ouvertes / partenaires / tutelle]. Inclus : présentation générale, filières, points forts, chiffres clés, témoignages, contact. Style : moderne et attractif.',
+    p9b:'Crée un dossier de presse en [X slides] sur [événement / réussite / projet] de l\'établissement. Inclus : contexte, faits marquants, citations, données chiffrées, visuels suggérés, contact presse.',
+    p10a:'Tu vois cette page / ce post sur les réseaux sociaux. Rédige immédiatement un post similaire mais pour notre établissement sur ce même sujet. Adapte le ton à notre charte éditoriale : [décrire].',
+    p10b:'Tu vois cet article en ligne. Transforme-le en post pour LinkedIn (300 mots max) et en post Instagram (150 mots + 5 hashtags). Ton : dynamique et professionnel.',
+    p10c:'Tu vois cette page de notre site / d\'un concurrent. Analyse la communication et propose 3 améliorations concrètes pour notre propre communication sur ce sujet.',
+    p10d:'Tu vois cette page affichée. Identifie les éléments de communication les plus efficaces : titre, accroche, call-to-action, ton. Explique pourquoi ça fonctionne.',
+    p10e:'En te basant sur le contenu de cette page, rédige un email newsletter pour nos familles sur ce sujet. Ton : chaleureux et informatif. Format : objet accrocheur, introduction, 3 paragraphes, conclusion avec lien.',
+    p10f:'En t\'appuyant sur cette page, génère 5 idées de posts pour nos réseaux sociaux cette semaine sur ce thème. Pour chaque idée : plateforme, format, angle, ébauche de texte.'
+  },
+  a10labels:['📱 Sur sites web et réseaux sociaux','🌐 Avec Comet (IA voit la page)'],
+  actifEx:{
+    ex1:'📱 Post réseaux sociaux', ex2:'📧 Newsletter familles', ex3:'📰 Communiqué de presse',
+    ex4:'🎪 Communication événement', ex5:'🖼️ Présentation établissement', ex6:'📣 Message de rentrée',
+    k1:'post_rs', k2:'newsletter', k3:'communique', k4:'evenement', k5:'pres_etab', k6:'rentree'
+  }
+},
+vie_scolaire:{
+  label:'🎓 Vie scolaire',
+  accueil:[
+    {h:'Règlements et procédures sourcés',p:'Textes sur la vie scolaire, sanctions, droits des élèves'},
+    {h:'Comparer les IA pour la vie scolaire',p:'Trouver le meilleur LLM pour vos usages quotidiens'},
+    {h:'Formuler des demandes à l\'IA',p:'Transformer vos idées en prompts adaptés à vos missions'},
+    {h:'Créer votre assistant vie scolaire',p:'Assistant pour bilans, courriers, suivi des élèves'},
+    {h:'ChatGPT pour la vie scolaire',p:'Rédaction, communication avec les familles, suivi'},
+    {h:'Recherche web sur la vie scolaire',p:'Textes officiels, ressources CPE, études sur le bien-être'},
+    {h:'Outils de suivi interactifs',p:'Tableaux d\'absences, incidents, suivi comportemental'},
+    {h:'Valoriser vos ressources vie scolaire',p:'Transformer vos outils avec NotebookLM'},
+    {h:'Présentation vie scolaire en 2 minutes',p:'Bilan d\'absences ou projet avec Gamma'},
+    {h:'Comet — IA sur Pronote et règlements',p:'Analyser en direct les données de vie scolaire en ligne'}
+  ],
+  obj:['Accéder rapidement aux textes officiels sur les droits et obligations des élèves et des familles.','Identifier le meilleur outil IA pour vos missions de suivi, de prévention et de médiation.','Formuler des requêtes claires pour que l\'IA rédige des courriers et bilans de vie scolaire conformes.','Un assistant qui rédige bilans comportementaux, courriers de sanction et convocations selon les procédures.','Exploiter ChatGPT pour communiquer plus efficacement avec les familles et les équipes éducatives.','Suivre l\'actualité des textes sur la vie scolaire et les nouvelles pratiques de médiation.','Créer des outils de suivi des absences, incidents et projets de vie scolaire interactifs.','Centraliser vos ressources et procédures dans NotebookLM pour un accès rapide et fiable.','Générer en 2 minutes un bilan de vie scolaire ou une présentation de projet pour la direction.','Analyser en direct les données Pronote ou les règlements d\'autres établissements avec Comet.'],
+  tips:[
+    ['Perplexity est efficace pour retrouver les circulaires sur la vie scolaire avec leurs références','Vérifiez toujours la date des textes — les règles sur les sanctions et absences évoluent','Recherchez les dernières études sur le bien-être scolaire et la prévention du décrochage','Un compte vous permet de retrouver vos recherches sur des situations récurrentes'],
+    ['Claude est excellent pour rédiger des courriers nuancés et des bilans comportementaux','Testez la même situation sur 3 modèles pour avoir différentes approches de médiation','GPT-4o est performant pour analyser une situation complexe et proposer des pistes d\'action','Comparez les réponses sur une situation disciplinaire délicate avant de décider'],
+    ['Le métaprompt est très utile pour créer des modèles de bilans comportementaux réutilisables','Précisez toujours le profil de l\'élève et le contexte pour des réponses adaptées','Gardez vos prompts finalisés pour les réutiliser lors de situations similaires','Partagez les meilleurs prompts avec vos collègues AED'],
+    ['Gemini Gems peut être alimenté avec le règlement intérieur de l\'établissement','Créez un assistant "Aide à la médiation" avec les procédures internes','Testez l\'assistant avec une vraie situation (anonymisée) pour valider sa pertinence','Un assistant bien configuré peut aider les AED à rédiger leurs rapports quotidiens'],
+    ['Personnalisez ChatGPT avec votre rôle, le type d\'établissement et les procédures habituelles','Mode éphémère obligatoire pour les échanges sur des situations individuelles d\'élèves','ChatGPT peut aider à formuler un message délicat à une famille de façon bienveillante','Utilisez ChatGPT pour préparer un entretien avec un élève ou une famille'],
+    ['Deep Research Gemini est utile pour faire le point sur les pratiques de médiation scolaire','Perplexity retrouve les textes officiels sur les conseils de discipline et leur procédure','Recherchez des études sur la gestion du décrochage ou des situations de harcèlement','Sauvegardez vos rapports de veille pour préparer vos projets de vie scolaire'],
+    ['Créez un outil de suivi des absences avec alertes automatiques pour les familles','Un tableau de bord des incidents peut être généré avec codes, types et statuts','Claude Artefacts permet de partager un formulaire de signalement via lien','Commencez par un outil simple : suivi hebdomadaire des retards par classe'],
+    ['NotebookLM peut centraliser votre règlement intérieur pour une FAQ instantanée','Importez vos procédures de vie scolaire pour que l\'IA réponde aux questions des AED','Le podcast NotebookLM peut servir à former les nouveaux AED sur les procédures','Croisez le règlement intérieur et les textes officiels dans un même Notebook'],
+    ['Gamma génère un bilan de vie scolaire trimestriel en 2 minutes','Décrivez vos indicateurs clés (absences, retards, incidents) et l\'IA structure la présentation','L\'export PowerPoint permet de retoucher avant la présentation au conseil de classe','Un diaporama chiffré et factuel est plus efficace qu\'un long rapport écrit'],
+    ['Comet est idéal pour analyser en direct les données d\'absence sur Pronote','Demandez à l\'IA d\'analyser un rapport hebdomadaire affiché et de proposer des actions','Sur le site d\'un autre établissement, Comet peut comparer son règlement intérieur avec le vôtre','Utilisez Comet pour rédiger un courrier aux familles directement depuis la fiche élève Pronote']
+  ],
+  prompts:{
+    p1a:'Quelle est la procédure réglementaire pour [sanction / exclusion / conseil de discipline / absentéisme] dans un établissement scolaire privé sous contrat ? Cite les textes officiels et les étapes obligatoires.',
+    p1b:'Quels sont les derniers textes officiels sur [harcèlement scolaire / décrochage / médiation / bien-être] dans les établissements secondaires ? Cite les références, dates et principales mesures.',
+    p2a:'[Votre situation de vie scolaire] — testez ce même prompt avec au moins 3 modèles sur DuckAI et comparez les approches proposées pour gérer cette situation.',
+    p2b:'Rédige un courrier de convocation à un entretien de famille concernant [absentéisme / comportement / situation scolaire] pour l\'élève [prénom]. Ton : bienveillant mais ferme. Format : courrier officiel avec date, objet, motif, demande.',
+    p4a:'Crée les instructions d\'un assistant IA vie scolaire. Il connaît le règlement intérieur et les procédures de l\'établissement. Il m\'aide à rédiger : bilans comportementaux, courriers aux familles, rapports d\'incidents, convocations. Il demande le contexte et l\'élève concerné (anonymisé), puis produit le document adapté.',
+    p4b:'Crée les instructions d\'un assistant IA d\'aide à la médiation. En cas de conflit entre élèves ou avec une famille, il me propose : les étapes de médiation à suivre, les formulations de communication non-violente, les ressources à mobiliser, le courrier de suivi.',
+    p4c:'Tu es mon assistant de rédaction vie scolaire. Pour chaque situation que je te décris, tu rédiges : le rapport d\'incident (factuel et précis), le courrier aux parents (bienveillant), la proposition de sanction ou d\'accompagnement proportionnée.',
+    p4d:'Voici mes instructions pour mon assistant vie scolaire : [coller]. Améliore-les pour qu\'il gère mieux les situations de harcèlement, de crise et les communications avec des familles conflictuelles.',
+    p5a:'Paramètres → "Personnaliser ChatGPT" : Je suis CPE / AED dans un lycée privé sous contrat. Je gère : suivi des absences, relations familles, médiation, sanctions, animation de la vie scolaire. Aide-moi à rédiger des documents de vie scolaire professionnels et bienveillants.',
+    p5b:'Tu es conseiller principal d\'éducation expérimenté. Je dois [rédiger / gérer / préparer] [tâche de vie scolaire] concernant [contexte : élève / famille / incident]. Ton : [bienveillant / ferme / neutre]. Format : [courrier / bilan / rapport / plan d\'action].',
+    p6a:'[Même recherche sur la vie scolaire] — comparez les résultats de Perplexity, ChatGPT Web Search et Gemini Deep Research sur [harcèlement / absentéisme / médiation scolaire].',
+    p6b:'Fais une recherche approfondie sur les pratiques de [prévention du décrochage / médiation / bien-être scolaire] dans les lycées privés. Rapport : études récentes, dispositifs qui fonctionnent, indicateurs à suivre, ressources disponibles.',
+    p7a:'Crée un tableau de bord interactif de suivi des absences par classe : nombre d\'absences, retards, motifs, taux de justification, alertes pour les élèves dépassant le seuil de [X] demi-journées.',
+    p7b:'Crée un outil de suivi des incidents de vie scolaire : date, lieu, élèves concernés, type d\'incident, sanction proposée, statut (en cours / clôturé), suivi du dossier.',
+    p7c:'Crée un formulaire de signalement de situation préoccupante : description de la situation, élève concerné (anonymisé), personnes au courant, actions déjà menées, niveau de gravité, export PDF pour archivage.',
+    p9a:'Crée une présentation de [X slides] du bilan de vie scolaire [trimestre/année] pour le conseil de classe / la direction. Inclus : taux d\'absentéisme, incidents, actions menées, élèves en difficulté (anonymisés), perspectives. Style : factuel et synthétique.',
+    p9b:'Crée une présentation de [X slides] d\'un projet de vie scolaire [thème : bien-être, médiation, projet citoyen] pour la direction et le CA. Inclus : constat, objectifs, actions prévues, indicateurs de suivi, budget estimé.',
+    p10a:'Tu vois cette fiche élève / ce tableau d\'absence sur Pronote. Aide-moi à rédiger un courrier d\'alerte aux parents sur la situation d\'absentéisme de cet élève. Ton : bienveillant mais clair sur les enjeux.',
+    p10b:'Tu vois le règlement intérieur de cet établissement. Compare-le avec les textes officiels que tu connais et signale les points qui pourraient être renforcés ou mis à jour.',
+    p10c:'Tu vois ce rapport / cette étude en ligne sur [thème de vie scolaire]. Résume les 5 points clés qui m\'aident dans ma pratique quotidienne et propose une action concrète à mettre en place.',
+    p10d:'Tu vois cette page affichée. Identifie les ressources ou outils que je pourrais utiliser dans mon établissement. Explique comment les adapter à mon contexte.',
+    p10e:'En te basant sur le règlement intérieur / document officiel affiché, rédige une fiche synthèse pour mes AED : règles essentielles, procédures clés, contacts utiles. Format : aide-mémoire pratique.',
+    p10f:'En t\'appuyant sur cette page, rédige un bilan comportemental professionnel et factuel pour un élève présentant [profil]. Ton : objectif et bienveillant. Format : constat / analyse / préconisations.'
+  },
+  a10labels:['📋 Sur Pronote et règlements en ligne','🌐 Avec Comet (IA voit la page)'],
+  actifEx:{
+    ex1:'✉️ Courrier aux familles', ex2:'📊 Bilan absentéisme', ex3:'⚖️ Texte réglementaire',
+    ex4:'🤝 Médiation élèves', ex5:'📋 Rapport d\'incident', ex6:'🎯 Projet vie scolaire',
+    k1:'courrier_vs', k2:'bilan_abs', k3:'regl_vs', k4:'mediation', k5:'rapport_vs', k6:'projet_vs'
+  }
+},
+aesh:{
+  label:'🤝 AESH / AVS',
+  accueil:[
+    {h:'Recherches sur le handicap sourcées',p:'MDPH, PAI, PPS, ressources AESH avec Perplexity'},
+    {h:'Comparer les IA pour l\'accompagnement',p:'Trouver le meilleur LLM pour adapter vos ressources'},
+    {h:'Formuler des demandes à l\'IA',p:'Transformer vos besoins en prompts d\'accompagnement efficaces'},
+    {h:'Créer votre assistant AESH',p:'Assistant pour adapter des supports et communiquer'},
+    {h:'ChatGPT pour l\'accompagnement',p:'Adapter des documents, créer des aides visuelles'},
+    {h:'Recherche web sur les besoins des élèves',p:'Troubles DYS, TSA, TDA/H, ressources spécialisées'},
+    {h:'Outils d\'accompagnement interactifs',p:'Exercices adaptés, aides visuelles avec IA'},
+    {h:'Valoriser les documents des élèves',p:'Analyser PAI et PPS avec NotebookLM'},
+    {h:'Supports de communication en 2 minutes',p:'Créer des outils de communication avec Gamma'},
+    {h:'Comet — IA sur Pronote et MDPH en ligne',p:'Analyser en direct les notifications et formulaires'}
+  ],
+  obj:['Trouver rapidement des ressources fiables sur les besoins spécifiques des élèves que vous accompagnez.','Identifier le meilleur outil IA pour adapter les supports pédagogiques aux besoins de chaque élève.','Formuler des demandes précises pour que l\'IA génère des ressources d\'accompagnement adaptées.','Un assistant qui adapte les documents, génère des aides visuelles et vous aide à communiquer.','Exploiter ChatGPT pour créer rapidement des supports adaptés aux différents troubles.','Accéder aux dernières ressources sur les troubles DYS, TSA, TDA/H et les dispositifs d\'aide.','Créer des exercices adaptés, des pictogrammes et des outils d\'autonomie interactifs.','Analyser les PAI et PPS dans NotebookLM pour extraire les aménagements à mettre en place.','Générer en 2 minutes des supports de communication visuelle ou des emplois du temps adaptés.','Analyser en direct les notifications MDPH et formulaires en ligne avec l\'aide de Comet.'],
+  tips:[
+    ['Perplexity est très efficace pour trouver des ressources spécialisées sur un trouble avec leurs sources','Recherchez des stratégies d\'accompagnement validées par des orthophonistes ou psychologues','Vérifiez toujours les informations médicales avec un professionnel de santé','Un compte vous permet de retrouver vos recherches sur les troubles des élèves accompagnés'],
+    ['Claude est excellent pour adapter des textes à différents niveaux de compréhension','Testez la même demande d\'adaptation sur 3 modèles et comparez les résultats','GPT-4o est performant pour générer des descriptions d\'images et des alternatives textuelles','Gardez le modèle qui adapte le mieux les textes pour chaque type de trouble'],
+    ['Le métaprompt est très utile pour créer des modèles d\'adaptation réutilisables','Précisez toujours le trouble ou le besoin spécifique de l\'élève dans vos prompts','Gardez vos prompts d\'adaptation finalisés pour les réutiliser avec d\'autres élèves','Partagez vos meilleurs prompts avec les enseignants des élèves que vous accompagnez'],
+    ['Gemini Gems peut être alimenté avec le PAI ou le PPS d\'un élève (données anonymisées)','Créez un assistant "Adaptateur de supports" avec les besoins spécifiques de l\'élève','Testez l\'assistant avec un vrai document de cours à adapter pour valider sa pertinence','Un assistant bien configuré peut générer des versions adaptées de tout document scolaire'],
+    ['Personnalisez ChatGPT avec votre rôle AESH et les profils des élèves (types de troubles)','Mode éphémère obligatoire pour les échanges sur les données personnelles des élèves','ChatGPT peut générer des scénarios sociaux illustrés pour les élèves TSA','Demandez des versions avec et sans images pour tester ce qui convient à l\'élève'],
+    ['Deep Research Gemini est utile pour faire le point sur les nouvelles pratiques d\'accompagnement','Perplexity retrouve les guides officiels MDPH et les notices PAI/PPS avec leurs sources','Recherchez des ressources sur l\'autonomie et les aides techniques disponibles','Sauvegardez vos rapports de recherche pour constituer une base documentaire personnelle'],
+    ['Créez un emploi du temps visuel adapté interactif pour un élève avec des besoins spécifiques','Un jeu de révision à accès simplifié peut être généré avec Claude en quelques prompts','Claude Artefacts permet de partager un outil d\'autonomie via lien avec l\'enseignant','Commencez par un outil simple : chronomètre visuel ou rappel de consignes illustré'],
+    ['NotebookLM peut analyser un PAI ou un PPS et répondre à vos questions en temps réel','Importez plusieurs documents d\'un même élève pour croiser les informations et les aménagements','Le "Briefing Doc" est parfait pour préparer une réunion ESS avec tous les intervenants','Croisez les préconisations de l\'orthophoniste, du médecin scolaire et de l\'enseignant référent'],
+    ['Gamma génère un emploi du temps visuel ou un guide de communication alternative en 2 minutes','Décrivez les besoins de l\'élève et l\'IA propose un support visuel adapté','Utile pour créer des cartes de communication, des plannings ou des outils d\'autonomie','L\'export PowerPoint permet d\'imprimer ou de projeter le support facilement'],
+    ['Comet est idéal pour analyser en direct une notification MDPH ou un formulaire de renouvellement','Demandez à l\'IA d\'expliquer les termes techniques d\'un PAI ou d\'un PPS affiché','Sur le site de la MDPH, Comet peut vous guider pour remplir un dossier de renouvellement','Utilisez Comet pour adapter en temps réel un document scolaire affiché sur l\'ordinateur de l\'élève']
+  ],
+  prompts:{
+    p1a:'Quelles sont les stratégies d\'accompagnement recommandées pour un élève présentant [trouble : dyslexie / TSA / TDA/H / déficience motrice] au lycée ? Cite les sources officielles et les ressources spécialisées.',
+    p1b:'Quels sont les dispositifs et aides disponibles pour les élèves en situation de handicap dans l\'enseignement privé sous contrat ? Cite les textes officiels, les droits des élèves et les démarches MDPH à jour.',
+    p2a:'[Votre besoin d\'adaptation] — testez ce même prompt avec au moins 3 modèles différents sur DuckAI et comparez la qualité des adaptations proposées pour un élève présentant [trouble].',
+    p2b:'Adapte ce texte de cours pour un élève présentant [trouble]. Adapte : la longueur des phrases (max 15 mots), le vocabulaire (mots simples), la mise en page (aération, titres), la structure (une idée par paragraphe). [Coller le texte]',
+    p4a:'Crée les instructions d\'un assistant IA pour AESH. Il m\'aide à adapter les documents scolaires pour des élèves avec différents profils de besoins (DYS, TSA, TDA/H, déficience visuelle). Je lui fournis le document et le profil de l\'élève, il produit une version adaptée avec explications des choix réalisés.',
+    p4b:'Crée les instructions d\'un assistant IA de communication alternative. Pour les élèves avec des difficultés de communication, il génère : pictogrammes décrits, scénarios sociaux, fiches de communication simplifiées, emplois du temps visuels à personnaliser.',
+    p4c:'Tu es mon assistant de préparation aux réunions ESS. Quand je te décris la situation d\'un élève, tu génères : le résumé des besoins identifiés, les aménagements à proposer, les questions à poser aux spécialistes, la liste des intervenants à convoquer, le projet de compte-rendu.',
+    p4d:'Voici mes instructions pour mon assistant AESH : [coller]. Améliore-les pour qu\'il adapte mieux les contenus aux profils les plus complexes (polyhandicap, troubles associés, élèves non-verbaux).',
+    p5a:'Paramètres → "Personnaliser ChatGPT" : Je suis AESH dans un lycée privé. J\'accompagne des élèves présentant [types de troubles]. Mon besoin principal : adapter les supports pédagogiques, communiquer avec les familles et les équipes, préparer les réunions ESS. Aide-moi avec bienveillance et expertise.',
+    p5b:'Tu es spécialiste de l\'inclusion scolaire et de l\'adaptation pédagogique. Je dois [adapter / créer / préparer] [ressource ou document] pour un élève présentant [trouble spécifique]. Contraintes : [niveau scolaire / besoins précis]. Format : [support visuel / texte simplifié / fiche aide-mémoire].',
+    p6a:'[Même recherche sur le handicap] — comparez les résultats de Perplexity, ChatGPT Web Search et Gemini Deep Research sur les pratiques d\'accompagnement pour [trouble spécifique].',
+    p6b:'Fais une recherche approfondie sur les dernières pratiques d\'accompagnement des élèves avec [trouble] au lycée. Rapport : stratégies validées, ressources disponibles, outils recommandés, exemples d\'adaptation, sources spécialisées.',
+    p7a:'Crée un emploi du temps visuel adapté pour un élève TSA/DYS : cases colorées par matière, icônes illustratives, transitions claires, version imprimable A4. Personnalisable selon l\'horaire de l\'élève.',
+    p7b:'Crée des exercices de révision adaptés sur [sujet] pour un élève présentant [trouble] : consignes courtes et claires, questions progressives, espaces de réponse larges, feedback immédiat. Niveau : [classe].',
+    p7c:'Crée un outil de communication visuelle pour un élève non-verbal ou avec des difficultés d\'expression : grille de pictogrammes décrites par catégorie (besoins, émotions, demandes, réponses oui/non), explications pour les utiliser en classe.',
+    p9a:'Crée une présentation de [X slides] pour la prochaine réunion ESS de l\'élève [prénom anonymisé]. Inclus : profil de l\'élève, besoins identifiés, aménagements en place, bilan de la période, propositions pour la suite. Style : clair et centré sur l\'élève.',
+    p9b:'Crée un support visuel de communication alternative de [X slides / pages] pour un élève présentant [trouble de communication]. Inclus : situations du quotidien scolaire illustrées, expressions clés, pictogrammes décrits, mode d\'emploi pour l\'équipe pédagogique.',
+    p10a:'Tu vois cette notification MDPH / ce PAI / ce PPS affiché. Explique-moi les aménagements prescrits en termes simples et indique comment je dois les mettre en place au quotidien dans la classe.',
+    p10b:'Tu vois ce document de cours affiché. Adapte-le immédiatement pour un élève présentant [trouble]. Modifie : mise en page, longueur des phrases, vocabulaire, ajout d\'aides visuelles suggérées.',
+    p10c:'Tu vois ce formulaire MDPH / de renouvellement affiché. Guide-moi étape par étape pour le remplir. Explique les termes techniques et les pièces justificatives à préparer.',
+    p10d:'Tu vois cette ressource spécialisée en ligne. Résume les 5 conseils pratiques les plus utiles pour mon accompagnement quotidien de l\'élève. Format : liste pratique immédiatement applicable.',
+    p10e:'En te basant sur le PAI/PPS affiché, génère une fiche de suivi hebdomadaire des aménagements mis en place : liste des aménagements, cases à cocher, espace observation, à partager avec l\'enseignant.',
+    p10f:'En t\'appuyant sur ce document affiché, rédige un compte-rendu synthétique de la réunion ESS à destination des parents. Ton : accessible et bienveillant. Inclus : présence, bilan, décisions prises, suite prévue.'
+  },
+  a10labels:['📄 Sur MDPH, PAI et formulaires en ligne','🌐 Avec Comet (IA voit la page)'],
+  actifEx:{
+    ex1:'📝 Adapter un texte de cours', ex2:'🖼️ Créer un support visuel', ex3:'🔍 Ressources sur un trouble',
+    ex4:'📋 Préparer une ESS', ex5:'💬 Communication alternative', ex6:'🗓️ Emploi du temps adapté',
+    k1:'adapter_texte', k2:'visuel', k3:'ressource_h', k4:'ess', k5:'com_alt', k6:'edt_adapte'
+  }
+}
+};
+
+// ── SWITCH PERSONA ────────────────────────────────────────────
+let currentPersona = 'enseignant';
+
+function switchPersona(key) {
+  currentPersona = key;
+  const p = PERSONAS[key];
+  if (!p) return;
+  // Need cards
+  for (let i = 1; i <= 10; i++) {
+    const h = document.getElementById('nc-h' + i);
+    const pp = document.getElementById('nc-p' + i);
+    if (h && p.accueil[i-1]) h.textContent = p.accueil[i-1].h;
+    if (pp && p.accueil[i-1]) pp.textContent = p.accueil[i-1].p;
+  }
+  // Objectives
+  for (let i = 1; i <= 10; i++) {
+    const el = document.getElementById('obj-' + i);
+    if (el && p.obj[i-1]) el.textContent = p.obj[i-1];
+  }
+  // Tips
+  for (let i = 1; i <= 10; i++) {
+    const ul = document.querySelector('#sec-a' + i + ' .tips-box ul');
+    if (ul && p.tips[i-1]) {
+      ul.innerHTML = p.tips[i-1].map(t => '<li>' + t + '</li>').join('');
+    }
+  }
+  // Prompts
+  const pr = p.prompts;
+  Object.keys(pr).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = pr[id];
+  });
+  // Atelier 10 labels
+  const l1 = document.getElementById('a10-label-1');
+  const l2 = document.getElementById('a10-label-2');
+  if (l1 && p.a10labels) l1.textContent = p.a10labels[0];
+  if (l2 && p.a10labels) l2.textContent = p.a10labels[1];
+  // ACTIF examples — update buttons labels
+  const btns = document.querySelectorAll('.actif-ex-btn');
+  if (btns.length >= 6 && p.actifEx) {
+    btns[0].textContent = p.actifEx.ex1;
+    btns[1].textContent = p.actifEx.ex2;
+    btns[2].textContent = p.actifEx.ex3;
+    btns[3].textContent = p.actifEx.ex4;
+    btns[4].textContent = p.actifEx.ex5;
+    btns[5].textContent = p.actifEx.ex6;
+    btns[0].onclick = () => fillExamplePersona(p.actifEx.k1);
+    btns[1].onclick = () => fillExamplePersona(p.actifEx.k2);
+    btns[2].onclick = () => fillExamplePersona(p.actifEx.k3);
+    btns[3].onclick = () => fillExamplePersona(p.actifEx.k4);
+    btns[4].onclick = () => fillExamplePersona(p.actifEx.k5);
+    btns[5].onclick = () => fillExamplePersona(p.actifEx.k6);
+  }
+  localStorage.setItem('j1_persona', key);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const saved = localStorage.getItem('j1_persona');
+  if (saved && PERSONAS[saved]) {
+    document.getElementById('persona-sel').value = saved;
+    switchPersona(saved);
+  }
+});
+
+function fillExamplePersona(key) {
+  const p = PERSONAS[currentPersona];
+  if (p && p.actifExamples && p.actifExamples[key]) {
+    fillExample(key);
+  } else {
+    const base = examples[key] || examples['cours'];
+    document.getElementById('f-role').value = base.role;
+    document.getElementById('f-action').value = base.action;
+    document.getElementById('f-contexte').value = base.contexte;
+    document.getElementById('f-ton').value = base.ton;
+    document.getElementById('f-infos').value = base.infos;
+    document.getElementById('f-format').value = base.format;
+    buildPrompt();
   }
 }
 
