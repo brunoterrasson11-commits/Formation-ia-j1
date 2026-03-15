@@ -226,7 +226,7 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
       <span class="ndot" style="background:#A78BFA"></span>Générateur ACTIF ✨
     </button>
 
-    <div class="nav-label" style="margin-top:6px">Les 9 Ateliers</div>
+    <div class="nav-label" style="margin-top:6px">Les 10 Ateliers</div>
     <button class="nb" id="nav-a1" onclick="showAtel(1,this)">
       <span class="ndot" style="background:#34D399"></span>
       <span>Atelier 1 — Perplexity</span>
@@ -272,6 +272,11 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
       <span>Atelier 9 — Gamma</span>
       <span class="meta"><span class="nbadge">20'</span><span class="nchk" id="nchk9"></span></span>
     </button>
+    <button class="nb" id="nav-a10" onclick="showAtel(10,this)">
+      <span class="ndot" style="background:#F87171"></span>
+      <span>Atelier 10 — Navigateur IA</span>
+      <span class="meta"><span class="nbadge">30'</span><span class="nchk" id="nchk10"></span></span>
+    </button>
 
     <div class="nav-label" style="margin-top:6px">Ressources</div>
     <button class="nb" onclick="show('outils',this)">
@@ -302,7 +307,7 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     <h2>Prise en main : découverte des outils IA</h2>
     <p>Découvrez l'écosystème des outils IA, apprenez à formuler des prompts efficaces et explorez des cas d'usage concrets pour votre enseignement.</p>
     <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar" style="width:0%"></div></div>
-    <div class="prog-lbl" id="prog-lbl">0 / 9 ateliers complétés</div>
+    <div class="prog-lbl" id="prog-lbl">0 / 10 ateliers complétés</div>
   </div>
 
   <div style="padding:20px 36px 0">
@@ -329,6 +334,7 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     <div class="need-card" onclick="showAtel(7,null)"><div class="need-num">7</div><div><h4>Ressources interactives pour les élèves</h4><p>QCM, simulateurs, jeux avec Gemini Canvas / Claude</p></div></div>
     <div class="need-card" onclick="showAtel(8,null)"><div class="need-num">8</div><div><h4>Podcast, carte mentale, diaporama</h4><p>Transformer vos documents avec NotebookLM</p></div></div>
     <div class="need-card" onclick="showAtel(9,null)"><div class="need-num">9</div><div><h4>Diaporama en 2 minutes</h4><p>Générer une présentation pro avec Gamma</p></div></div>
+    <div class="need-card" onclick="showAtel(10,null)" style="border-left:3px solid #F87171"><div class="need-num" style="background:#FEF2F2;color:#DC2626">10</div><div><h4>Navigateur IA — Comet</h4><p>IA qui voit votre écran et vous assiste en temps réel</p></div></div>
   </div>
   <div class="page-foot">Formation IA — Journée 1 | Sophiae</div>
 </div>
@@ -928,6 +934,141 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
   </div>
 </div>
 
+<!-- ===== ATELIER 10 ===== -->
+<div class="sec" id="sec-a10">
+  <div class="atelier-header">
+    <div class="atel-badge" style="background:#FEF2F2;color:#DC2626">🌐 Atelier 10 — 20 à 30 min</div>
+    <h2>Le navigateur IA — Comet by Perplexity</h2>
+    <div class="desc">Découvrez Comet, le premier navigateur IA qui voit ce que vous voyez et vous assiste en temps réel pendant votre navigation web.</div>
+    <div class="tool-links">
+      <a href="https://comet.perplexity.ai" target="_blank" class="tool-link" style="background:#FEF2F2;color:#DC2626;border-color:#FCA5A5">☄️ Télécharger Comet</a>
+      <a href="https://perplexity.ai" target="_blank" class="tool-link" style="background:#ECFDF5;color:#059669;border-color:#6EE7B7">🔍 Perplexity.ai</a>
+    </div>
+  </div>
+
+  <!-- BLOC TELECHARGEMENT -->
+  <div style="margin:0 36px 20px">
+    <div style="background:linear-gradient(135deg,#1C1917 0%,#292524 100%);border-radius:14px;padding:24px 28px;color:#fff;display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap">
+      <div style="font-size:52px;line-height:1">☄️</div>
+      <div style="flex:1;min-width:260px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FCA5A5;margin-bottom:6px">Nouveau · Navigateur IA natif</div>
+        <h3 style="font-size:19px;font-weight:800;margin-bottom:7px">Comet by Perplexity</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.6;max-width:480px;margin-bottom:16px">Comet est un navigateur web intégrant un assistant IA capable de <strong style="color:#fff">voir votre page en temps réel</strong>, comprendre son contenu et vous répondre en contexte — sans copier-coller, sans changer d'onglet.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="https://comet.perplexity.ai" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#EF4444;color:#fff;padding:9px 18px;border-radius:9px;font-size:13px;font-weight:700;text-decoration:none;transition:background .15s" onmouseover="this.style.background='#DC2626'" onmouseout="this.style.background='#EF4444'">☄️ Télécharger Comet</a>
+          <a href="https://www.perplexity.ai/hub/blog/comet" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.85);padding:9px 18px;border-radius:9px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid rgba(255,255,255,.2)">📖 En savoir plus</a>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px 18px;min-width:200px">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Ce que Comet peut faire</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font-size:12.5px;color:rgba(255,255,255,.8)">
+          <div style="display:flex;gap:7px"><span style="color:#4ADE80">✓</span> Lire et analyser la page affichée</div>
+          <div style="display:flex;gap:7px"><span style="color:#4ADE80">✓</span> Répondre en contexte de navigation</div>
+          <div style="display:flex;gap:7px"><span style="color:#4ADE80">✓</span> Résumer, comparer, traduire</div>
+          <div style="display:flex;gap:7px"><span style="color:#4ADE80">✓</span> Rédiger à partir d'un contenu vu</div>
+          <div style="display:flex;gap:7px"><span style="color:#4ADE80">✓</span> Converser sans quitter la page</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-wrap">
+    <div>
+      <div class="obj-box" style="background:#FEF2F2;border-color:#FCA5A5"><strong style="color:#DC2626">🎯 Objectif</strong><span style="color:#7F1D1D">Naviguer sur le web avec une IA qui voit votre écran et vous assiste sans interruption.</span></div>
+      <div class="steps-box">
+        <h3>👣 Déroulement pas à pas</h3>
+        <div class="step-item"><div class="step-cb" onclick="toggleStep(this,10,1)"></div><div class="step-text">Télécharger et installer <strong>Comet</strong> depuis <a href="https://comet.perplexity.ai" target="_blank" style="color:var(--c1)">comet.perplexity.ai</a></div></div>
+        <div class="step-item"><div class="step-cb" onclick="toggleStep(this,10,2)"></div><div class="step-text">Se connecter avec votre compte Perplexity (ou en créer un gratuit)</div></div>
+        <div class="step-item"><div class="step-cb" onclick="toggleStep(this,10,3)"></div><div class="step-text">Naviguer sur un site web professionnel ou pédagogique de votre choix</div></div>
+        <div class="step-item"><div class="step-cb" onclick="toggleStep(this,10,4)"></div><div class="step-text">Ouvrir le panneau IA (barre latérale) et taper votre premier prompt — l'IA voit votre page</div></div>
+        <div class="step-item"><div class="step-cb" onclick="toggleStep(this,10,5)"></div><div class="step-text">Tester les cas d'usage enseignants ci-contre : appréciations, analyse de document, rédaction...</div></div>
+        <div class="step-item"><div class="step-cb" onclick="toggleStep(this,10,6)"></div><div class="step-text">Comparer l'expérience avec un onglet ChatGPT classique — mesurez le gain de temps</div></div>
+      </div>
+
+      <!-- COMPARAISON -->
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px;margin-top:16px">
+        <h4 style="font-size:13px;font-weight:700;margin-bottom:12px">⚡ Comet vs navigateur classique + IA</h4>
+        <table class="level-table">
+          <thead><tr><th>Tâche</th><th>Méthode classique</th><th>Avec Comet</th></tr></thead>
+          <tbody>
+            <tr><td>Analyser une page web</td><td>Copier le texte → coller dans ChatGPT → attendre</td><td>Ouvrir Comet → "Que dit cette page ?" → réponse immédiate</td></tr>
+            <tr><td>Rédiger depuis un document en ligne</td><td>Lire → copier → basculer d'onglet → reformuler</td><td>Page visible + prompt direct dans le panneau latéral</td></tr>
+            <tr><td>Comparer deux sites</td><td>Allers-retours manuels + notes</td><td>Comet analyse et compare à votre demande</td></tr>
+            <tr><td>Traduire un contenu vu</td><td>Sélectionner → copier → coller → traduire</td><td>"Traduis cette page en français" dans Comet</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tips-box">
+        <h4>💡 Tips & Astuces</h4>
+        <ul>
+          <li>Comet est basé sur Chromium — vos extensions Chrome habituelles fonctionnent</li>
+          <li>L'IA voit la page affichée en temps réel : elle s'adapte à chaque navigation</li>
+          <li>Idéal pour analyser des bulletins en ligne, des ressources Eduscol ou des référentiels</li>
+          <li>Utilisez le raccourci clavier pour ouvrir/fermer le panneau IA rapidement</li>
+          <li>Les conversations sont sauvegardées et consultables depuis Perplexity.ai</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROMPTS -->
+    <div class="prompts-box">
+      <h3>📋 Prompts enseignants — Cas d'usage</h3>
+
+      <div style="font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:4px">✍️ Appréciations de bulletins</div>
+
+      <div class="prompt-card">
+        <div class="prompt-head"><span class="prompt-label">Prompt A — Générer des appréciations</span><button class="copy-btn" onclick="copyPrompt(this,'p10a')">📋 Copier</button></div>
+        <div class="prompt-body" id="p10a">Tu es professeur en [matière]. Rédige 5 appréciations de bulletin variées pour des élèves aux profils différents :
+1. Élève très motivé mais résultats insuffisants
+2. Élève discret avec de bons résultats
+3. Élève perturbateur mais capable
+4. Élève en difficulté faisant des efforts
+5. Élève excellent et investi
+
+Chaque appréciation : 2 à 3 lignes, ton bienveillant et constructif, une piste d'amélioration concrète. Évite les formules toutes faites.</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-head"><span class="prompt-label">Prompt B — Personnaliser une appréciation</span><button class="copy-btn" onclick="copyPrompt(this,'p10b')">📋 Copier</button></div>
+        <div class="prompt-body" id="p10b">Je vais te décrire un élève en quelques mots. Rédige une appréciation de bulletin scolaire (2-3 lignes, ton professionnel et bienveillant).
+
+Élève : [prénom ou initiale]
+Profil : [points forts, points faibles, comportement, investissement]
+Matière : [matière]
+Moyenne : [note/20]
+Point à souligner : [un fait précis ou une progression notable]
+
+Propose 2 versions : une encourageante, une plus directe.</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-head"><span class="prompt-label">Prompt C — Reformuler mes appréciations</span><button class="copy-btn" onclick="copyPrompt(this,'p10c')">📋 Copier</button></div>
+        <div class="prompt-body" id="p10c">Voici mes appréciations brutes pour plusieurs élèves. Reformule-les de façon plus professionnelle, bienveillante et constructive, sans en changer le sens. Garde une longueur similaire (2-3 lignes max).
+
+[Coller vos appréciations ici — une par ligne]</div>
+      </div>
+
+      <div style="font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:14px">🌐 Avec Comet (IA voit la page)</div>
+
+      <div class="prompt-card">
+        <div class="prompt-head"><span class="prompt-label">Prompt D — Analyser une page web ouverte</span><button class="copy-btn" onclick="copyPrompt(this,'p10d')">📋 Copier</button></div>
+        <div class="prompt-body" id="p10d">Tu vois la page web affichée devant toi. Fais-m'en une synthèse en 5 points clés, adaptée à un usage pédagogique pour des élèves de [niveau] en [matière].</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-head"><span class="prompt-label">Prompt E — Exploiter un référentiel en ligne</span><button class="copy-btn" onclick="copyPrompt(this,'p10e')">📋 Copier</button></div>
+        <div class="prompt-body" id="p10e">En te basant sur le référentiel affiché sur cette page, extrais les compétences liées à [thème ou module]. Présente-les sous forme de tableau avec : intitulé de la compétence, capacités attendues, niveau visé.</div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="prompt-head"><span class="prompt-label">Prompt F — Rédiger depuis un document ouvert</span><button class="copy-btn" onclick="copyPrompt(this,'p10f')">📋 Copier</button></div>
+        <div class="prompt-body" id="p10f">En t'appuyant sur le contenu de la page que tu vois, rédige une introduction de cours percutante (accroche + problématique + annonce du plan) pour des élèves de [niveau]. Ton : dynamique et accessible.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== OUTILS ===== -->
 <div class="sec" id="sec-outils">
   <div class="hero">
@@ -947,6 +1088,7 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
       <div class="tool-card"><div class="tool-icon">🤖</div><h4>Claude (Anthropic)</h4><p>LLM Anthropic — Artefacts interactifs partageables.</p><a href="https://claude.ai" target="_blank">Ouvrir →</a></div>
       <div class="tool-card"><div class="tool-icon">✨</div><h4>Générateur ACTIF</h4><p>Construire un prompt structuré selon la méthode ACTIF.</p><a href="#" onclick="show('actif',null);return false" style="background:var(--c4l);color:var(--c4);border-color:#C4B5FD">Ouvrir →</a></div>
       <div class="tool-card"><div class="tool-icon">🌐</div><h4>ACTIF Numédu</h4><p>Générateur de prompts pédagogiques en ligne (référence).</p><a href="https://actif.numedu.org" target="_blank">Ouvrir →</a></div>
+      <div class="tool-card" style="border-color:#FCA5A5"><div class="tool-icon">☄️</div><h4>Comet</h4><p>Navigateur IA par Perplexity — voit votre page et vous assiste en temps réel.</p><a href="https://comet.perplexity.ai" target="_blank" style="background:#FEF2F2;color:#DC2626;border-color:#FCA5A5">Télécharger →</a></div>
       <div class="tool-card"><div class="tool-icon">🦙</div><h4>Mistral Le Chat</h4><p>LLM français, performant, gratuit et respectueux RGPD.</p><a href="https://chat.mistral.ai" target="_blank">Ouvrir →</a></div>
       <div class="tool-card"><div class="tool-icon">📘</div><h4>Meta AI (Llama)</h4><p>LLM open source Meta, accessible depuis WhatsApp et web.</p><a href="https://www.meta.ai" target="_blank">Ouvrir →</a></div>
     </div>
@@ -1055,14 +1197,14 @@ function updateAtelier(atel) {
 
 function updateGlobalProgress() {
   let done = 0;
-  for (let i = 1; i <= 9; i++) {
+  for (let i = 1; i <= 10; i++) {
     const total = document.querySelectorAll(`#sec-a${i} .step-cb`).length;
     const checked = document.querySelectorAll(`#sec-a${i} .step-cb.checked`).length;
     if (checked === total && total > 0) done++;
   }
-  const pct = Math.round((done / 9) * 100);
+  const pct = Math.round((done / 10) * 100);
   document.getElementById('prog-bar').style.width = pct + '%';
-  document.getElementById('prog-lbl').textContent = `${done} / 9 ateliers complétés`;
+  document.getElementById('prog-lbl').textContent = `${done} / 10 ateliers complétés`;
 }
 
 // ── COPY PROMPTS ─────────────────────────────────────────────
@@ -1238,7 +1380,7 @@ function loadProgress() {
   if (!saved) return;
   const data = JSON.parse(saved);
   Object.assign(stepState, data);
-  for (let i = 1; i <= 9; i++) {
+  for (let i = 1; i <= 10; i++) {
     const steps = document.querySelectorAll(`#sec-a${i} .step-cb`);
     steps.forEach((el, idx) => {
       const key = `a${i}_s${idx + 1}`;
