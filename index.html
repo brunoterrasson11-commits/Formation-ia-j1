@@ -201,6 +201,57 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 .sec-title{font-size:18px;font-weight:800;padding:24px 36px 0;margin-bottom:0}
 .sec-sub{font-size:13px;color:var(--text-sec);padding:4px 36px 0}
 
+/* ── VÉRIFICATEUR DE PROMPT ─────────────────────────────── */
+.checker-wrap{margin:0 36px 32px;border:2px solid #C4B5FD;border-radius:14px;overflow:hidden}
+.checker-head{background:linear-gradient(135deg,#4C1D95 0%,#1E40AF 100%);color:#fff;padding:18px 24px 14px;display:flex;align-items:flex-start;gap:14px}
+.checker-head .icon{font-size:32px;line-height:1;flex-shrink:0;margin-top:2px}
+.checker-head h3{font-size:16px;font-weight:800;margin-bottom:4px}
+.checker-head p{font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.5}
+.checker-body{padding:20px 24px;background:var(--surface)}
+.checker-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:860px){.checker-grid{grid-template-columns:1fr}}
+.checker-label{font-size:11.5px;font-weight:700;color:var(--text-sec);text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+#checker-input{width:100%;min-height:140px;padding:11px 13px;border:1.5px solid var(--border);border-radius:9px;font-size:13px;line-height:1.65;font-family:inherit;color:var(--text);background:var(--surface2);resize:vertical;transition:border-color .15s}
+#checker-input:focus{outline:none;border-color:#7C3AED}
+#checker-input::placeholder{color:var(--text-muted)}
+.checker-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.chk-btn{padding:8px 18px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:700;transition:all .15s}
+.chk-btn.pri{background:#7C3AED;color:#fff}.chk-btn.pri:hover{background:#6D28D9}
+.chk-btn.sec{background:var(--c4l);color:var(--c4);border:1px solid #C4B5FD}.chk-btn.sec:hover{background:#EDE9FE}
+.chk-btn.ghost{background:#F1F5F9;color:var(--text-sec);border:1px solid var(--border)}.chk-btn.ghost:hover{background:#E2E8F0}
+
+/* Score */
+.score-ring-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0 12px}
+.score-ring{position:relative;width:88px;height:88px}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring .ring-bg{fill:none;stroke:#E2E8F0;stroke-width:8}
+.score-ring .ring-fill{fill:none;stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset .6s ease,stroke .4s}
+.score-ring .ring-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:var(--text)}
+.score-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.score-mention{font-size:13px;font-weight:700;padding:2px 10px;border-radius:20px;margin-top:2px}
+
+/* Critères */
+.criterion-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border)}
+.criterion-item:last-child{border-bottom:none}
+.criterion-icon{font-size:15px;flex-shrink:0;width:20px;text-align:center}
+.criterion-name{font-size:12px;font-weight:600;color:var(--text);flex:1;line-height:1.3}
+.criterion-pill{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;flex-shrink:0;white-space:nowrap}
+.pill-ok{background:#DCFCE7;color:#166534}
+.pill-partial{background:#FEF9C3;color:#713F12}
+.pill-absent{background:#FEE2E2;color:#991B1B}
+.criterion-pts{font-size:10.5px;color:var(--text-muted);flex-shrink:0;min-width:34px;text-align:right}
+
+/* Sections résultat */
+.res-section{background:#F8FAFC;border:1px solid var(--border);border-radius:9px;padding:13px 15px;margin-top:12px}
+.res-section-title{font-size:11px;font-weight:700;color:var(--text-sec);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.res-item{font-size:12.5px;line-height:1.55;color:var(--text);padding:3px 0 3px 14px;position:relative}
+.res-item::before{content:'→';position:absolute;left:0;color:var(--c1);font-size:11px}
+.res-item.bad::before{content:'✗';color:#EF4444}
+.res-item.good::before{content:'✓';color:#22C55E}
+#checker-improved-wrap{display:none;margin-top:14px}
+#checker-improved{width:100%;min-height:100px;padding:11px 13px;border:1.5px solid #6EE7B7;border-radius:9px;font-size:12.5px;line-height:1.65;font-family:inherit;color:var(--text);background:#F0FDF4;resize:vertical}
+.checker-result-panel{display:none}
+
 /* PERSONA SWITCHER */
 .persona-box{padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
 .persona-lbl{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--sb-muted);margin-bottom:5px}
@@ -645,6 +696,83 @@ Voici la structure que tu dois appliquer :
 - Format attendu de la réponse
 
 Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt finalisé.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ VÉRIFICATEUR DE PROMPT ═══ -->
+  <div class="checker-wrap">
+    <div class="checker-head">
+      <div class="icon">🔬</div>
+      <div>
+        <h3>Vérificateur de prompt — Diagnostic pédagogique</h3>
+        <p>Rédigez ou collez votre prompt ci-dessous. L'outil l'analyse instantanément et vous indique comment l'améliorer selon les 7 critères du modèle de référence.</p>
+      </div>
+    </div>
+    <div class="checker-body">
+      <div class="checker-grid">
+
+        <!-- COL GAUCHE : saisie -->
+        <div>
+          <div class="checker-label">✍️ Votre prompt à analyser</div>
+          <textarea id="checker-input" placeholder="Exemple :&#10;Tu es professeur de mathématiques. Crée un exercice sur les fractions pour des élèves de 5e en difficulté. Format : fiche élève avec corrigé."></textarea>
+          <div class="checker-actions">
+            <button class="chk-btn pri" onclick="analyzePrompt()">🔬 Analyser mon prompt</button>
+            <button class="chk-btn ghost" onclick="loadExamplePrompt('bon')">✅ Exemple bon prompt</button>
+            <button class="chk-btn ghost" onclick="loadExamplePrompt('moyen')">⚠️ Exemple à améliorer</button>
+            <button class="chk-btn sec" onclick="clearChecker()">🗑 Effacer</button>
+          </div>
+          <div id="checker-char-count" style="font-size:11px;color:var(--text-muted);margin-top:5px">0 mot · 0 caractère</div>
+        </div>
+
+        <!-- COL DROITE : résultats -->
+        <div id="checker-result-panel" class="checker-result-panel">
+
+          <!-- Score -->
+          <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+            <div class="score-ring-wrap">
+              <div class="score-ring">
+                <svg width="88" height="88" viewBox="0 0 88 88">
+                  <circle class="ring-bg" cx="44" cy="44" r="36"/>
+                  <circle class="ring-fill" id="ring-fill" cx="44" cy="44" r="36" stroke-dasharray="226" stroke-dashoffset="226"/>
+                </svg>
+                <div class="ring-text" id="score-num">0</div>
+              </div>
+              <div class="score-label">/ 100</div>
+              <div class="score-mention" id="score-mention">—</div>
+            </div>
+
+            <!-- Critères -->
+            <div style="flex:1;min-width:200px">
+              <div class="checker-label" style="margin-bottom:6px">Analyse par critère</div>
+              <div id="criteria-list"></div>
+            </div>
+          </div>
+
+          <!-- Forces & Faiblesses -->
+          <div id="forces-faiblesses"></div>
+
+          <!-- Éléments manquants -->
+          <div id="missing-section"></div>
+
+          <!-- Suggestions -->
+          <div id="suggestions-section"></div>
+
+          <!-- Version améliorée -->
+          <div id="checker-improved-wrap">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+              <div class="checker-label" style="margin:0">🚀 Version optimisée générée</div>
+              <button class="copy-btn" onclick="copyImproved()">📋 Copier</button>
+            </div>
+            <textarea id="checker-improved" readonly></textarea>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Message avant analyse -->
+      <div id="checker-placeholder" style="text-align:center;padding:20px 0;color:var(--text-muted);font-size:13px;grid-column:1/-1">
+        ← Rédigez votre prompt et cliquez sur <strong>Analyser</strong> pour obtenir votre diagnostic.
       </div>
     </div>
   </div>
@@ -1888,6 +2016,240 @@ aesh:{
   }
 }
 };
+
+// ── VÉRIFICATEUR DE PROMPT ───────────────────────────────────
+
+const CRITERIA = [
+  {
+    key:'role', label:'Rôle donné à l\'IA', icon:'👤', pts:15,
+    kw:['tu es ','en tant que','tu agis','agis comme','expert en','experte en','spécialiste','professeur','assistant ','vous êtes','joue le rôle','je veux que tu sois','imagine que tu es'],
+    tip:'Ajoutez un rôle explicite : "Tu es un expert en [domaine]..."',
+    phrase:'Tu es un expert en [domaine].'
+  },
+  {
+    key:'tache', label:'Tâche attendue', icon:'⚡', pts:20,
+    kw:['crée ','créez ','rédige','écris','génère','analyse','explique','produis','propose','liste ','résume','évalue','compare','conçois','élabore','transforme','identifie','aide-','ta tâche','ton rôle est','je veux que tu','je souhaite que tu','il faut que tu','développe','décris','formule','calcule'],
+    tip:'Précisez l\'action attendue : "Crée...", "Rédige...", "Analyse..."',
+    phrase:'Ta tâche est de [action précise].'
+  },
+  {
+    key:'objectif', label:'Objectif de la demande', icon:'🎯', pts:15,
+    kw:['objectif','but est','finalité','afin de','afin d\'','pour que ','dans le but','en vue de','pour permettre','pour aider','pour améliorer','pour obtenir','résultat attendu','l\'idée est','je cherche à','je veux obtenir','pour que les'],
+    tip:'Précisez le but final : "L\'objectif est de...", "Afin de..."',
+    phrase:'L\'objectif est de [but recherché].'
+  },
+  {
+    key:'contexte', label:'Contexte utile', icon:'🗺️', pts:15,
+    kw:['contexte','pour des ','dans le cadre','élèves de','classe de','niveau ','établissement','mon public','mon audience','destinataire','situation','j\'ai besoin','nous travaillons','dans notre','dans mon','public cible','cadre pédagogique','cadre professionnel','dans un'],
+    tip:'Ajoutez le contexte : pour qui, dans quel cadre, quel public...',
+    phrase:'Contexte : [description du public / situation].'
+  },
+  {
+    key:'ton', label:'Tonalité souhaitée', icon:'🎭', pts:10,
+    kw:['ton ','tonalité','style ','registre','bienveillant','professionnel','accessible','rigoureux','formel','informel','pédagogique','simple et','clair et','dynamique','neutre','factuel','chaleureux','sérieux','ludique','expert','encourageant','positif'],
+    tip:'Indiquez le ton voulu : "Ton bienveillant et professionnel..."',
+    phrase:'Ton : [ex. bienveillant et professionnel].'
+  },
+  {
+    key:'contraintes', label:'Contraintes à respecter', icon:'⚠️', pts:10,
+    kw:['contrainte','sans ','évite ','éviter ','ne pas ','ne jamais','maximum','minimum','au plus','au moins','obligatoire','interdit','uniquement','seulement','impérativement','limite ','restriction','durée ','longueur','pas plus de','au maximum','au minimum','exclusivement'],
+    tip:'Ajoutez des contraintes : longueur, ce à éviter, limites spécifiques...',
+    phrase:'Contraintes : [liste des limites et restrictions].'
+  },
+  {
+    key:'format', label:'Format de sortie attendu', icon:'📋', pts:15,
+    kw:['format','tableau','liste ','liste à','bullet','puce','paragraphe','résumé','plan ','slides','diapo','qcm','email','fiche ','structure','mise en forme','markdown','colonnes','numéroté','schéma','présentation','rapport','document','réponse en','répondre en'],
+    tip:'Précisez le format attendu : "Format : tableau à 3 colonnes..."',
+    phrase:'Format attendu : [ex. tableau / liste / texte rédigé].'
+  }
+];
+
+const EXAMPLES = {
+  bon: `Tu es un expert en ingénierie pédagogique spécialisé dans l'enseignement des mathématiques au collège.
+
+Ta tâche est de créer une séquence d'exercices progressifs sur les fractions.
+
+L'objectif est de permettre aux élèves de maîtriser l'addition de fractions à dénominateurs différents.
+
+Contexte : classe de 5e, 26 élèves, dont 8 élèves en difficulté. Les élèves connaissent déjà les fractions simples mais bloquent sur la mise au même dénominateur.
+
+Ton : pédagogique, bienveillant et encourageant.
+
+Contraintes : maximum 3 exercices, consignes courtes (2 lignes max par exercice), pas de calculatrice.
+
+Format : fiche élève avec 3 niveaux de difficulté (étoiles), suivie du corrigé détaillé pour le professeur.`,
+
+  moyen: `Explique les fractions pour mes élèves. Je voudrais des exercices qui ne soient pas trop difficiles.`
+};
+
+// Live word/char count
+document.addEventListener('DOMContentLoaded', function() {
+  const inp = document.getElementById('checker-input');
+  if (inp) {
+    inp.addEventListener('input', function() {
+      const txt = inp.value.trim();
+      const words = txt ? txt.split(/\s+/).length : 0;
+      const chars = inp.value.length;
+      document.getElementById('checker-char-count').textContent = words + ' mot' + (words>1?'s':'') + ' · ' + chars + ' caractère' + (chars>1?'s':'');
+    });
+  }
+});
+
+function loadExamplePrompt(type) {
+  document.getElementById('checker-input').value = EXAMPLES[type];
+  document.getElementById('checker-input').dispatchEvent(new Event('input'));
+  document.getElementById('checker-input').focus();
+}
+
+function clearChecker() {
+  document.getElementById('checker-input').value = '';
+  document.getElementById('checker-char-count').textContent = '0 mot · 0 caractère';
+  document.getElementById('checker-result-panel').style.display = 'none';
+  document.getElementById('checker-placeholder').style.display = 'block';
+}
+
+function analyzePrompt() {
+  const text = document.getElementById('checker-input').value.trim();
+  if (!text || text.length < 5) {
+    document.getElementById('checker-input').style.borderColor = '#EF4444';
+    setTimeout(() => document.getElementById('checker-input').style.borderColor = '', 1500);
+    return;
+  }
+  const lower = text.toLowerCase();
+  const words = text.split(/\s+/).length;
+
+  // Score each criterion
+  let totalPts = 0;
+  const results = CRITERIA.map(c => {
+    const hits = c.kw.filter(k => lower.includes(k)).length;
+    let score, status;
+    if (hits >= 2)      { score = c.pts;                     status = 'present'; }
+    else if (hits === 1) { score = Math.round(c.pts * 0.55); status = 'partial'; }
+    else                 { score = 0;                         status = 'absent'; }
+    totalPts += score;
+    return { ...c, hits, score, status };
+  });
+
+  // Quality checks (bonus / malus)
+  const quality = [];
+  let bonus = 0;
+  if (words >= 25 && words <= 250) { bonus += 5; quality.push({ok:true, msg:'Longueur optimale ('+words+' mots) — suffisamment détaillé'}); }
+  else if (words < 10) { quality.push({ok:false, msg:'Prompt trop court ('+words+' mots) — l\'IA manque d\'informations pour bien répondre'}); }
+  else if (words > 300) { quality.push({ok:false, msg:'Prompt très long ('+words+' mots) — risque de diluer les instructions importantes'}); }
+  else { quality.push({ok:true, msg:'Longueur acceptable ('+words+' mots)'}); }
+
+  if (/\[.*?\]/.test(text)) quality.push({ok:false, msg:'Des espaces [à compléter] sont encore présents — personnalisez-les'});
+  if (text.split(/[.!?\n]+/).filter(s=>s.trim().length>3).length >= 3) { bonus += 3; quality.push({ok:true, msg:'Structure multi-parties bien articulée'}); }
+  if (/\n/.test(text)) { bonus += 2; quality.push({ok:true, msg:'Prompt structuré visuellement (sauts de ligne)'}); }
+
+  const finalScore = Math.min(100, totalPts + bonus);
+
+  // Mention
+  let mention, mentionColor;
+  if (finalScore >= 85)      { mention = '🏆 Excellent';      mentionColor = '#166534'; mentionBg = '#DCFCE7'; }
+  else if (finalScore >= 70) { mention = '✅ Bon prompt';     mentionColor = '#0F766E'; mentionBg = '#CCFBF1'; }
+  else if (finalScore >= 50) { mention = '⚠️ À améliorer';   mentionColor = '#713F12'; mentionBg = '#FEF9C3'; }
+  else if (finalScore >= 30) { mention = '🔧 Insuffisant';   mentionColor = '#9A3412'; mentionBg = '#FFEDD5'; }
+  else                       { mention = '❌ À reformuler';   mentionColor = '#991B1B'; mentionBg = '#FEE2E2'; }
+
+  // Score colors
+  const ringColor = finalScore >= 70 ? '#22C55E' : finalScore >= 50 ? '#EAB308' : '#EF4444';
+
+  // Build improved prompt
+  const missing = results.filter(r => r.status === 'absent');
+  const partial = results.filter(r => r.status === 'partial');
+  let improved = text;
+  if (missing.length > 0 || partial.length > 0) {
+    const additions = [...missing, ...partial]
+      .filter(r => !results.find(rr => rr.key === r.key && rr.status === 'present'))
+      .map(r => r.phrase);
+    if (additions.length) improved = text + '\n\n' + additions.join('\n');
+  }
+
+  // Suggestions list
+  const suggestions = [];
+  results.filter(r => r.status !== 'present').forEach(r => suggestions.push(r.tip));
+  quality.filter(q => !q.ok).forEach(q => suggestions.push(q.msg));
+  if (finalScore >= 85) suggestions.push('Votre prompt est très bien structuré — testez-le directement dans ChatGPT ou Gemini !');
+
+  // Render
+  renderChecker(finalScore, ringColor, mention, mentionColor, mentionBg, results, quality, missing, suggestions, improved);
+}
+
+function renderChecker(score, ringColor, mention, mentionColor, mentionBg, results, quality, missing, suggestions, improved) {
+  // Show result panel
+  document.getElementById('checker-result-panel').style.display = 'block';
+  document.getElementById('checker-placeholder').style.display = 'none';
+
+  // Score ring animation
+  const circumference = 226;
+  const offset = circumference - (score / 100) * circumference;
+  const ring = document.getElementById('ring-fill');
+  ring.style.stroke = ringColor;
+  ring.style.strokeDashoffset = circumference; // reset
+  setTimeout(() => { ring.style.strokeDashoffset = offset; }, 50);
+  document.getElementById('score-num').textContent = score;
+  const sm = document.getElementById('score-mention');
+  sm.textContent = mention;
+  sm.style.color = mentionColor;
+  sm.style.background = mentionBg;
+
+  // Criteria list
+  const statusLabels = { present:['✅ Présent','pill-ok'], partial:['⚠️ Partiel','pill-partial'], absent:['❌ Absent','pill-absent'] };
+  document.getElementById('criteria-list').innerHTML = results.map(r => {
+    const [lbl, cls] = statusLabels[r.status];
+    return `<div class="criterion-item">
+      <span class="criterion-icon">${r.icon}</span>
+      <span class="criterion-name">${r.label}</span>
+      <span class="criterion-pill ${cls}">${lbl}</span>
+      <span class="criterion-pts">${r.score}/${r.pts}</span>
+    </div>`;
+  }).join('');
+
+  // Forces & Faiblesses
+  const forces = results.filter(r=>r.status==='present').map(r=>`<div class="res-item good">${r.icon} ${r.label} bien défini</div>`).join('');
+  const qForces = quality.filter(q=>q.ok).map(q=>`<div class="res-item good">${q.msg}</div>`).join('');
+  const faiblesses = results.filter(r=>r.status==='partial').map(r=>`<div class="res-item">${r.icon} ${r.label} — présent mais incomplet</div>`).join('');
+  const qFaib = quality.filter(q=>!q.ok).map(q=>`<div class="res-item bad">${q.msg}</div>`).join('');
+
+  let ffHtml = '';
+  if (forces||qForces) ffHtml += `<div class="res-section"><div class="res-section-title">💪 Forces du prompt</div>${forces}${qForces}</div>`;
+  if (faiblesses||qFaib) ffHtml += `<div class="res-section"><div class="res-section-title">⚠️ Points partiels</div>${faiblesses}${qFaib}</div>`;
+  document.getElementById('forces-faiblesses').innerHTML = ffHtml;
+
+  // Éléments manquants
+  const abs = results.filter(r=>r.status==='absent');
+  document.getElementById('missing-section').innerHTML = abs.length
+    ? `<div class="res-section"><div class="res-section-title">🔴 Éléments manquants (${abs.length})</div>${abs.map(r=>`<div class="res-item bad">${r.icon} ${r.label} — non détecté</div>`).join('')}</div>`
+    : `<div class="res-section" style="border-color:#6EE7B7;background:#F0FDF4"><div class="res-section-title" style="color:#059669">✅ Tous les éléments sont présents !</div></div>`;
+
+  // Suggestions
+  document.getElementById('suggestions-section').innerHTML = suggestions.length
+    ? `<div class="res-section"><div class="res-section-title">💡 Suggestions d'amélioration</div>${suggestions.map(s=>`<div class="res-item">${s}</div>`).join('')}</div>`
+    : '';
+
+  // Version améliorée
+  const wrap = document.getElementById('checker-improved-wrap');
+  if (abs.length > 0 || results.filter(r=>r.status==='partial').length > 0) {
+    document.getElementById('checker-improved').value = improved;
+    wrap.style.display = 'block';
+  } else {
+    wrap.style.display = 'none';
+  }
+
+  // Scroll to result
+  document.getElementById('checker-result-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function copyImproved() {
+  const text = document.getElementById('checker-improved').value;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('#checker-improved-wrap .copy-btn');
+    btn.textContent = '✓ Copié !';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = '📋 Copier'; btn.classList.remove('copied'); }, 2000);
+  });
+}
 
 // ── SWITCH PERSONA ────────────────────────────────────────────
 let currentPersona = 'enseignant';
