@@ -260,6 +260,23 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 
 /* FOOTER */
 .page-foot{text-align:center;padding:20px 36px;font-size:11px;color:var(--text-muted);border-top:1px solid var(--border);margin-top:10px}
+
+/* SIMULATEUR IA */
+.sim-wrap{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:12px}
+.sim-toolbar{background:var(--surface2);padding:11px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sim-toolbar label{font-size:12px;font-weight:600;color:var(--text-sec);white-space:nowrap}
+.sim-toolbar select{font-size:12.5px;border:1px solid var(--border);border-radius:6px;padding:5px 8px;flex:1;min-width:200px;background:#fff;cursor:pointer}
+.sim-grid{display:grid;grid-template-columns:1fr 1fr}
+.sim-card{padding:14px 15px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sim-card:nth-child(2n){border-right:none}
+.sim-card:nth-child(3),.sim-card:nth-child(4){border-bottom:none}
+.sim-ai-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.sim-body{font-size:12px;line-height:1.65;color:var(--text-sec)}
+.sim-body strong{color:var(--text);font-weight:700}
+.sim-synthesis{padding:12px 15px;background:#F0FDF4;border-top:1px solid #BBF7D0;font-size:12.5px;line-height:1.6;color:#14532D}
+.tian-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.tian-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;border-radius:9px;font-size:13px;font-weight:700;text-decoration:none;transition:all .15s;text-align:center}
+.tian-btn:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.12)}
 </style>
 </head>
 <body>
@@ -415,7 +432,7 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
   <div class="hero">
     <div class="badge">📚 Apports théoriques</div>
     <h2>Comprendre l'IA générative</h2>
-    <p>Deux temps d'apports en plénière pour construire une culture commune de l'IA.</p>
+    <p>Trois temps d'apports en plénière pour construire une culture commune de l'IA.</p>
   </div>
   <div class="apport-section">
 
@@ -459,6 +476,52 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
         </div>
       </div>
     </div>
+
+    <div class="apport-card">
+      <h3>🔀 Apport 3 — Pourquoi pas une seule IA ? (15 min)</h3>
+      <p style="font-size:13.5px;line-height:1.65;margin-bottom:16px;color:var(--text-sec)">Chaque IA est entraînée sur des corpus différents, par des équipes différentes, avec des règles éditoriales différentes. Elles ne donnent donc pas les mêmes réponses — et c'est précisément ce qui les rend complémentaires.</p>
+      <table class="level-table">
+        <thead><tr><th>IA</th><th>Créateur</th><th>Point fort</th><th>Biais à connaître</th></tr></thead>
+        <tbody>
+          <tr><td><strong>ChatGPT</strong></td><td>OpenAI (USA)</td><td>Polyvalence, large corpus, très connu des élèves</td><td>Vision anglophone dominante, optimisé pour plaire à l'utilisateur</td></tr>
+          <tr><td><strong>Claude</strong></td><td>Anthropic (USA)</td><td>Nuances éthiques, raisonnement long, refus des raccourcis</td><td>Très prudent, refuse certains sujets que d'autres acceptent</td></tr>
+          <tr><td><strong>Gemini</strong></td><td>Google (USA)</td><td>Intégration Google, fort en recherche documentée, multimodal</td><td>Lié à l'écosystème Google, peut favoriser ses propres services</td></tr>
+          <tr><td><strong>Mistral</strong></td><td>Mistral AI (🇫🇷 France)</td><td>Modèle européen, RGPD, excellent en français</td><td>Corpus plus réduit, moins performant sur sujets très spécialisés</td></tr>
+        </tbody>
+      </table>
+
+      <div class="tips-box" style="margin-top:20px;background:#FFF7ED;border-left-color:#F97316">
+        <h4>🌐 Démonstration — Les moteurs de recherche polarisent déjà l'information</h4>
+        <p style="font-size:13px;line-height:1.65;margin:10px 0">Avant même les IA, les moteurs de recherche filtrent et censurent selon leurs règles nationales. La même requête sur <strong>"Tiananmen"</strong> donne des résultats radicalement opposés :</p>
+        <div class="tian-grid">
+          <a class="tian-btn" href="https://www.google.com/search?q=Tiananmen&tbm=isch" target="_blank" style="background:#EFF6FF;color:#1D4ED8;border:2px solid #BFDBFE">
+            🌐 Google Images<br><span style="font-size:11px;font-weight:400;margin-top:2px;display:block">→ L'Homme de Tiananmen apparaît</span>
+          </a>
+          <a class="tian-btn" href="https://image.baidu.com/search/index?tn=baiduimage&word=%E5%A4%A9%E5%AE%89%E9%97%A8" target="_blank" style="background:#FEE2E2;color:#991B1B;border:2px solid #FCA5A5">
+            🔴 Baidu Images (Chine)<br><span style="font-size:11px;font-weight:400;margin-top:2px;display:block">→ Uniquement photos officielles</span>
+          </a>
+        </div>
+        <p style="font-size:12.5px;color:#92400E;margin-top:12px;line-height:1.6"><strong>Les IA fonctionnent de la même façon :</strong> leurs données d'entraînement reflètent les choix éditoriaux, culturels et politiques de leurs créateurs. Croiser plusieurs IA, c'est croiser plusieurs regards — et obtenir une vision plus complète et moins biaisée.</p>
+      </div>
+
+      <div style="margin-top:22px">
+        <h4 style="font-size:14px;font-weight:700;margin-bottom:4px">🤖 Simulateur — La même question, 4 réponses différentes</h4>
+        <p style="font-size:12px;color:var(--text-sec);margin-bottom:0">Sélectionnez une question et observez comment chaque IA l'aborde à sa façon.</p>
+        <div class="sim-wrap">
+          <div class="sim-toolbar">
+            <label>Question posée aux 4 IA :</label>
+            <select id="sim-q" onchange="simUpdate()">
+              <option value="0">Donne-moi 3 arguments pour intégrer l'IA dans mon enseignement.</option>
+              <option value="1">Quels sont les risques de l'IA pour les élèves ?</option>
+              <option value="2">Comment évaluer un devoir fait avec l'aide de l'IA ?</option>
+            </select>
+          </div>
+          <div class="sim-grid" id="sim-grid"></div>
+          <div class="sim-synthesis" id="sim-synthesis"></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1309,6 +1372,52 @@ Propose 2 versions : une encourageante, une plus directe.</div>
 </main>
 
 <script>
+// ── SIMULATEUR IA ────────────────────────────────────────────
+const SIM_DATA = [
+  {
+    q: "Donne-moi 3 arguments pour intégrer l'IA dans mon enseignement.",
+    ais: [
+      { name:'ChatGPT', color:'#10A37F', bg:'#F0FDF9', body:`<strong>1. Productivité accrue :</strong> Générez cours, exercices et corrections en quelques secondes, libérant du temps pour la relation avec vos élèves.<br><br><strong>2. Différenciation instantanée :</strong> Adaptez vos ressources à différents niveaux (standard, remédiation, DYS) sans multiplier votre charge de travail.<br><br><strong>3. Préparation au monde professionnel :</strong> Vos élèves vivront avec l'IA. Les familiariser dès aujourd'hui est une responsabilité pédagogique.` },
+      { name:'Claude', color:'#D97706', bg:'#FFFBEB', body:`<strong>1. Recentrage sur l'humain :</strong> En déléguant les tâches répétitives, vous vous concentrez sur ce que vous faites de mieux : expliquer, encourager, accompagner.<br><br><strong>2. Développement de l'esprit critique :</strong> L'IA fait des erreurs — et c'est pédagogiquement précieux. Identifier ses limites est une compétence du XXIe siècle.<br><br><strong>3. Co-création :</strong> L'IA propose un premier jet, vous êtes l'expert. Humain + IA produit de meilleures ressources que l'un ou l'autre seul.` },
+      { name:'Gemini', color:'#4F46E5', bg:'#EEF2FF', body:`<strong>1. Recherche enrichie :</strong> Via Google Workspace, l'IA analyse vos documents et slides pour vous proposer des synthèses et connexions entre vos ressources.<br><br><strong>2. Multimodalité :</strong> Images, vidéos et textes analysés simultanément — idéal pour les SVT, arts plastiques, géographie.<br><br><strong>3. Personnalisation à grande échelle :</strong> Suivez la progression individuelle de chaque élève sans multiplier votre charge de travail.` },
+      { name:'Mistral 🇫🇷', color:'#7C3AED', bg:'#F5F3FF', body:`<strong>1. Souveraineté numérique :</strong> Mistral est européen, entraîné selon les normes RGPD. Vos données restent en Europe.<br><br><strong>2. Excellence en français :</strong> Mistral maîtrise les nuances de la langue française — particulièrement utile en lettres, FLE et langues régionales.<br><br><strong>3. Accès libre :</strong> Des versions open-source sont utilisables sans abonnement et adaptables aux besoins de votre établissement.` }
+    ],
+    synthesis: '💡 Ce que le croisement révèle : ChatGPT insiste sur la productivité, Claude sur la pédagogie humaniste, Gemini sur l\'intégration technique, Mistral sur la souveraineté. Aucune IA seule ne couvre tous les angles — les croiser donne une vision plus riche et moins biaisée.'
+  },
+  {
+    q: "Quels sont les risques de l'IA pour les élèves ?",
+    ais: [
+      { name:'ChatGPT', color:'#10A37F', bg:'#F0FDF9', body:`<strong>1. Dépendance :</strong> Sans encadrement, les élèves peuvent utiliser l'IA comme béquille et ne plus développer leur propre pensée autonome.<br><br><strong>2. Hallucinations :</strong> L'IA invente des faits avec un ton très convaincant. Sans vérification, les élèves propagent des erreurs comme des vérités.<br><br><strong>3. Vie privée :</strong> Les conversations peuvent alimenter l'entraînement des modèles. Ne jamais saisir de données personnelles d'élèves.` },
+      { name:'Claude', color:'#D97706', bg:'#FFFBEB', body:`<strong>1. Homogénéisation de la pensée :</strong> Si tous utilisent la même IA, les productions se ressemblent. La diversité intellectuelle est une valeur à protéger activement.<br><br><strong>2. Biais algorithmiques :</strong> Chaque IA reflète les biais de ses données d'entraînement. Un élève qui l'ignore accepte ces biais comme des vérités.<br><br><strong>3. Impact sur le développement cognitif :</strong> La mémorisation et la résolution de problèmes se développent par l'effort. L'IA ne doit pas court-circuiter ce processus.` },
+      { name:'Gemini', color:'#4F46E5', bg:'#EEF2FF', body:`<strong>1. Contenu inapproprié :</strong> Sans filtres adaptés à l'âge, les IA généralistes peuvent produire du contenu inadapté. Préférez des outils éducatifs (Mizou, Khanmigo).<br><br><strong>2. Manque de transparence :</strong> Les élèves ne comprennent pas comment l'IA fonctionne. L'éducation aux mécanismes de l'IA est indispensable.<br><br><strong>3. Inégalités d'accès :</strong> Les outils premium sont payants — ils risquent de creuser les inégalités entre élèves.` },
+      { name:'Mistral 🇫🇷', color:'#7C3AED', bg:'#F5F3FF', body:`<strong>1. RGPD et mineurs :</strong> Les élèves mineurs ne peuvent légalement utiliser la plupart des IA sans consentement parental. Vérifiez les CGU avant tout déploiement.<br><br><strong>2. Suivi comportemental :</strong> Certaines plateformes analysent les comportements à des fins commerciales. Les établissements ont une responsabilité de protection.<br><br><strong>3. Dépendance aux GAFAM :</strong> La majorité des IA grand public sont américaines. La souveraineté numérique commence dès l'école.` }
+    ],
+    synthesis: '💡 Ce que le croisement révèle : ChatGPT pointe les risques pratiques, Claude les risques éducatifs profonds, Gemini les risques d\'accès et de protection, Mistral les risques légaux et politiques. Une réponse globale aux risques de l\'IA nécessite les quatre perspectives.'
+  },
+  {
+    q: "Comment évaluer un devoir fait avec l'aide de l'IA ?",
+    ais: [
+      { name:'ChatGPT', color:'#10A37F', bg:'#F0FDF9', body:`<strong>1. Évaluer le processus :</strong> Demandez la trace des échanges avec l'IA (captures d'écran) et une explication des choix. La réflexion compte plus que le texte final.<br><br><strong>2. Défense orale :</strong> 5 minutes d'explication orale permettent de vérifier que l'élève a vraiment compris son propre travail.<br><br><strong>3. Valeur ajoutée humaine :</strong> Qu'a apporté l'élève que l'IA n'aurait pas pu faire ? Originalité, vécu personnel, analyse critique ?` },
+      { name:'Claude', color:'#D97706', bg:'#FFFBEB', body:`<strong>1. Co-construire les critères :</strong> Définissez ensemble avant le devoir ce qui relève de l'IA et ce qui relève de l'élève. Un pacte clair réduit les dérives.<br><br><strong>2. Valoriser la métacognition :</strong> Ajoutez : "Comment as-tu utilisé l'IA ? Qu'as-tu modifié ?" Cette réflexion sur sa propre pratique est une compétence de haut niveau.<br><br><strong>3. Réévaluer ce qu'on évalue :</strong> Si l'IA peut faire le devoir à la place de l'élève, peut-être faut-il repenser l'évaluation elle-même.` },
+      { name:'Gemini', color:'#4F46E5', bg:'#EEF2FF', body:`<strong>1. Outils de détection :</strong> Des services comme Turnitin intègrent désormais la détection IA — à utiliser avec discernement et humilité (faux positifs possibles).<br><br><strong>2. Comparer avec l'historique :</strong> Un saut de qualité soudain est un signal. Comparer avec les travaux précédents de l'élève permet de contextualiser.<br><br><strong>3. Devoir avec cartouche IA :</strong> Intégrer explicitement l'IA avec un cadre d'usage clair rend la fraude conceptuellement obsolète.` },
+      { name:'Mistral 🇫🇷', color:'#7C3AED', bg:'#F5F3FF', body:`<strong>1. Cadre légal :</strong> Clarifiez dans le règlement les règles d'usage. Une charte signée par élèves et parents donne un cadre légal en cas de litige.<br><br><strong>2. Le contrôle sur table reste souverain :</strong> L'examen sans IA reste l'étalon. Le devoir maison devient un espace d'entraînement guidé.<br><br><strong>3. Déclaration obligatoire :</strong> Exigez que les élèves déclarent leur usage de l'IA — comme une bibliographie. C'est une compétence d'intégrité académique.` }
+    ],
+    synthesis: '💡 Ce que le croisement révèle : ChatGPT propose des solutions pratiques immédiates, Claude questionne le fond pédagogique, Gemini apporte les outils techniques, Mistral cadre juridiquement. Aucune réponse seule n\'est complète — la vérité est dans leur intersection.'
+  }
+];
+
+function simUpdate() {
+  const q = parseInt(document.getElementById('sim-q').value);
+  const d = SIM_DATA[q];
+  document.getElementById('sim-grid').innerHTML = d.ais.map(ai => `
+    <div class="sim-card" style="background:${ai.bg}">
+      <div class="sim-ai-name" style="color:${ai.color}">${ai.name}</div>
+      <div class="sim-body">${ai.body}</div>
+    </div>`).join('');
+  document.getElementById('sim-synthesis').innerHTML = d.synthesis;
+}
+simUpdate();
+
 // ── NAVIGATION ──────────────────────────────────────────────
 function show(id, btn) {
   document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
