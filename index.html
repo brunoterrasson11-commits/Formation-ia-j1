@@ -277,6 +277,21 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 .tian-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 .tian-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;border-radius:9px;font-size:13px;font-weight:700;text-decoration:none;transition:all .15s;text-align:center}
 .tian-btn:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(0,0,0,.12)}
+
+/* ── CRCN-Édu competency badges ── */
+.crcn-block{margin-top:14px;padding-top:12px;border-top:1px solid rgba(0,0,0,.07)}
+.crcn-title{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:#94A3B8;margin-bottom:8px}
+.crcn-badges{display:flex;flex-wrap:wrap;gap:5px}
+.crcn-badge{display:inline-flex;align-items:center;gap:4px;border-radius:20px;padding:4px 10px;font-size:11px;cursor:default;transition:opacity .15s}
+.crcn-badge:hover{opacity:.8}
+.crcn-code{font-family:monospace;font-weight:800;font-size:11.5px}
+.crcn-sep{opacity:.5;font-size:10px}
+.crcn-label{font-weight:600}
+.crcn-d1{background:#DBEAFE;color:#1D4ED8}
+.crcn-d2{background:#EDE9FE;color:#6D28D9}
+.crcn-d3{background:#DCFCE7;color:#15803D}
+.crcn-d4{background:#FEF3C7;color:#B45309}
+.crcn-d5{background:#FEE2E2;color:#B91C1C}
 </style>
 </head>
 <body>
@@ -628,6 +643,14 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     <div class="tool-links">
       <a href="https://perplexity.ai" target="_blank" class="tool-link" style="background:#ECFDF5;color:#059669;border-color:#6EE7B7">🔍 Perplexity.ai</a>
     </div>
+    <div class="crcn-block">
+      <div class="crcn-title">📜 Compétences CRCN-Édu validées</div>
+      <div class="crcn-badges">
+          <span class="crcn-badge crcn-d1" title="Domaine 1 — Environnement professionnel · Se former, développer une veille — Mener une veille pour s'informer et organiser les informations collectées"><span class="crcn-code">1.3</span><span class="crcn-sep">·</span><span class="crcn-label">Veille & formation</span></span>
+          <span class="crcn-badge crcn-d1" title="Domaine 1 — Environnement professionnel · Posture ouverte, critique et réflexive — Tester puis utiliser des services et ressources numériques"><span class="crcn-code">1.5</span><span class="crcn-sep">·</span><span class="crcn-label">Posture critique</span></span>
+          <span class="crcn-badge crcn-d2" title="Domaine 2 — Ressources numériques · Sélectionner des ressources — Identifier et évaluer des ressources numériques, apprécier leur pertinence pédagogique"><span class="crcn-code">2.1</span><span class="crcn-sep">·</span><span class="crcn-label">Sélectionner ressources</span></span>
+      </div>
+    </div>
   </div>
   <div class="content-wrap">
     <div>
@@ -671,6 +694,13 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     <div class="desc">Comprendre les différences entre les modèles d'IA en testant le même prompt sur plusieurs LLM.</div>
     <div class="tool-links">
       <a href="https://duck.ai" target="_blank" class="tool-link" style="background:#E0F2FE;color:#0891B2;border-color:#7DD3FC">🦆 DuckAI</a>
+    </div>
+    <div class="crcn-block">
+      <div class="crcn-title">📜 Compétences CRCN-Édu validées</div>
+      <div class="crcn-badges">
+          <span class="crcn-badge crcn-d1" title="Domaine 1 — Environnement professionnel · Posture ouverte, critique et réflexive — Faire preuve d'ouverture d'esprit et de discernement"><span class="crcn-code">1.5</span><span class="crcn-sep">·</span><span class="crcn-label">Posture critique</span></span>
+          <span class="crcn-badge crcn-d2" title="Domaine 2 — Ressources numériques · Sélectionner des ressources — Apprécier la pertinence du recours au numérique selon l'outil et le contexte"><span class="crcn-code">2.1</span><span class="crcn-sep">·</span><span class="crcn-label">Sélectionner ressources</span></span>
+      </div>
     </div>
   </div>
   <div class="content-wrap">
@@ -718,6 +748,14 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
       <a href="https://copilot.microsoft.com" target="_blank" class="tool-link" style="background:#F5F3FF;color:#7C3AED;border-color:#C4B5FD">Copilot</a>
       <a href="https://gemini.google.com" target="_blank" class="tool-link" style="background:#F5F3FF;color:#7C3AED;border-color:#C4B5FD">Gemini</a>
       <a href="#" onclick="show('actif',null);return false" class="tool-link" style="background:#7C3AED;color:#fff;border-color:#7C3AED">✨ Générateur ACTIF intégré</a>
+    </div>
+    <div class="crcn-block">
+      <div class="crcn-title">📜 Compétences CRCN-Édu validées</div>
+      <div class="crcn-badges">
+          <span class="crcn-badge crcn-d1" title="Domaine 1 — Environnement professionnel · Posture ouverte, critique et réflexive — Expérimenter, découvrir et tester de nouveaux outils numériques"><span class="crcn-code">1.5</span><span class="crcn-sep">·</span><span class="crcn-label">Posture critique</span></span>
+          <span class="crcn-badge crcn-d2" title="Domaine 2 — Ressources numériques · Concevoir des ressources — Créer des ressources numériques en fonction d'objectifs pédagogiques"><span class="crcn-code">2.2</span><span class="crcn-sep">·</span><span class="crcn-label">Concevoir ressources</span></span>
+          <span class="crcn-badge crcn-d3" title="Domaine 3 — Enseignement-apprentissage · Concevoir des situations d'apprentissage — Adapter les moyens numériques aux publics et objectifs visés"><span class="crcn-code">3.1</span><span class="crcn-sep">·</span><span class="crcn-label">Concevoir</span></span>
+      </div>
     </div>
   </div>
   <div class="content-wrap">
@@ -851,6 +889,15 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
       <a href="https://copilot.microsoft.com" target="_blank" class="tool-link" style="background:#EFF6FF;color:#2563EB;border-color:#93C5FD">Copilot</a>
       <a href="https://gemini.google.com" target="_blank" class="tool-link" style="background:#EFF6FF;color:#2563EB;border-color:#93C5FD">Gemini (Gems)</a>
     </div>
+    <div class="crcn-block">
+      <div class="crcn-title">📜 Compétences CRCN-Édu validées</div>
+      <div class="crcn-badges">
+          <span class="crcn-badge crcn-d2" title="Domaine 2 — Ressources numériques · Concevoir des ressources — Créer ou co-créer des ressources éducatives numériques"><span class="crcn-code">2.2</span><span class="crcn-sep">·</span><span class="crcn-label">Concevoir ressources</span></span>
+          <span class="crcn-badge crcn-d3" title="Domaine 3 — Enseignement-apprentissage · Concevoir des situations d'apprentissage — Scénariser et expérimenter de nouveaux formats pédagogiques"><span class="crcn-code">3.1</span><span class="crcn-sep">·</span><span class="crcn-label">Concevoir</span></span>
+          <span class="crcn-badge crcn-d4" title="Domaine 4 — Diversité & autonomie · Inclure et rendre accessible — Prendre en compte la diversité des apprenants (FALC, ASH)"><span class="crcn-code">4.1</span><span class="crcn-sep">·</span><span class="crcn-label">Inclure & accessibilité</span></span>
+          <span class="crcn-badge crcn-d4" title="Domaine 4 — Diversité & autonomie · Différencier — Proposer des parcours adaptés aux besoins de chaque apprenant"><span class="crcn-code">4.2</span><span class="crcn-sep">·</span><span class="crcn-label">Différencier</span></span>
+      </div>
+    </div>
   </div>
   <div class="content-wrap">
     <div>
@@ -913,6 +960,13 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
     <div class="tool-links">
       <a href="https://chatgpt.com" target="_blank" class="tool-link" style="background:#ECFDF5;color:#059669;border-color:#6EE7B7">ChatGPT</a>
     </div>
+    <div class="crcn-block">
+      <div class="crcn-title">📜 Compétences CRCN-Édu validées</div>
+      <div class="crcn-badges">
+          <span class="crcn-badge crcn-d1" title="Domaine 1 — Environnement professionnel · Posture ouverte, critique et réflexive — Découvrir, tester et maîtriser des outils numériques professionnels"><span class="crcn-code">1.5</span><span class="crcn-sep">·</span><span class="crcn-label">Posture critique</span></span>
+          <span class="crcn-badge crcn-d3" title="Domaine 3 — Enseignement-apprentissage · Mettre en œuvre des situations d'apprentissage — Conduire des activités à l'aide d'outils numériques"><span class="crcn-code">3.2</span><span class="crcn-sep">·</span><span class="crcn-label">Mettre en œuvre</span></span>
+      </div>
+    </div>
   </div>
   <div class="content-wrap">
     <div>
@@ -958,6 +1012,13 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
       <a href="https://chatgpt.com" target="_blank" class="tool-link" style="background:#FFF7ED;color:#EA580C;border-color:#FDBA74">ChatGPT</a>
       <a href="https://gemini.google.com" target="_blank" class="tool-link" style="background:#FFF7ED;color:#EA580C;border-color:#FDBA74">Gemini Deep Research</a>
     </div>
+    <div class="crcn-block">
+      <div class="crcn-title">📜 Compétences CRCN-Édu validées</div>
+      <div class="crcn-badges">
+          <span class="crcn-badge crcn-d1" title="Domaine 1 — Environnement professionnel · Se former, développer une veille — Mener et organiser une veille avec des services numériques"><span class="crcn-code">1.3</span><span class="crcn-sep">·</span><span class="crcn-label">Veille & formation</span></span>
+          <span class="crcn-badge crcn-d2" title="Domaine 2 — Ressources numériques · Sélectionner des ressources — Identifier et évaluer la fiabilité des sources numériques"><span class="crcn-code">2.1</span><span class="crcn-sep">·</span><span class="crcn-label">Sélectionner ressources</span></span>
+      </div>
+    </div>
   </div>
   <div class="content-wrap">
     <div>
@@ -1002,6 +1063,14 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
     <div class="tool-links">
       <a href="https://gemini.google.com" target="_blank" class="tool-link" style="background:#E0F2FE;color:#0369A1;border-color:#7DD3FC">Gemini Canvas</a>
       <a href="https://claude.ai" target="_blank" class="tool-link" style="background:#E0F2FE;color:#0369A1;border-color:#7DD3FC">Claude Artefacts</a>
+    </div>
+    <div class="crcn-block">
+      <div class="crcn-title">📜 Compétences CRCN-Édu validées</div>
+      <div class="crcn-badges">
+          <span class="crcn-badge crcn-d2" title="Domaine 2 — Ressources numériques · Concevoir des ressources — Créer des ressources interactives numériques directement utilisables en classe"><span class="crcn-code">2.2</span><span class="crcn-sep">·</span><span class="crcn-label">Concevoir ressources</span></span>
+          <span class="crcn-badge crcn-d3" title="Domaine 3 — Enseignement-apprentissage · Concevoir — Expérimenter avec un groupe de travail de nouveaux formats pédagogiques"><span class="crcn-code">3.1</span><span class="crcn-sep">·</span><span class="crcn-label">Concevoir</span></span>
+          <span class="crcn-badge crcn-d4" title="Domaine 4 — Diversité & autonomie · Engager les apprenants — Impliquer les élèves dans des démarches actives et créatives avec le numérique"><span class="crcn-code">4.3</span><span class="crcn-sep">·</span><span class="crcn-label">Engager apprenants</span></span>
+      </div>
     </div>
   </div>
   <div class="content-wrap">
@@ -1050,6 +1119,14 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
     <div class="desc">Transformer des documents existants en ressources pédagogiques variées (podcast, carte mentale, diaporama).</div>
     <div class="tool-links">
       <a href="https://notebooklm.google.com" target="_blank" class="tool-link" style="background:#FFFBEB;color:#D97706;border-color:#FCD34D">NotebookLM</a>
+    </div>
+    <div class="crcn-block">
+      <div class="crcn-title">📜 Compétences CRCN-Édu validées</div>
+      <div class="crcn-badges">
+          <span class="crcn-badge crcn-d2" title="Domaine 2 — Ressources numériques · Concevoir des ressources — Transformer des documents existants en ressources numériques variées"><span class="crcn-code">2.2</span><span class="crcn-sep">·</span><span class="crcn-label">Concevoir ressources</span></span>
+          <span class="crcn-badge crcn-d2" title="Domaine 2 — Ressources numériques · Gérer des ressources — Structurer, organiser et mettre à disposition des contenus numériques"><span class="crcn-code">2.3</span><span class="crcn-sep">·</span><span class="crcn-label">Gérer ressources</span></span>
+          <span class="crcn-badge crcn-d3" title="Domaine 3 — Enseignement-apprentissage · Concevoir — Planifier et scénariser des apprentissages avec des modalités variées"><span class="crcn-code">3.1</span><span class="crcn-sep">·</span><span class="crcn-label">Concevoir</span></span>
+      </div>
     </div>
   </div>
   <div class="content-wrap">
@@ -1109,6 +1186,13 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
     <div class="tool-links">
       <a href="https://gamma.app" target="_blank" class="tool-link" style="background:#F5F3FF;color:#7C3AED;border-color:#C4B5FD">Gamma App</a>
     </div>
+    <div class="crcn-block">
+      <div class="crcn-title">📜 Compétences CRCN-Édu validées</div>
+      <div class="crcn-badges">
+          <span class="crcn-badge crcn-d2" title="Domaine 2 — Ressources numériques · Concevoir des ressources — Créer des supports de présentation numériques professionnels"><span class="crcn-code">2.2</span><span class="crcn-sep">·</span><span class="crcn-label">Concevoir ressources</span></span>
+          <span class="crcn-badge crcn-d3" title="Domaine 3 — Enseignement-apprentissage · Mettre en œuvre — Conduire et partager des supports pédagogiques numériques"><span class="crcn-code">3.2</span><span class="crcn-sep">·</span><span class="crcn-label">Mettre en œuvre</span></span>
+      </div>
+    </div>
   </div>
   <div class="content-wrap">
     <div>
@@ -1154,6 +1238,14 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
     <div class="tool-links">
       <a href="https://comet.perplexity.ai" target="_blank" class="tool-link" style="background:#FEF2F2;color:#DC2626;border-color:#FCA5A5">☄️ Télécharger Comet</a>
       <a href="https://perplexity.ai" target="_blank" class="tool-link" style="background:#ECFDF5;color:#059669;border-color:#6EE7B7">🔍 Perplexity.ai</a>
+    </div>
+    <div class="crcn-block">
+      <div class="crcn-title">📜 Compétences CRCN-Édu validées</div>
+      <div class="crcn-badges">
+          <span class="crcn-badge crcn-d1" title="Domaine 1 — Environnement professionnel · Se former, développer une veille — Contribuer à un espace de développement professionnel"><span class="crcn-code">1.3</span><span class="crcn-sep">·</span><span class="crcn-label">Veille & formation</span></span>
+          <span class="crcn-badge crcn-d1" title="Domaine 1 — Environnement professionnel · Posture ouverte, critique et réflexive — Expérimenter de nouvelles formes d'assistance numérique"><span class="crcn-code">1.5</span><span class="crcn-sep">·</span><span class="crcn-label">Posture critique</span></span>
+          <span class="crcn-badge crcn-d3" title="Domaine 3 — Enseignement-apprentissage · Mettre en œuvre — Conduire des activités à l'aide d'outils numériques avancés"><span class="crcn-code">3.2</span><span class="crcn-sep">·</span><span class="crcn-label">Mettre en œuvre</span></span>
+      </div>
     </div>
   </div>
 
