@@ -653,11 +653,11 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     <div class="prompts-box">
       <h3>📋 Prompts à copier-coller</h3>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt A — Recherche sourcée</span><button class="copy-btn" onclick="copyPrompt(this,'p1a')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p1a">Prompt A — Recherche sourcée</span><button class="copy-btn" onclick="copyPrompt(this,'p1a')">📋 Copier</button></div>
         <div class="prompt-body" id="p1a">Quelles sont les dernières recommandations officielles sur [sujet] ? Cite tes sources et indique la date de chaque information.</div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt B — Synthèse documentaire</span><button class="copy-btn" onclick="copyPrompt(this,'p1b')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p1b">Prompt B — Synthèse documentaire</span><button class="copy-btn" onclick="copyPrompt(this,'p1b')">📋 Copier</button></div>
         <div class="prompt-body" id="p1b">Fais une synthèse des principales études sur [sujet] publiées ces 2 dernières années. Pour chaque étude : auteur, date, résultat principal, lien si disponible.</div>
       </div>
     </div>
@@ -697,11 +697,11 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     <div class="prompts-box">
       <h3>📋 Prompts à copier-coller</h3>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt A — Test de modèles</span><button class="copy-btn" onclick="copyPrompt(this,'p2a')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p2a">Prompt A — Test de modèles</span><button class="copy-btn" onclick="copyPrompt(this,'p2a')">📋 Copier</button></div>
         <div class="prompt-body" id="p2a">[Votre sujet professionnel ou pédagogique] — testez ce même prompt avec au moins 3 modèles différents sur DuckAI et comparez les résultats.</div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt B — Activité pédagogique</span><button class="copy-btn" onclick="copyPrompt(this,'p2b')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p2b">Prompt B — Activité pédagogique</span><button class="copy-btn" onclick="copyPrompt(this,'p2b')">📋 Copier</button></div>
         <div class="prompt-body" id="p2b">Propose une activité pédagogique de 45 min sur [sujet] pour des élèves de [niveau]. Inclus : objectif, déroulé, matériel, consigne élève.</div>
       </div>
     </div>
@@ -886,19 +886,19 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
     <div class="prompts-box">
       <h3>📋 Prompts à copier-coller</h3>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt A — Assistant FALC</span><button class="copy-btn" onclick="copyPrompt(this,'p4a')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p4a">Prompt A — Assistant FALC</span><button class="copy-btn" onclick="copyPrompt(this,'p4a')">📋 Copier</button></div>
         <div class="prompt-body" id="p4a">Crée les instructions d'un assistant IA qui reformule n'importe quel texte en FALC (Facile À Lire et à Comprendre) : phrases courtes, mots simples, une idée par phrase, mise en page aérée. L'assistant demande le texte, produit la version FALC et explique les choix.</div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt B — Assistant évaluations</span><button class="copy-btn" onclick="copyPrompt(this,'p4b')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p4b">Prompt B — Assistant évaluations</span><button class="copy-btn" onclick="copyPrompt(this,'p4b')">📋 Copier</button></div>
         <div class="prompt-body" id="p4b">Crée les instructions d'un assistant IA qui m'aide à rédiger des évaluations de [matière] pour des élèves de [niveau]. Il demande : le thème, le type d'exercice, la difficulté, la durée. Il produit l'évaluation complète avec les corrections.</div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt C — Précorrection de copies</span><button class="copy-btn" onclick="copyPrompt(this,'p4c')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p4c">Prompt C — Précorrection de copies</span><button class="copy-btn" onclick="copyPrompt(this,'p4c')">📋 Copier</button></div>
         <div class="prompt-body" id="p4c">Tu vas m'aider à précorriger des copies d'élèves (anonymisées). Pour chaque production que je te soumets, tu analyses selon ces critères : [liste tes critères]. Tu produis une grille remplie et un commentaire constructif de 2-3 lignes.</div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt D — Améliorer des instructions</span><button class="copy-btn" onclick="copyPrompt(this,'p4d')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p4d">Prompt D — Améliorer des instructions</span><button class="copy-btn" onclick="copyPrompt(this,'p4d')">📋 Copier</button></div>
         <div class="prompt-body" id="p4d">Voici mes instructions actuelles : [coller les instructions]. Améliore-les pour qu'elles soient plus précises, plus naturelles et qu'elles produisent de meilleurs résultats. Explique tes modifications.</div>
       </div>
     </div>
@@ -938,11 +938,11 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
     <div class="prompts-box">
       <h3>📋 Prompts à copier-coller</h3>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt A — Personnalisation ChatGPT</span><button class="copy-btn" onclick="copyPrompt(this,'p5a')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p5a">Prompt A — Personnalisation ChatGPT</span><button class="copy-btn" onclick="copyPrompt(this,'p5a')">📋 Copier</button></div>
         <div class="prompt-body" id="p5a">Paramètres → "Personnaliser ChatGPT" : renseignez qui vous êtes, ce que vous faites, ce que vous attendez de l'IA. ChatGPT adapte toutes ses réponses à votre profil.</div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt B — Prompt ACTIF complet</span><button class="copy-btn" onclick="copyPrompt(this,'p5b')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p5b">Prompt B — Prompt ACTIF complet</span><button class="copy-btn" onclick="copyPrompt(this,'p5b')">📋 Copier</button></div>
         <div class="prompt-body" id="p5b">Tu es [votre rôle]. Je dois [tâche précise] pour [contexte]. Mon objectif est [objectif]. Contraintes : [contraintes]. Ton : [professionnel / pédagogique / accessible]. Format : [tableau / liste / texte court].</div>
       </div>
     </div>
@@ -983,11 +983,11 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
     <div class="prompts-box">
       <h3>📋 Prompts à copier-coller</h3>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt A — Recherche comparative</span><button class="copy-btn" onclick="copyPrompt(this,'p6a')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p6a">Prompt A — Recherche comparative</span><button class="copy-btn" onclick="copyPrompt(this,'p6a')">📋 Copier</button></div>
         <div class="prompt-body" id="p6a">[Même recherche qu'Atelier 1] — comparez les résultats de Perplexity, ChatGPT Web Search et Gemini Deep Research sur le même sujet.</div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt B — Deep Research Gemini</span><button class="copy-btn" onclick="copyPrompt(this,'p6b')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p6b">Prompt B — Deep Research Gemini</span><button class="copy-btn" onclick="copyPrompt(this,'p6b')">📋 Copier</button></div>
         <div class="prompt-body" id="p6b">Fais une recherche approfondie sur [sujet professionnel ou pédagogique]. Je veux un rapport structuré avec : contexte, enjeux, données chiffrées récentes, perspectives, sources.</div>
       </div>
     </div>
@@ -1028,15 +1028,15 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
     <div class="prompts-box">
       <h3>📋 Prompts à copier-coller</h3>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt A — QCM autocorrectif</span><button class="copy-btn" onclick="copyPrompt(this,'p7a')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p7a">Prompt A — QCM autocorrectif</span><button class="copy-btn" onclick="copyPrompt(this,'p7a')">📋 Copier</button></div>
         <div class="prompt-body" id="p7a">Génère automatiquement des QCM sur [sujet] pour des élèves de [niveau] avec plusieurs niveaux de différenciation. Les QCM doivent être autocorrectifs et assortis de feedbacks selon les réponses des élèves.</div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt B — Simulateur métier</span><button class="copy-btn" onclick="copyPrompt(this,'p7b')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p7b">Prompt B — Simulateur métier</span><button class="copy-btn" onclick="copyPrompt(this,'p7b')">📋 Copier</button></div>
         <div class="prompt-body" id="p7b">Je voudrais créer un simulateur de [domaine professionnel] qui permette de [fonction principale]. Inclus un bouton pour exporter le résultat en PDF.</div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt C — Jeu de révision</span><button class="copy-btn" onclick="copyPrompt(this,'p7c')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p7c">Prompt C — Jeu de révision</span><button class="copy-btn" onclick="copyPrompt(this,'p7c')">📋 Copier</button></div>
         <div class="prompt-body" id="p7c">Crée un jeu de révision interactif sur [sujet] pour des élèves de [niveau] : questions progressives, score en temps réel, feedback immédiat sur chaque réponse.</div>
       </div>
     </div>
@@ -1134,11 +1134,11 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
     <div class="prompts-box">
       <h3>📋 Prompts à copier-coller</h3>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt A — Diaporama de cours</span><button class="copy-btn" onclick="copyPrompt(this,'p9a')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p9a">Prompt A — Diaporama de cours</span><button class="copy-btn" onclick="copyPrompt(this,'p9a')">📋 Copier</button></div>
         <div class="prompt-body" id="p9a">Crée une présentation de [X slides] sur [sujet] pour des élèves de [niveau]. Chaque slide doit avoir : un titre, 3 points clés, un exemple concret. Style : clair, pédagogique, pas trop dense.</div>
       </div>
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt B — Présentation professionnelle</span><button class="copy-btn" onclick="copyPrompt(this,'p9b')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p9b">Prompt B — Présentation professionnelle</span><button class="copy-btn" onclick="copyPrompt(this,'p9b')">📋 Copier</button></div>
         <div class="prompt-body" id="p9b">Crée une présentation de [X slides] pour [contexte professionnel] sur le thème : [sujet]. Inclus : introduction, 3 à 4 parties, conclusion avec synthèse et prochaines étapes.</div>
       </div>
     </div>
@@ -1248,7 +1248,7 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
       <div id="a10-label-1" style="font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:4px">✍️ Appréciations de bulletins</div>
 
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt A — Générer des appréciations</span><button class="copy-btn" onclick="copyPrompt(this,'p10a')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p10a">Prompt A — Générer des appréciations</span><button class="copy-btn" onclick="copyPrompt(this,'p10a')">📋 Copier</button></div>
         <div class="prompt-body" id="p10a">Tu es professeur en [matière]. Rédige 5 appréciations de bulletin variées pour des élèves aux profils différents :
 1. Élève très motivé mais résultats insuffisants
 2. Élève discret avec de bons résultats
@@ -1260,7 +1260,7 @@ Chaque appréciation : 2 à 3 lignes, ton bienveillant et constructif, une piste
       </div>
 
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt B — Personnaliser une appréciation</span><button class="copy-btn" onclick="copyPrompt(this,'p10b')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p10b">Prompt B — Personnaliser une appréciation</span><button class="copy-btn" onclick="copyPrompt(this,'p10b')">📋 Copier</button></div>
         <div class="prompt-body" id="p10b">Je vais te décrire un élève en quelques mots. Rédige une appréciation de bulletin scolaire (2-3 lignes, ton professionnel et bienveillant).
 
 Élève : [prénom ou initiale]
@@ -1273,7 +1273,7 @@ Propose 2 versions : une encourageante, une plus directe.</div>
       </div>
 
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt C — Reformuler mes appréciations</span><button class="copy-btn" onclick="copyPrompt(this,'p10c')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p10c">Prompt C — Reformuler mes appréciations</span><button class="copy-btn" onclick="copyPrompt(this,'p10c')">📋 Copier</button></div>
         <div class="prompt-body" id="p10c">Voici mes appréciations brutes pour plusieurs élèves. Reformule-les de façon plus professionnelle, bienveillante et constructive, sans en changer le sens. Garde une longueur similaire (2-3 lignes max).
 
 [Coller vos appréciations ici — une par ligne]</div>
@@ -1282,17 +1282,17 @@ Propose 2 versions : une encourageante, une plus directe.</div>
       <div id="a10-label-2" style="font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;margin-top:14px">🌐 Avec Comet (IA voit la page)</div>
 
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt D — Analyser une page web ouverte</span><button class="copy-btn" onclick="copyPrompt(this,'p10d')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p10d">Prompt D — Analyser une page web ouverte</span><button class="copy-btn" onclick="copyPrompt(this,'p10d')">📋 Copier</button></div>
         <div class="prompt-body" id="p10d">Tu vois la page web affichée devant toi. Fais-m'en une synthèse en 5 points clés, adaptée à un usage pédagogique pour des élèves de [niveau] en [matière].</div>
       </div>
 
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt E — Exploiter un référentiel en ligne</span><button class="copy-btn" onclick="copyPrompt(this,'p10e')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p10e">Prompt E — Exploiter un référentiel en ligne</span><button class="copy-btn" onclick="copyPrompt(this,'p10e')">📋 Copier</button></div>
         <div class="prompt-body" id="p10e">En te basant sur le référentiel affiché sur cette page, extrais les compétences liées à [thème ou module]. Présente-les sous forme de tableau avec : intitulé de la compétence, capacités attendues, niveau visé.</div>
       </div>
 
       <div class="prompt-card">
-        <div class="prompt-head"><span class="prompt-label">Prompt F — Rédiger depuis un document ouvert</span><button class="copy-btn" onclick="copyPrompt(this,'p10f')">📋 Copier</button></div>
+        <div class="prompt-head"><span class="prompt-label" id="lbl-p10f">Prompt F — Rédiger depuis un document ouvert</span><button class="copy-btn" onclick="copyPrompt(this,'p10f')">📋 Copier</button></div>
         <div class="prompt-body" id="p10f">En t'appuyant sur le contenu de la page que tu vois, rédige une introduction de cours percutante (accroche + problématique + annonce du plan) pour des élèves de [niveau]. Ton : dynamique et accessible.</div>
       </div>
     </div>
@@ -1730,6 +1730,7 @@ enseignant:{
     p10e:'En te basant sur le référentiel affiché sur cette page, extrais les compétences liées à [thème ou module]. Présente-les sous forme de tableau avec : intitulé de la compétence, capacités attendues, niveau visé.',
     p10f:'En t\'appuyant sur le contenu de la page que tu vois, rédige une introduction de cours percutante (accroche + problématique + annonce du plan) pour des élèves de [niveau]. Ton : dynamique et accessible.'
   },
+  labels:{p1a:'Prompt A — Recherche sourcée',p1b:'Prompt B — Synthèse documentaire',p2a:'Prompt A — Test de modèles',p2b:'Prompt B — Activité pédagogique',p4a:'Prompt A — Assistant FALC',p4b:'Prompt B — Assistant évaluations',p4c:'Prompt C — Précorrection de copies',p4d:'Prompt D — Améliorer des instructions',p5a:'Prompt A — Personnalisation ChatGPT',p5b:'Prompt B — Prompt ACTIF complet',p6a:'Prompt A — Recherche comparative',p6b:'Prompt B — Deep Research Gemini',p7a:'Prompt A — QCM autocorrectif',p7b:'Prompt B — Simulateur métier',p7c:'Prompt C — Jeu de révision',p9a:'Prompt A — Diaporama de cours',p9b:'Prompt B — Présentation professionnelle',p10a:'Prompt A — Générer des appréciations',p10b:'Prompt B — Personnaliser une appréciation',p10c:'Prompt C — Reformuler mes appréciations',p10d:'Prompt D — Analyser une page web ouverte',p10e:'Prompt E — Exploiter un référentiel en ligne',p10f:'Prompt F — Rédiger depuis un document ouvert'},
   a10labels:['✍️ Appréciations de bulletins','🌐 Avec Comet (IA voit la page)'],
   actifEx:{
     ex1:'📖 Créer un cours', ex2:'📝 Rédiger une évaluation', ex3:'♿ Adapter en FALC',
@@ -1789,6 +1790,7 @@ direction:{
     p10e:'En te basant sur le document affiché, extrais les obligations spécifiques aux établissements privés sous contrat OGEC. Présente sous forme de tableau : obligation, échéance, service concerné.',
     p10f:'En t\'appuyant sur la page affichée, rédige un projet de délibération pour mon prochain CA sur ce sujet. Format : intitulé, exposé des motifs, proposition de délibération, vote demandé.'
   },
+  labels:{p1a:'Prompt A — Circulaires et textes officiels',p1b:'Prompt B — Synthèse textes OGEC',p2a:'Prompt A — Test de modèles direction',p2b:'Prompt B — Rédiger une note de service',p4a:'Prompt A — Assistant rédaction direction',p4b:'Prompt B — Assistant préparation CA',p4c:'Prompt C — Assistant veille réglementaire',p4d:'Prompt D — Améliorer les instructions',p5a:'Prompt A — Personnalisation ChatGPT',p5b:'Prompt B — Prompt ACTIF complet',p6a:'Prompt A — Recherche réglementaire comparative',p6b:'Prompt B — Deep Research direction',p7a:'Prompt A — Tableau de bord établissement',p7b:'Prompt B — Simulateur DHG',p7c:'Prompt C — Suivi entretiens professionnels',p9a:'Prompt A — Présentation pour le CA',p9b:'Prompt B — Bilan annuel établissement',p10a:'Prompt A — Analyser GeVASCO ou formulaire',p10b:'Prompt B — Note depuis un texte officiel',p10c:'Prompt C — Questions pour réunion',p10d:'Prompt D — Synthèse pour décision',p10e:'Prompt E — Obligations OGEC dans le document',p10f:'Prompt F — Projet de délibération'},
   a10labels:['📋 Sur GeVASCO et formulaires officiels','🌐 Avec Comet (IA voit la page)'],
   actifEx:{
     ex1:'📋 Rédiger une note de service', ex2:'📊 Préparer un CA', ex3:'⚖️ Veille réglementaire',
@@ -1848,6 +1850,7 @@ comptable:{
     p10e:'En te basant sur le document fiscal affiché, liste les obligations déclaratives avec leurs échéances pour un OGEC. Format tableau : obligation, date limite, mode de dépôt, montant ou base de calcul.',
     p10f:'En t\'appuyant sur le contenu affiché, rédige une note de synthèse comptable à destination de la direction et du CA. Ton : accessible à des non-comptables. Format : 1 page, points clés en gras.'
   },
+  labels:{p1a:'Prompt A — Taux et barèmes en vigueur',p1b:'Prompt B — Évolutions fiscales OGEC',p2a:'Prompt A — Test de modèles comptabilité',p2b:'Prompt B — Explication comptable',p4a:'Prompt A — Assistant comptable OGEC',p4b:'Prompt B — Assistant présentation budgétaire',p4c:'Prompt C — Assistant veille fiscale',p4d:'Prompt D — Améliorer les instructions',p5a:'Prompt A — Personnalisation ChatGPT',p5b:'Prompt B — Prompt ACTIF complet',p6a:'Prompt A — Recherche fiscale comparative',p6b:'Prompt B — Deep Research fiscal',p7a:'Prompt A — Simulateur d\'amortissement',p7b:'Prompt B — Simulation budgétaire',p7c:'Prompt C — Calculateur charges sociales',p9a:'Prompt A — Budget pour le CA',p9b:'Prompt B — Présentation clôture des comptes',p10a:'Prompt A — Analyser un tableau Excel',p10b:'Prompt B — Remplir un formulaire URSSAF',p10c:'Prompt C — Expliquer un relevé comptable',p10d:'Prompt D — Synthèse fiscale et financière',p10e:'Prompt E — Obligations déclaratives OGEC',p10f:'Prompt F — Note de synthèse comptable'},
   a10labels:['📊 Sur Excel en ligne et URSSAF','🌐 Avec Comet (IA voit la page)'],
   actifEx:{
     ex1:'📊 Analyser un bilan', ex2:'💶 Calculer des charges', ex3:'📋 Rédiger un libellé',
@@ -1907,6 +1910,7 @@ secretariat:{
     p10e:'Tu vois ce document / formulaire. Identifie les champs que je dois compléter, ceux qui posent souvent problème et les erreurs fréquentes à éviter.',
     p10f:'En t\'appuyant sur le contenu de cette page, rédige un message d\'information aux familles sur ce sujet. Ton : bienveillant et clair. Format : email court avec objet, corps et signature.'
   },
+  labels:{p1a:'Prompt A — Procédures et formulaires officiels',p1b:'Prompt B — Délais légaux de conservation',p2a:'Prompt A — Test de modèles administration',p2b:'Prompt B — Rédiger un courrier officiel',p4a:'Prompt A — Assistant rédaction courriers',p4b:'Prompt B — Assistant gestion documentaire',p4c:'Prompt C — Assistant rédaction administrative',p4d:'Prompt D — Améliorer les instructions',p5a:'Prompt A — Personnalisation ChatGPT',p5b:'Prompt B — Prompt ACTIF complet',p6a:'Prompt A — Recherche procédures comparative',p6b:'Prompt B — Deep Research procédures',p7a:'Prompt A — Suivi des inscriptions',p7b:'Prompt B — Gestion des rendez-vous',p7c:'Prompt C — Suivi des courriers',p9a:'Prompt A — Guide de rentrée ou procédure',p9b:'Prompt B — Affiche de communication',p10a:'Prompt A — Remplir un formulaire en ligne',p10b:'Prompt B — Répondre à un courrier',p10c:'Prompt C — Résumer une procédure',p10d:'Prompt D — Points clés à transmettre',p10e:'Prompt E — Champs et erreurs dans un formulaire',p10f:'Prompt F — Message d\'information aux familles'},
   a10labels:['📝 Sur GeVASCO et formulaires en ligne','🌐 Avec Comet (IA voit la page)'],
   actifEx:{
     ex1:'✉️ Rédiger un courrier', ex2:'📋 Procédure officielle', ex3:'📅 Convocation réunion',
@@ -1966,6 +1970,7 @@ rh:{
     p10e:'En te basant sur ce document RH affiché, génère une check-list des actions à mener avec les responsables, les délais et les documents à produire. Format tableau.',
     p10f:'En t\'appuyant sur ce contenu, rédige une note RH à destination de la direction sur ce sujet. Ton : professionnel et factuel. Inclus : contexte, enjeux, recommandations, actions proposées.'
   },
+  labels:{p1a:'Prompt A — Convention collective CCIP',p1b:'Prompt B — Évolutions droit social',p2a:'Prompt A — Test de modèles RH',p2b:'Prompt B — Rédiger une fiche de poste',p4a:'Prompt A — Assistant RH OGEC',p4b:'Prompt B — Assistant entretiens professionnels',p4c:'Prompt C — Analyser un CV',p4d:'Prompt D — Améliorer les instructions',p5a:'Prompt A — Personnalisation ChatGPT',p5b:'Prompt B — Prompt ACTIF complet',p6a:'Prompt A — Recherche droit social comparative',p6b:'Prompt B — Deep Research RH',p7a:'Prompt A — Suivi entretiens professionnels',p7b:'Prompt B — Calcul indemnités licenciement',p7c:'Prompt C — Suivi plan de formation',p9a:'Prompt A — Bilan social pour le CA',p9b:'Prompt B — Plan de formation',p10a:'Prompt A — Rédiger une annonce de recrutement',p10b:'Prompt B — Formulaire OPCO EP',p10c:'Prompt C — Accord de branche ou texte conventionnel',p10d:'Prompt D — Points RH à mettre en place',p10e:'Prompt E — Check-list des actions RH',p10f:'Prompt F — Note RH pour la direction'},
   a10labels:['📂 Sur portails RH et OPCO en ligne','🌐 Avec Comet (IA voit la page)'],
   actifEx:{
     ex1:'📄 Rédiger un contrat', ex2:'🔍 Analyser un CV', ex3:'⚖️ Veille juridique RH',
@@ -2025,6 +2030,7 @@ communication:{
     p10e:'En te basant sur le contenu de cette page, rédige un email newsletter pour nos familles sur ce sujet. Ton : chaleureux et informatif. Format : objet accrocheur, introduction, 3 paragraphes, conclusion avec lien.',
     p10f:'En t\'appuyant sur cette page, génère 5 idées de posts pour nos réseaux sociaux cette semaine sur ce thème. Pour chaque idée : plateforme, format, angle, ébauche de texte.'
   },
+  labels:{p1a:'Prompt A — Actualités et angles de communication',p1b:'Prompt B — Tendances communication scolaire',p2a:'Prompt A — Test de modèles communication',p2b:'Prompt B — Rédiger des posts réseaux sociaux',p4a:'Prompt A — Assistant éditorial',p4b:'Prompt B — Assistant gestion de crise',p4c:'Prompt C — Assistant veille médiatique',p4d:'Prompt D — Améliorer les instructions',p5a:'Prompt A — Personnalisation ChatGPT',p5b:'Prompt B — Prompt ACTIF complet',p6a:'Prompt A — Veille comparative',p6b:'Prompt B — Deep Research communication',p7a:'Prompt A — Quiz portes ouvertes',p7b:'Prompt B — Formulaire satisfaction familles',p7c:'Prompt C — Générateur de posts',p9a:'Prompt A — Présentation établissement',p9b:'Prompt B — Dossier de presse',p10a:'Prompt A — Post depuis une page web',p10b:'Prompt B — Post LinkedIn et Instagram',p10c:'Prompt C — Analyser une communication',p10d:'Prompt D — Éléments de communication efficaces',p10e:'Prompt E — Newsletter familles depuis la page',p10f:'Prompt F — 5 idées de posts réseaux'},
   a10labels:['📱 Sur sites web et réseaux sociaux','🌐 Avec Comet (IA voit la page)'],
   actifEx:{
     ex1:'📱 Post réseaux sociaux', ex2:'📧 Newsletter familles', ex3:'📰 Communiqué de presse',
@@ -2084,6 +2090,7 @@ vie_scolaire:{
     p10e:'En te basant sur le règlement intérieur / document officiel affiché, rédige une fiche synthèse pour mes AED : règles essentielles, procédures clés, contacts utiles. Format : aide-mémoire pratique.',
     p10f:'En t\'appuyant sur cette page, rédige un bilan comportemental professionnel et factuel pour un élève présentant [profil]. Ton : objectif et bienveillant. Format : constat / analyse / préconisations.'
   },
+  labels:{p1a:'Prompt A — Procédures réglementaires',p1b:'Prompt B — Textes vie scolaire',p2a:'Prompt A — Test de modèles vie scolaire',p2b:'Prompt B — Courrier de convocation famille',p4a:'Prompt A — Assistant vie scolaire',p4b:'Prompt B — Assistant médiation',p4c:'Prompt C — Assistant rédaction vie scolaire',p4d:'Prompt D — Améliorer les instructions',p5a:'Prompt A — Personnalisation ChatGPT',p5b:'Prompt B — Prompt ACTIF complet',p6a:'Prompt A — Recherche vie scolaire comparative',p6b:'Prompt B — Deep Research vie scolaire',p7a:'Prompt A — Tableau de bord absences',p7b:'Prompt B — Suivi des incidents',p7c:'Prompt C — Formulaire signalement',p9a:'Prompt A — Bilan de vie scolaire',p9b:'Prompt B — Projet de vie scolaire',p10a:'Prompt A — Courrier d\'alerte absentéisme',p10b:'Prompt B — Analyser un règlement intérieur',p10c:'Prompt C — Résumer un rapport vie scolaire',p10d:'Prompt D — Ressources à adapter',p10e:'Prompt E — Fiche synthèse aide-mémoire AED',p10f:'Prompt F — Bilan comportemental'},
   a10labels:['📋 Sur Pronote et règlements en ligne','🌐 Avec Comet (IA voit la page)'],
   actifEx:{
     ex1:'✉️ Courrier aux familles', ex2:'📊 Bilan absentéisme', ex3:'⚖️ Texte réglementaire',
@@ -2143,6 +2150,7 @@ aesh:{
     p10e:'En te basant sur le PAI/PPS affiché, génère une fiche de suivi hebdomadaire des aménagements mis en place : liste des aménagements, cases à cocher, espace observation, à partager avec l\'enseignant.',
     p10f:'En t\'appuyant sur ce document affiché, rédige un compte-rendu synthétique de la réunion ESS à destination des parents. Ton : accessible et bienveillant. Inclus : présence, bilan, décisions prises, suite prévue.'
   },
+  labels:{p1a:'Prompt A — Stratégies d\'accompagnement',p1b:'Prompt B — Dispositifs et droits MDPH',p2a:'Prompt A — Test de modèles accompagnement',p2b:'Prompt B — Adapter un texte de cours',p4a:'Prompt A — Assistant AESH adaptateur',p4b:'Prompt B — Assistant communication alternative',p4c:'Prompt C — Assistant préparation ESS',p4d:'Prompt D — Améliorer les instructions',p5a:'Prompt A — Personnalisation ChatGPT',p5b:'Prompt B — Prompt ACTIF complet',p6a:'Prompt A — Recherche handicap comparative',p6b:'Prompt B — Deep Research accompagnement',p7a:'Prompt A — Emploi du temps visuel adapté',p7b:'Prompt B — Exercices de révision adaptés',p7c:'Prompt C — Outil communication visuelle',p9a:'Prompt A — Présentation réunion ESS',p9b:'Prompt B — Support communication alternative',p10a:'Prompt A — Analyser MDPH, PAI ou PPS',p10b:'Prompt B — Adapter un document de cours',p10c:'Prompt C — Remplir formulaire MDPH',p10d:'Prompt D — Conseils pratiques d\'accompagnement',p10e:'Prompt E — Fiche de suivi des aménagements',p10f:'Prompt F — Compte-rendu de réunion ESS'},
   a10labels:['📄 Sur MDPH, PAI et formulaires en ligne','🌐 Avec Comet (IA voit la page)'],
   actifEx:{
     ex1:'📝 Adapter un texte de cours', ex2:'🖼️ Créer un support visuel', ex3:'🔍 Ressources sur un trouble',
@@ -2418,6 +2426,13 @@ function switchPersona(key) {
     const el = document.getElementById(id);
     if (el) el.textContent = pr[id];
   });
+  // Prompt labels
+  if (p.labels) {
+    Object.keys(p.labels).forEach(id => {
+      const el = document.getElementById('lbl-' + id);
+      if (el) el.textContent = p.labels[id];
+    });
+  }
   // Atelier 10 labels
   const l1 = document.getElementById('a10-label-1');
   const l2 = document.getElementById('a10-label-2');
