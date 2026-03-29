@@ -382,7 +382,9 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 .cert-divider{height:3px;background:linear-gradient(90deg,#1e3a8a,#16A34A,#16A34A,#1e3a8a);border-radius:2px;margin:22px 0}
 .cert-recipient-block{text-align:center;margin:24px 0}
 .cert-certifies{font-size:12.5px;color:#64748B;margin-bottom:10px;font-style:italic}
-.cert-recipient-name{font-size:30px;font-weight:800;color:#1e3a8a;display:inline-block;padding:0 20px 8px;border-bottom:2px solid #BFDBFE;font-style:italic}
+.cert-recipient-name{font-size:30px;font-weight:800;color:#1e3a8a;display:inline-block;padding:0 20px 8px;border-bottom:2px solid #BFDBFE;font-style:italic;outline:none;cursor:text;min-width:200px;transition:border-color .2s,background .2s;border-radius:4px 4px 0 0}
+.cert-recipient-name:focus{border-bottom-color:#1e3a8a;background:#EFF6FF}
+.cert-recipient-name[data-placeholder]:empty::before{content:attr(data-placeholder);color:#94A3B8;font-style:italic}
 .cert-formation-block{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:14px 20px;margin:20px 0;display:flex;gap:20px;flex-wrap:wrap}
 .cert-form-item{flex:1;min-width:140px}
 .cert-form-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#94A3B8;margin-bottom:4px}
@@ -1609,10 +1611,9 @@ Propose 2 versions : une encourageante, une plus directe.</div>
       <p>Suivi en temps réel de vos compétences numériques professionnelles validées au fil des ateliers</p>
     </div>
 
-    <!-- Nom + bouton certificat -->
+    <!-- Bouton certificat + input caché pour persistance nom -->
     <div class="crcn-name-row">
-      <label for="cert-name-input">👤 Votre nom :</label>
-      <input type="text" id="cert-name-input" placeholder="Prénom NOM" oninput="updateCertName()">
+      <input type="hidden" id="cert-name-input">
       <button class="cert-open-btn" onclick="openCertificate()">📜 Générer mon certificat</button>
     </div>
 
@@ -2792,8 +2793,27 @@ function showCRCN(btn) {
 }
 
 function updateCertName() {
-  // live preview update if modal open
+  // live preview update if modal open (from external input)
   if (document.getElementById('cert-modal').style.display === 'flex') renderCertificate();
+}
+
+function syncCertName(el) {
+  const val = el.innerText.trim();
+  // sync to hidden input for persistence
+  const inp = document.getElementById('cert-name-input');
+  if (inp) inp.value = val;
+  // sync footer name
+  const footer = document.getElementById('cert-footer-name');
+  if (footer) {
+    footer.textContent = val || '';
+    footer.style.color = val ? '#0F172A' : '#94A3B8';
+    footer.style.fontStyle = val ? 'normal' : 'italic';
+  }
+  // sync certifies hint
+  const certifies = el.closest('.cert-recipient-block')?.querySelector('.cert-certifies');
+  if (certifies) {
+    certifies.textContent = val ? 'Je soussigné·e atteste que' : '✏️ Cliquez ici pour saisir votre nom';
+  }
 }
 
 function renderCompetencesPage() {
@@ -2876,6 +2896,20 @@ function openCertificate() {
   const m = document.getElementById('cert-modal');
   m.style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  // auto-focus le champ nom si vide
+  setTimeout(() => {
+    const el = document.getElementById('cert-editable-name');
+    if (el && !el.innerText.trim()) {
+      el.focus();
+      // place le curseur à la fin
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      range.collapse(false);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+  }, 80);
 }
 function closeCertificate() {
   document.getElementById('cert-modal').style.display = 'none';
@@ -2931,8 +2965,8 @@ function renderCertificate() {
     <div class="cert-main-sub">Cadre de référence des compétences numériques pour l'éducation</div>
     <div class="cert-divider"></div>
     <div class="cert-recipient-block">
-      <div class="cert-certifies">Je soussigné·e atteste que</div>
-      <div class="cert-recipient-name">${name}</div>
+      <div class="cert-certifies">✏️ Cliquez ici pour saisir votre nom</div>
+      <div class="cert-recipient-name" id="cert-editable-name" contenteditable="true" spellcheck="false" data-placeholder="Prénom NOM" oninput="syncCertName(this)">${name === 'Participant·e' ? '' : name}</div>
     </div>
     <div class="cert-formation-block">
       <div class="cert-form-item"><div class="cert-form-label">Formation</div><div class="cert-form-value">Prise en main des outils IA — Journée 1</div></div>
@@ -2944,7 +2978,7 @@ function renderCertificate() {
       <div class="cert-footer-block">
         <div class="cert-footer-label">Le·la participant·e</div>
         <div class="cert-footer-line"></div>
-        <div class="cert-footer-value" style="color:#94A3B8;font-style:italic">${name}</div>
+        <div class="cert-footer-value" id="cert-footer-name" style="color:#94A3B8;font-style:italic">${name === 'Participant·e' ? '' : name}</div>
       </div>
       <div class="cert-footer-block">
         <div class="cert-footer-label">Le·la formateur·rice</div>
