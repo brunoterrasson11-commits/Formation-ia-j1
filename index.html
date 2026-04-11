@@ -1323,6 +1323,50 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
           <li>Importez plusieurs types de ressources (vidéo + PDF + texte) pour enrichir le Notebook</li>
         </ul>
       </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-top:16px">
+        <h4 style="font-size:12.5px;font-weight:700;margin-bottom:14px">📚 Exercices pratiques</h4>
+        <div style="margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">
+          <div style="font-size:12px;font-weight:700;color:#D97706;margin-bottom:7px">✏️ Exercice 1 — Mon Premier Résumé Intelligent</div>
+          <ol style="list-style:decimal;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text-sec)">
+            <li>Choisissez un module de cours que vous avez déjà abordé</li>
+            <li>Créez un nouveau notebook et nommez-le clairement (ex : "Module 1 — Introduction")</li>
+            <li>Importez tous les supports relatifs à ce module (PDF, notes, articles...)</li>
+            <li>Explorez le résumé automatique généré par NotebookLM</li>
+            <li>Demandez via le chat : <em style="color:var(--text-main)">"Fournis un résumé des 3 concepts les plus importants, en expliquant chaque concept en 2-3 phrases et en citant tes sources."</em></li>
+            <li>Analysez la réponse : les concepts sont-ils pertinents ? Les citations sont-elles correctes ?</li>
+            <li>Sauvegardez la réponse de l'IA en tant que nouvelle note dans votre notebook</li>
+          </ol>
+        </div>
+        <div style="margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">
+          <div style="font-size:12px;font-weight:700;color:#D97706;margin-bottom:7px">🔍 Exercice 2 — L'Interrogateur de Cours</div>
+          <ol style="list-style:decimal;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text-sec)">
+            <li>Sélectionnez une étude de cas ou un article dense de votre cours</li>
+            <li>Importez ce document dans un notebook dédié</li>
+            <li>Préparez 5 à 7 questions précises dont les réponses se trouvent dans le document</li>
+            <li>Posez chaque question une par une à NotebookLM dans la zone de chat</li>
+            <li>Pour chaque réponse, cliquez sur les citations pour vérifier le passage source exact</li>
+            <li>Réfléchissez : NotebookLM vous a-t-il aidé à trouver l'information plus rapidement ?</li>
+          </ol>
+        </div>
+        <div style="margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">
+          <div style="font-size:12px;font-weight:700;color:#D97706;margin-bottom:7px">📖 Exercice 3 — Mon Guide d'Étude Personnalisé</div>
+          <ol style="list-style:decimal;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text-sec)">
+            <li>Identifiez un concept clé de votre cours à approfondir</li>
+            <li>Importez tous les documents pertinents sur ce sujet dans un notebook dédié</li>
+            <li>Demandez : <em style="color:var(--text-main)">"Crée un guide d'étude incluant : une définition, les 3 avantages et 3 inconvénients, les étapes clés de mise en œuvre, et 5 questions pour vérifier la compréhension."</em></li>
+            <li>Évaluez la qualité du guide généré, complétez-le si besoin et sauvegardez-le</li>
+          </ol>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#D97706;margin-bottom:7px">🎧 Exercice 4 <span style="font-weight:500;color:var(--text-sec)">(optionnel)</span> — Le Podcast de Révision</div>
+          <ol style="list-style:decimal;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--text-sec)">
+            <li>Sur un sujet bien travaillé avec les exercices précédents, sélectionnez les sources les plus importantes</li>
+            <li>Utilisez la fonctionnalité "Audio Overview" pour générer un podcast IA</li>
+            <li>Écoutez le podcast généré</li>
+            <li>Cette modalité auditive vous apporte-t-elle quelque chose de différent ? Pourriez-vous l'utiliser régulièrement ?</li>
+          </ol>
+        </div>
+      </div>
     </div>
     <div class="prompts-box">
       <h3>📋 Idées de production</h3>
@@ -1337,6 +1381,22 @@ Pose-moi des questions pour clarifier les zones floues, puis rédige un prompt f
       <div class="prompt-card">
         <div class="prompt-head"><span class="prompt-label">📊 Diaporama / FAQ</span></div>
         <div class="prompt-body">Importez vos documents → "Study Guide" ou "Briefing Doc" → Obtenez une synthèse structurée, des questions de révision, ou une présentation exportable.</div>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-head"><span class="prompt-label">🧠 Résumé de module</span></div>
+        <div class="prompt-body">"Fournis un résumé des 5 concepts fondamentaux abordés dans les documents. Pour chaque concept, donne une définition en 1-2 phrases et un exemple d'application concret tiré des sources."</div>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-head"><span class="prompt-label">❓ Auto-évaluation QCM</span></div>
+        <div class="prompt-body">"Agis comme un examinateur. Pose-moi 5 QCM avec 3 options chacune sur [les concepts clés]. Base tes questions uniquement sur les informations contenues dans mes documents." (Puis demande les bonnes réponses et explications.)</div>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-head"><span class="prompt-label">🔗 Liens transversaux</span></div>
+        <div class="prompt-body">"En analysant l'ensemble de mes documents, quelles connexions et thèmes communs identifies-tu entre les différents modules ? Présente ces liens sous forme de liste structurée."</div>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-head"><span class="prompt-label">💡 Explication simplifiée</span></div>
+        <div class="prompt-body">"Explique-moi [concept] comme si j'étais débutant. Utilise des exemples simples et concrets pour chaque étape, en te basant uniquement sur le document fourni."</div>
       </div>
     </div>
   </div>
