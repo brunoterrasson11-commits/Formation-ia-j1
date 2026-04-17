@@ -572,7 +572,7 @@ function checkLock(){
   <div class="hero">
     <div class="badge">🟢 Journée 1</div>
     <h2>Prise en main : découverte des outils IA</h2>
-    <p>Découvrez l'écosystème des outils IA, apprenez à formuler des prompts efficaces et explorez des cas d'usage concrets pour votre enseignement.</p>
+    <p id="hero-desc">Découvrez l'écosystème des outils IA, apprenez à formuler des prompts efficaces et explorez des cas d'usage concrets pour votre enseignement.</p>
     <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar" style="width:0%"></div></div>
     <div class="prog-lbl" id="prog-lbl">0 / 10 ateliers complétés</div>
   </div>
@@ -2022,6 +2022,7 @@ function loadProgress() {
 const PERSONAS = {
 enseignant:{
   label:'📚 Enseignant(e)',
+  heroDesc:'Découvrez l\'écosystème des outils IA, apprenez à formuler des prompts efficaces et explorez des cas d\'usage concrets pour votre enseignement.',
   accueil:[
     {h:'Recherches fiables et sourcées',p:'Utiliser Perplexity pour obtenir des résultats vérifiables'},
     {h:'Comparer les modèles d\'IA (LLM)',p:'Tester plusieurs IA en parallèle avec DuckAI'},
@@ -2082,6 +2083,7 @@ enseignant:{
 },
 direction:{
   label:'🏛️ Direction / Adjoint(e)',
+  heroDesc:'Découvrez comment l\'IA peut transformer votre pilotage d\'établissement : veille réglementaire, rédaction de documents institutionnels et préparation de vos instances.',
   accueil:[
     {h:'Recherches réglementaires sourcées',p:'Circulaires, textes MENJ, jurisprudence avec Perplexity'},
     {h:'Comparer les modèles d\'IA',p:'Trouver le meilleur LLM pour vos usages de direction'},
@@ -2142,6 +2144,7 @@ direction:{
 },
 comptable:{
   label:'💼 Comptable',
+  heroDesc:'Découvrez comment l\'IA peut optimiser vos analyses financières, automatiser votre veille fiscale et accélérer la production de vos documents comptables.',
   accueil:[
     {h:'Recherches fiscales et comptables sourcées',p:'Taux, barèmes, actualité comptable avec Perplexity'},
     {h:'Comparer les IA pour la comptabilité',p:'Trouver le meilleur LLM pour vos analyses financières'},
@@ -2202,6 +2205,7 @@ comptable:{
 },
 secretariat:{
   label:'📋 Secrétariat',
+  heroDesc:'Découvrez comment l\'IA peut accélérer votre rédaction administrative, simplifier la gestion documentaire et fluidifier la communication avec les familles.',
   accueil:[
     {h:'Recherches de procédures sourcées',p:'Formulaires, procédures officielles avec Perplexity'},
     {h:'Comparer les IA pour le secrétariat',p:'Trouver le meilleur LLM pour vos tâches administratives'},
@@ -2262,6 +2266,7 @@ secretariat:{
 },
 rh:{
   label:'👥 Ressources Humaines',
+  heroDesc:'Découvrez comment l\'IA peut renforcer vos pratiques RH : veille juridique et sociale, rédaction de contrats, gestion des recrutements et suivi du personnel.',
   accueil:[
     {h:'Droit du travail sourcé et à jour',p:'Convention collective, jurisprudence sociale avec Perplexity'},
     {h:'Comparer les IA pour les RH',p:'Trouver le meilleur LLM pour vos pratiques RH'},
@@ -2322,6 +2327,7 @@ rh:{
 },
 communication:{
   label:'📢 Communication',
+  heroDesc:'Découvrez comment l\'IA peut amplifier votre communication : créer des contenus engageants, gérer les réseaux sociaux et produire des supports visuels percutants.',
   accueil:[
     {h:'Veille et recherches sourçées',p:'Actualité de l\'établissement, secteur éducatif avec Perplexity'},
     {h:'Comparer les IA pour la communication',p:'Trouver le meilleur LLM pour créer vos contenus'},
@@ -2382,6 +2388,7 @@ communication:{
 },
 vie_scolaire:{
   label:'🎓 Vie scolaire',
+  heroDesc:'Découvrez comment l\'IA peut enrichir votre gestion de la vie scolaire : suivi des élèves, aide à la médiation, animation éducative et communication avec les familles.',
   accueil:[
     {h:'Règlements et procédures sourcés',p:'Textes sur la vie scolaire, sanctions, droits des élèves'},
     {h:'Comparer les IA pour la vie scolaire',p:'Trouver le meilleur LLM pour vos usages quotidiens'},
@@ -2442,6 +2449,7 @@ vie_scolaire:{
 },
 aesh:{
   label:'🤝 AESH / AVS',
+  heroDesc:'Découvrez comment l\'IA peut vous accompagner dans votre mission : adapter les supports pédagogiques, mieux comprendre les troubles et renforcer la communication avec l\'équipe.',
   accueil:[
     {h:'Recherches sur le handicap sourcées',p:'MDPH, PAI, PPS, ressources AESH avec Perplexity'},
     {h:'Comparer les IA pour l\'accompagnement',p:'Trouver le meilleur LLM pour adapter vos ressources'},
@@ -2743,6 +2751,9 @@ function switchPersona(key) {
   currentPersona = key;
   const p = PERSONAS[key];
   if (!p) return;
+  // Hero description
+  const heroDesc = document.getElementById('hero-desc');
+  if (heroDesc && p.heroDesc) heroDesc.textContent = p.heroDesc;
   // Need cards
   for (let i = 1; i <= 10; i++) {
     const h = document.getElementById('nc-h' + i);
