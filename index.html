@@ -628,9 +628,9 @@ function checkLock(){
       </table>
       <div class="tips-box" style="margin-top:16px">
         <h4>📋 Prompt clé — Générer un cours structuré</h4>
-        <div style="background:var(--surface);border:1px solid #FDE68A;border-radius:8px;padding:12px 14px;font-size:12.5px;line-height:1.65;margin-top:8px;position:relative">
-          Tu es expert en ingénierie pédagogique. Crée un cours sur [sujet] pour des élèves de [niveau] en [matière]. Inclus : accroche, objectifs, déroulé en 3 temps, activité, trace écrite. Format : tableau.
-          <button class="copy-btn" style="position:absolute;top:8px;right:8px" onclick="copyText('Tu es expert en ingénierie pédagogique. Crée un cours sur [sujet] pour des élèves de [niveau] en [matière]. Inclus : accroche, objectifs, déroulé en 3 temps, activité, trace écrite. Format : tableau.',this)">📋 Copier</button>
+        <div id="apport-key-text" style="background:var(--surface);border:1px solid #FDE68A;border-radius:8px;padding:12px 14px;font-size:12.5px;line-height:1.65;margin-top:8px;position:relative">
+          <span id="apport-key-content">Tu es expert en ingénierie pédagogique. Crée un cours sur [sujet] pour des élèves de [niveau] en [matière]. Inclus : accroche, objectifs, déroulé en 3 temps, activité, trace écrite. Format : tableau.</span>
+          <button class="copy-btn" style="position:absolute;top:8px;right:8px" onclick="copyText(document.getElementById('apport-key-content').textContent.trim(),this)">📋 Copier</button>
         </div>
       </div>
     </div>
@@ -2022,6 +2022,7 @@ function loadProgress() {
 const PERSONAS = {
 enseignant:{
   label:'📚 Enseignant(e)',
+  apportPrompt:'Tu es expert en ingénierie pédagogique. Crée un cours sur [sujet] pour des élèves de [niveau] en [matière]. Inclus : accroche, objectifs, déroulé en 3 temps, activité, trace écrite. Format : tableau.',
   heroDesc:'Découvrez l\'écosystème des outils IA, apprenez à formuler des prompts efficaces et explorez des cas d\'usage concrets pour votre enseignement.',
   accueil:[
     {h:'Recherches fiables et sourcées',p:'Utiliser Perplexity pour obtenir des résultats vérifiables'},
@@ -2083,6 +2084,7 @@ enseignant:{
 },
 direction:{
   label:'🏛️ Direction / Adjoint(e)',
+  apportPrompt:'Tu es directeur(trice) d\'établissement scolaire privé sous contrat. Rédige une note de service sur [sujet] pour mon équipe. Inclus : objet, contexte réglementaire, modalités pratiques, date d\'application. Format : document structuré.',
   heroDesc:'Découvrez comment l\'IA peut transformer votre pilotage d\'établissement : veille réglementaire, rédaction de documents institutionnels et préparation de vos instances.',
   accueil:[
     {h:'Recherches réglementaires sourcées',p:'Circulaires, textes MENJ, jurisprudence avec Perplexity'},
@@ -2144,6 +2146,7 @@ direction:{
 },
 comptable:{
   label:'💼 Comptable',
+  apportPrompt:'Tu es expert-comptable spécialisé dans les OGEC. Explique le traitement comptable de [opération] avec les écritures correspondantes. Inclus : comptes à débiter/créditer, libellés, justification. Format : tableau.',
   heroDesc:'Découvrez comment l\'IA peut optimiser vos analyses financières, automatiser votre veille fiscale et accélérer la production de vos documents comptables.',
   accueil:[
     {h:'Recherches fiscales et comptables sourcées',p:'Taux, barèmes, actualité comptable avec Perplexity'},
@@ -2205,6 +2208,7 @@ comptable:{
 },
 secretariat:{
   label:'📋 Secrétariat',
+  apportPrompt:'Tu es assistant administratif expert en communication scolaire. Rédige un courrier officiel à [destinataire] concernant [objet]. Inclus : objet, corps du message, formule de politesse adaptée. Format : courrier structuré prêt à envoyer.',
   heroDesc:'Découvrez comment l\'IA peut accélérer votre rédaction administrative, simplifier la gestion documentaire et fluidifier la communication avec les familles.',
   accueil:[
     {h:'Recherches de procédures sourcées',p:'Formulaires, procédures officielles avec Perplexity'},
@@ -2266,6 +2270,7 @@ secretariat:{
 },
 rh:{
   label:'👥 Ressources Humaines',
+  apportPrompt:'Tu es expert RH spécialisé en droit social de l\'enseignement privé sous contrat. Rédige une fiche de poste pour [intitulé]. Inclus : missions, compétences requises, conditions d\'exercice, rattachement hiérarchique. Format : document structuré.',
   heroDesc:'Découvrez comment l\'IA peut renforcer vos pratiques RH : veille juridique et sociale, rédaction de contrats, gestion des recrutements et suivi du personnel.',
   accueil:[
     {h:'Droit du travail sourcé et à jour',p:'Convention collective, jurisprudence sociale avec Perplexity'},
@@ -2327,6 +2332,7 @@ rh:{
 },
 communication:{
   label:'📢 Communication',
+  apportPrompt:'Tu es expert en communication institutionnelle pour un établissement scolaire. Rédige un post pour les réseaux sociaux sur [sujet]. Inclus : accroche, message clé, appel à l\'action, hashtags pertinents. Format : post prêt à publier.',
   heroDesc:'Découvrez comment l\'IA peut amplifier votre communication : créer des contenus engageants, gérer les réseaux sociaux et produire des supports visuels percutants.',
   accueil:[
     {h:'Veille et recherches sourçées',p:'Actualité de l\'établissement, secteur éducatif avec Perplexity'},
@@ -2388,6 +2394,7 @@ communication:{
 },
 vie_scolaire:{
   label:'🎓 Vie scolaire',
+  apportPrompt:'Tu es conseiller principal d\'éducation expérimenté. Rédige un courrier de convocation aux parents de [prénom] concernant [motif]. Inclus : objet, faits constatés, attentes, prochaines étapes. Format : courrier officiel, ton bienveillant.',
   heroDesc:'Découvrez comment l\'IA peut enrichir votre gestion de la vie scolaire : suivi des élèves, aide à la médiation, animation éducative et communication avec les familles.',
   accueil:[
     {h:'Règlements et procédures sourcés',p:'Textes sur la vie scolaire, sanctions, droits des élèves'},
@@ -2449,6 +2456,7 @@ vie_scolaire:{
 },
 aesh:{
   label:'🤝 AESH / AVS',
+  apportPrompt:'Tu es spécialiste de l\'accompagnement des élèves à besoins éducatifs particuliers. Propose des adaptations pédagogiques pour un élève avec [trouble/handicap] en [matière]. Inclus : aménagements, supports adaptés, stratégies concrètes. Format : fiche pratique.',
   heroDesc:'Découvrez comment l\'IA peut vous accompagner dans votre mission : adapter les supports pédagogiques, mieux comprendre les troubles et renforcer la communication avec l\'équipe.',
   accueil:[
     {h:'Recherches sur le handicap sourcées',p:'MDPH, PAI, PPS, ressources AESH avec Perplexity'},
@@ -2754,6 +2762,9 @@ function switchPersona(key) {
   // Hero description
   const heroDesc = document.getElementById('hero-desc');
   if (heroDesc && p.heroDesc) heroDesc.textContent = p.heroDesc;
+  // Apports théoriques — prompt clé
+  const apportKeyContent = document.getElementById('apport-key-content');
+  if (apportKeyContent && p.apportPrompt) apportKeyContent.textContent = p.apportPrompt;
   // Need cards
   for (let i = 1; i <= 10; i++) {
     const h = document.getElementById('nc-h' + i);
